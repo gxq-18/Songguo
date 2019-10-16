@@ -1,0 +1,79 @@
+
+<view class='margintop5'></view>
+
+  <view class="search-bar">  
+    <view class="search-wrap">  
+        <!-- <icon type="search" size="16" class="icon-search" />   -->
+        <input type="text" placeholder="本节课题" class="search-input" name="searchKeyword" disabled='disabled' value="{{themeName}}"/>  
+    </view>  
+  </view>  
+<view class="search-bar">  
+  <view class="search-wrap"> 
+     <input type="text" placeholder="课程形式" class="search-input" name="curriculum_form" disabled='disabled' value="{{curriculum_form}}" bindinput="curriculum_form"  />  
+    </view>
+</view>  
+
+
+<view >
+<view class='margintop20'></view>
+
+<scroll-view scroll-y style="height: {{scrollHeight}}rpx;">
+<view class="separate"></view>
+<view class='record'>
+    <view><text class='placeholder-class'>————</text><label>本班学生</label><text class='placeholder-class'>————</text></view>
+</view>
+<view class='list'>
+  <view class='section'>
+  <!--班级学员-->
+    <view wx:for="{{carts}}" wx:for-index="idx" wx:key="car" >
+      <view class="cart_container" wx:if='{{item.cpcType==0}}'>
+        <image class="item-select" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}" src="{{item.isSelect?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+        <image class="item-image" src="{{item.icon}}"></image>
+        <view class="column">
+          <text class="column_title">{{item.cpc_name}}
+            <text wx:if="{{item.is_audition==1}}" style='color:#f8ac59'>(试听)</text>
+          </text>
+        </view>
+        <view class="column_bir" >{{item.birthday}}</view>
+        <view class="column_stepper" style='width:30%;' wx:if='{{item.is_audition!=1}}'>
+                <text class="column_title">消课{{item.count}}节 </text>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='margintop20'></view>
+<view class='record'>
+    <view><text class='placeholder-class'>————</text><label>其它班学生</label><text class='placeholder-class'>————</text></view>
+</view>
+<view class='list'>
+  <view class='section'>
+  <!--班级学员-->
+    <view wx:for="{{carts}}" wx:for-index="idx" wx:key="car2">
+      <view class="cart_container" wx:if='{{item.cpcType==1}}'>
+        <image class="item-select" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}" src="{{item.isSelect?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+        <image class="item-image" src="{{item.icon}}"></image>
+        <view class="column">
+          <text class="column_title">{{item.cpc_name}}</text>
+        </view>
+        <view class="column_bir" >{{item.birthday}}</view>
+        <view class="column_stepper" style='width:30%;' >
+             <text class="column_title">消课{{item.count}}节 </text>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+</scroll-view>
+</view>
+
+<view class="bottom_total" >
+  <view class="bottom_line"></view>
+
+    <form name='pushMsgFm' report-submit bindsubmit='searchStu'>
+      <view class="row">
+          <button class="button-red" form-type="submit" >补消</button>
+      </view>
+    </form>  
+</view>

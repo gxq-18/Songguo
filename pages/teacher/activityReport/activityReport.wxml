@@ -1,0 +1,15 @@
+<!--pages/stu/mailboxWrite/mailboxWrite.wxml-->
+<view class='margintop5'></view>
+<view class="section">
+
+  <view>
+    <textarea class='textarea' placeholder="请填写汇报内容" bindinput='inputContent' value="{{report_content}}" placeholder-class='placeholder-class' maxlength='500'></textarea>
+  </view>
+   
+    <!--按钮-->
+    <view class="loginBtnView">
+      <form  report-submit bindsubmit='addReport'>
+        <button class="loginBtn"  form-type="submit">保 存</button>
+      </form>
+    </view>
+</view>

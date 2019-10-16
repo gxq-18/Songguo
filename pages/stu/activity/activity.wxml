@@ -1,0 +1,29 @@
+<!--pages/stu/activity/activity.wxml-->
+<view class='margintop5'></view>
+
+  <view class='section' style='padding-bottom: 80rpx;'>
+    <block wx:if="{{activityList.length==0}}" wx:key="activity">
+      <view class='wnr'>
+          <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
+      </view>
+    </block>
+    <block wx:else>
+      <scroll-view scroll-y="true" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower">
+      <block wx:for="{{activityList}}" wx:key="activity">
+        <view class='bookList' bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>
+            <view class='bookListImg'>
+              <image src='{{item.img_path}}' bindload="imageLoad"  
+        style="width:200rpx; height:150rpx;"></image>
+            </view>
+            <view class='bookListContent'>
+              <view class='lable'>{{item.title}}</view>            
+              <view class='text'>时间：{{item.star_time}}至{{item.end_time}}</view>
+              <view class='text' >查看详情 ></view>
+            </view>
+        </view>
+      </block>
+      <view class="loading" hidden="{{!searchLoading}}">正在载入...</view>  
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+      </scroll-view>
+    </block>
+  </view>

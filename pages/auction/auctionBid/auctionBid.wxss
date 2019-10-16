@@ -1,0 +1,86 @@
+/* pages/stu/spareTime/spareTime.wxss */
+
+.payView{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scatitle{
+  font-size: 50rpx;
+  font-weight:700;
+  background-color: #fff;
+  padding-top: 30rpx;
+}
+.scatext{
+  font-size: 35rpx;
+  font-weight:500;
+  background-color: #fff;
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+}
+
+.record{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20rpx;
+}
+.record label{
+  font-size: 40rpx;
+  font-weight:600;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+/* 上课记录 */
+
+.currContent{
+  display:flex;
+  height: 80rpx;
+  padding-top: 10rpx;
+}
+.currContent_time{
+  margin-top: 15rpx;
+  width: 15rpx;
+  height: 80rpx;
+}
+.currContent_list1{
+  display:flex;
+  justify-content: center; 
+  width: 20%;
+}
+.currContent_list2{
+  display:flex;
+  justify-content: left; 
+  width: 30%;
+}
+.currContent_list2 label{
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    white-space:nowrap; 
+}
+.currContent_list3{
+  display:flex;
+  justify-content: center; 
+  width: 30%;
+}
+.currContent_list4{
+  display:flex;
+  justify-content: center; 
+  width: 40%;
+  font-size: 30rpx;
+}
+
+.currContent_list3 .lable{
+  width: 40%;
+  
+}
+.currContent_list3 .lable2{
+  width: 20%;
+  text-align: center;
+}
+.item-image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}

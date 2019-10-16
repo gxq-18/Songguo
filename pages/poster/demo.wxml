@@ -1,0 +1,13 @@
+<!--pages/main/index.wxml-->
+<view class="container-box">
+    <view class="img-box">
+        <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}"></image>
+    </view>
+    <form bindsubmit="formSubmit">
+        <button  class="mybtn" type="primary" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="formSubmit">生成图片</button>
+    </form>
+</view>
+<view hidden="{{maskHidden}}" class="mask"></view>
+<view class="canvas-box">
+    <canvas  style="width: 750px;height: 1344px;" canvas-id="mycanvas"/>
+</view>

@@ -1,0 +1,2 @@
+<!--pages/teacher/parentCircleListVio/parentCircleListVio.wxml-->
+ <video id="myVideo"  bindended="hideModal" binderror="hideModal"  controls="controls" autoplay="true" show-progress='true' style='toop:0rpx;width: 100%;height: 100vh;z-index: 2000;'   src="{{videoUrl}}"  ></video>

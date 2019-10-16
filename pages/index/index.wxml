@@ -1,0 +1,17 @@
+<import src="../../wxParse/wxParse.wxml" />
+<!--index.wxml-->
+ 
+  <view class='btMyIcon'>
+    <view class="userinfo" >
+        <form  report-submit >
+            <button class="formBtn" form-type="button" bindtap='telPhone'>
+              <image  class="userinfo-avatar" src="../../image/tel.png" background-size="cover" ></image>
+            </button>
+        </form>
+    </view>
+  </view>  
+<view class='sectiontext'> 
+      <template is="wxParse" data="{{wxParseData:aboutus.nodes}}"/>
+ </view> 
+  
+

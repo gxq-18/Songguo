@@ -1,0 +1,37 @@
+<!--pages/teacher/layoutStu/layoutStu.wxml-->
+<view class='margintop5'></view>
+
+<view class="search-bar">  
+  <view class="search-wrap">  
+      <icon type="search" size="16" class="icon-search" />  
+      <input type="text" placeholder="请输入学员名称" class="search-input" name="searchKeyword" bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{keyword}}" bindblur="wxSearchBlur" />  
+  </view>  
+</view>  
+
+  <scroll-view scroll-y="true" style="height: {{scrollHeight}}rpx;" bindscrolltolower="searchScrollLower" >
+  <view class='section'>
+      <!--班级学员-->
+        <view wx:for="{{carts}}" wx:for-index="idx" wx:key="car">
+          <view class="cart_container">
+            <image class="item-select" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}" src="{{item.isSelect?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+            <image class="item-image" src="{{item.icon}}"  bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}"></image>
+            <view class="column">
+              <text class="column_title"  bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}">{{item.cpc_name}}</text>
+            </view>
+            <view class="column_bir"  bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}">{{item.birthday}}</view>
+          </view>
+        </view>
+        <view class="loading" hidden="{{!searchLoading}}">正在载入...</view>  
+        <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>  
+  </view>
+</scroll-view> 
+
+<view class="bottom_total" >
+  <view class="bottom_line"></view>
+
+  <view class="row">
+    <image class="item-allselect" bindtap="allSelect" src="{{isAllSelect?'../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+    <text class="small_text">全选</text>
+    <button class="button-red" bindtap="showModal" formType="submit">确定</button>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+<!--pages/stu/myIndex/myIndex.wxml-->
+<view class='margintop5'></view>
+<view >
+	<view class="section">
+		<view class="line judgement">头像
+      <view class="tl">
+        <image bindtap='changeImage' class='avatar' src='{{teacher.icon}}'></image>
+      </view>
+    </view>
+		 <view class="line judgement" bindtap='myMobile' data-id='{{teacher.id}}' data-mobile='{{teacher.mobile}}'>手机号<text class="tl">{{teacher.mobile}}</text></view> 
+		<view class="line judgement" bindtap='myPwd' data-id='{{teacher.id}}' data-pwd='{{teacher.login_pwd}}'>修改密码</view>
+
+	</view>
+</view>
+

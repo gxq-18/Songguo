@@ -1,0 +1,43 @@
+<view class='margintop5'></view>
+<view class="section" style='padding-bottom: 130rpx;'> 
+<block wx:if="{{mailList.length==0}}" wx:key="activity">
+  <view class='wnr'>
+      <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
+  </view>
+</block>
+<block wx:else>
+  <scroll-view scroll-y="true" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower">
+      <!-- <block wx:for="{{mailList}}" wx:key="mail">
+        <view class='mbox' bindtap='view' data-model='{{item}}'>
+          <view class='mtitle'>{{item.title}}</view>
+          <view class="mcontent">
+            {{item.content}}
+          </view>
+          <view class='mtime'>{{item.createtime}}</view>
+        </view>
+      </block> -->
+      <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for-index="idx"  data-index="{{idx}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{mailList}}" wx:key="">
+            <view class="content">
+              <view class='mbox' bindtap='view' data-model='{{item}}'>
+                <view class='mtitle'>{{item.title}}</view>
+                <view class="mcontent">
+                  {{item.content}}
+                </view>
+                <view class='mtime'>{{item.createtime}}</view>
+              </view>
+            </view>
+            <view class="del" catchtap="del" data-index="{{idx}}" data-id='{{item.id}}'>删除</view>
+          </view>
+
+      <view class="loading" hidden="{{!searchLoading}}">正在载入...</view>  
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+  </scroll-view>
+</block>
+ 
+</view>
+
+<view class='address-add'>
+<form  report-submit bindsubmit='write'>
+  <button class='Btn' size="default" form-type="submit">写 信</button> 
+  </form>
+</view>  

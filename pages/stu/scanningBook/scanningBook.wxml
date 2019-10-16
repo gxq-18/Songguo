@@ -1,0 +1,22 @@
+<!--pages/stu/scanningBook/scanningBook.wxml-->
+<view class='book'>
+   <view class='bookSm'>
+     <image src='{{book.list_img}}' bindload="imageLoad"  
+style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
+   </view>
+   <view class='scatitle'>
+      {{book.title}}
+   </view>
+    <view class='scatext'>
+     {{book.press}}
+   </view>
+    <view class='scatext' style='color: #9D9D9D;' wx:if='{{huan==1}}'>
+      借阅时间：{{loan_time}}
+   </view> 
+   <view class='tishi'>温馨提示：请妥善保管图书，并且在借阅完成后及时归还至原书架，谢谢您的配合。</view>
+<!--按钮-->
+    <view class="loginBtnView">
+      <button class="loginBtn"  bindtap="saveBookLoaning"  wx:if='{{huan==0}}'>借 阅</button>
+ <button class="loginBtn"  bindtap="returnBook"  wx:else>还 书</button>
+    </view>
+</view>

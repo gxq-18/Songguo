@@ -1,0 +1,67 @@
+<!--pages/teacher/activityWrite/activityWrite.wxml-->
+
+<view class='margintop5'></view>
+  <input class="inputText" placeholder="填写活动主题" placeholder-class='placeholder-class' bindinput="inputTitle" maxlength='25'/>
+  <input class="inputText" placeholder="填写活动地址" placeholder-class='placeholder-class' bindinput="inputAddress" maxlength='200'/>
+    <picker mode="date" bindchange="bindDateStar">
+    	<view class="line judgement"><text class='line_time'>活动开始时间</text><text class="tl">{{star_time}}</text>
+      </view>
+    </picker> 
+    <picker mode="date" bindchange="bindDateEnd">
+    	<view class="line judgement" ><text class='line_time'>活动结束时间</text><text class="tl">{{end_time}}</text>
+      </view>
+    </picker> 
+  <view class='margintop10'></view>
+  <textarea bindinput='inputContent' auto-height placeholder="活动内容" style="margin-top:20rpx;margin-left:20rpx;width:680rpx;min-height: 200rpx;"  maxlength='500'></textarea>
+<view class='margintop10'></view>
+  <textarea bindinput='inputRemark' auto-height placeholder="备注" style="margin-top:20rpx;margin-left:20rpx;width:680rpx;min-height: 200rpx;"  maxlength='500'></textarea>
+<view class='margintop10'></view>
+<view class='tea'>
+  <text class='line_time'>队长</text>
+  <view>
+      <view class="flexRow">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="but_img" wx:if="{{true}}">
+              <image src='../../../image/change_id@2x.png'></image>
+            </view>
+          </picker>
+            <view class="but_img" wx:for="{{captainList}}" wx:for-item="item" wx:key="img">
+              
+                <image src="{{item.icon}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+                <text>{{item.name}}</text>
+                <view class="but_img_del">
+                  <icon type='cancel' size="15" color="red" bindtap='deleteCaptainList' data-index='{{index}}'></icon>
+                </view>
+              
+            </view>
+      </view>
+  </view>
+</view>
+<view class='margintop10'></view>
+<view class='tea'>
+  <text class='line_time'>队友</text>
+  <view>
+      <view class="flexRow">
+          <picker bindchange="bindPickerChange2" value="{{index}}" range="{{array}}">
+            <view class="but_img" wx:if="{{true}}">
+              <image src='../../../image/change_id@2x.png'></image>
+            </view>
+          </picker>
+            <view class="but_img" wx:for="{{teammateList}}" wx:for-item="item" wx:key="img">
+              
+                <image src="{{item.icon}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+                <text>{{item.name}}</text>
+                <view class="but_img_del">
+                  <icon type='cancel' size="15" color="red" bindtap='deleteTeammateList' data-index='{{index}}'></icon>
+                </view>
+              
+            </view>
+      </view>
+  </view>
+</view>
+
+<view class='margintop200'></view>
+<view class='address-add'>
+  <button class='Btn' size="default" bindtap='addActivity'>创建活动</button> 
+</view>  
+

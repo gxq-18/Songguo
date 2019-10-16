@@ -1,0 +1,12 @@
+<!--pages/stu/mailboxView/mailboxView.wxml-->
+<view class='margintop5'></view>
+<view class='section'>
+  <view class='mvTitle'>{{model.title}}</view>
+  <view class='mvTime'>{{model.createtime}}</view>
+  <view class='mvContent'>{{item.content}}</view>
+  <view class="flexRow" style='padding-top:50rpx;'>
+      <view class="but_img" wx:for="{{model.img_path}}" wx:for-item="item" wx:key="*this">
+        <image src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+    </view>
+  </view>
+</view>

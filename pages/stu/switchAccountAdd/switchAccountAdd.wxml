@@ -1,0 +1,11 @@
+<!--pages/stu/switchAccountAdd/switchAccountAdd.wxml-->
+<view class='margintop5'></view>
+<view class="container">
+  <view class='section'>
+    <input class="inputText" placeholder="输入学号" placeholder-class='placeholder-class' bindinput="inputCardCode" focus="{{focus1}}" maxlength='25'/>
+  </view>
+  <!--按钮-->
+  <view class="loginBtnView">
+    <button class="loginBtn" bindtap="binding">切 换</button>
+  </view>
+</view>

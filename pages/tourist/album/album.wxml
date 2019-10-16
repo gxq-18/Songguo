@@ -1,0 +1,23 @@
+<!--pages/tourist/album/album.wxml-->
+<!-- <view class="loading" hidden="{{!pullDownRefresh}}">正在载入...</view>   -->
+<view class="schoollist">
+  <block wx:for="{{items}}" wx:key="item"  wx:for-index="imgidx">
+    <view class="school-list">
+        <view class="school-list-info" index="{{index}}">
+          <view class="but_img" >
+            <image class="school-list-photo" src="{{item.fristImg}}" data-src="{{item.img_path}}" bindtap="previewImage" data-index="{{imgidx}}" />
+           <block  wx:if='{{item.isUrl==1}}' >
+              <view class="but_img_del" data-src="{{item.img_path}}" bindtap="showModal">
+                <image src='../../../image/pengyouquan_play@2x.png'  ></image>
+              </view>
+           </block>
+          </view>
+
+          <text class="school-list-desc">{{item.createtime}} ({{item.isUrl==0?item.img_path.length:''}})</text>         
+        </view>
+    </view>
+  </block>
+ 
+  
+</view>
+<!-- <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>  -->

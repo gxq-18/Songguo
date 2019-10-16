@@ -1,0 +1,20 @@
+<!--pages/stu/myPwd/myPwd.wxml-->
+<view class='margintop5'></view>
+<view class="container">
+  <view class="sel">
+    <!--账号-->
+  <input class="inputText" placeholder="原密码" bindinput="phoneInput" focus="{{focus1}}"/>
+  </view>
+  <view class="line"></view>
+  <view class="sel">
+    <!--账号-->
+  <input class="inputText" placeholder="新密码" />
+  </view>
+  <view class="line"></view>
+  <!--按钮-->
+    <view class="loginBtnView">
+      <button class="loginBtn"  size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}"  bindtap="binding">修改</button>
+ 
+    </view>
+</view>
+

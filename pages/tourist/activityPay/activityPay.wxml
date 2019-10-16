@@ -1,0 +1,82 @@
+<!--pages/stu/scanningBook/scanningBook.wxml-->
+<view class='margintop5'></view>
+<view class='book'>
+  <view class='payView'>
+      <view class='scatitle'>
+          {{model.title}}
+      </view>
+      <block wx:if='{{model.ca_type==1}}'>
+        <view class='scatext'>
+            购买课时{{model.pay_class}}节
+        </view>
+        <view class='pay'>
+          <view class='payMoney'>￥{{model.pay_money}}</view>
+          <view class='scatext' style='margin-top: 20rpx;text-decoration:line-through;'>￥{{model.old_money}}</view>
+        </view>
+      </block>
+      <block wx:if='{{model.ca_type==2}}'>
+        <block wx:if='{{model.is_pay==1}}'>
+          <view class='pay'>
+            <view class='payMoney'>￥{{model.deposit_money}}</view>
+            <view class='scatext' style='margin-top: 20rpx;text-decoration:line-through;'>￥{{model.old_deposit_money}}</view>
+          </view>
+        </block>
+      </block>
+       <view class="container">
+          <view class="sel">
+          <input class="inputText" placeholder="{{pay_user}}" bindinput="inputUser" focus="{{focus3}}" value="{{userName}}"/>
+          </view>
+          <view class="line"></view>
+         <view class="sel">
+          <input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/>
+          </view>
+          <view class="line"></view>
+          <!-- <view class="sel">
+          <input class="inputText" style='width:60%' bindinput='inputSendCode' placeholder="验证码" focus="{{focus2}}"/>
+          <button class="{{sendmsg}}" hover-class='classCurr_view_but_hover' bindtap='sendmessg'>{{getmsg}}</button>
+          </view>
+          <view class="line"></view> -->
+        </view>
+
+  </view>
+ 
+<!--按钮-->
+    <view class="loginBtnView">
+    <block wx:if='{{model.ca_type==1}}'>
+     <form name='pushMsgFm' report-submit bindsubmit='onPayCao'>  
+        <button class="payBtn" type="primary"  form-type="submit" >
+        <image src='../../../image/pay_weixin.png' style='width:50rpx;height:50rpx;padding-right:20rpx;'></image> 微信支付
+        </button>
+     </form>
+    </block>
+    <block wx:if='{{model.ca_type==2}}'>
+      <block wx:if='{{model.is_pay==1}}'>
+        <form name='pushMsgFm' report-submit bindsubmit='onPayCas'>  
+          <button class="payBtn" type="primary"  form-type="submit">
+          <image src='../../../image/pay_weixin.png' style='width:50rpx;height:50rpx;padding-right:20rpx;'></image> 报名支付
+          </button>
+        </form>
+      </block>
+      <block wx:if='{{model.is_pay==0}}'>
+        <button class="payBtn" type="primary"  bindtap="onPayCas">
+         报 名
+        </button>
+      </block>
+    </block>
+    </view>
+</view>
+
+<modal hidden="{{hidden}}"  confirm-text="我知道了" bindconfirm="confirm" no-cancel="true" >
+    <view class='sucModal'>
+      <image src='../../../image/success@2x.png'></image>
+    </view>
+    <view class='payTitle'>
+      <block wx:if='{{model.ca_type==1}}'>支付成功</block>
+       <block wx:if='{{model.ca_type==2}}'>
+         <block wx:if='{{model.is_pay==1}}'>支付成功</block>
+         <block wx:if='{{model.is_pay==0}}'>报名成功</block>
+       </block>
+     
+    </view>
+    <view class='payTitle'>可在【我的-我参与的活动】查看详情</view>
+</modal>

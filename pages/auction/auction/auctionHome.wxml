@@ -1,0 +1,143 @@
+<!--pages/auction/auction/auctionHome.wxml-->
+
+<!--导航条-->
+<view class="navbar">
+
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+ 
+<!--首页-->
+<view wx:if="{{currentTab!=3}}">
+  <view class='section' style='padding-bottom: 80rpx;'>
+    <block wx:if="{{activityList.length==0}}" wx:key="activity">
+      <view class='wnr'>
+          <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
+      </view>
+    </block>
+    <block wx:else>
+      <scroll-view scroll-y="scroll" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower">
+      <block wx:for="{{activityList}}" wx:key="activity" wx:index="index">
+      <form  bind:submit="formSubmit" report-submit="true"> 
+        <view class='booktitleView'  formType="submit" bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>
+          <view class='booktitle'>{{item.title}}</view>
+          <view class='bookTime' wx:if="{{item.timeDay.isTrue}}"><lable wx:if="{{currentTab==0}}">距结束</lable><lable wx:if="{{currentTab==1}}">距开始</lable>
+            <text style='color:red;'>{{item.timeDay.day}}</text>天
+            <text style='color:red;'>{{item.timeDay.hou}}</text>时
+            <text style='color:red;'>{{item.timeDay.min}}</text>分
+            <text style='color:red;'> {{item.timeDay.sec}}</text>秒
+          </view>
+           <view class='topType' style='background: rgb(204, 192, 192);' wx:if="{{!item.timeDay.isTrue}}"><text style='color:#fff;margin-top:10rpx;'>已结束</text></view>
+        </view>
+      </form>
+        <view class='bookList' >
+            <view class='bookListImg' bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>
+              <image src='{{item.list_img}}' bindload="imageLoad"  
+        style="width:100%; height:180rpx;border-radius: 20rpx;"></image>
+            </view>
+            <view class='bookListContent'>
+              <view class='lable'>最新价：￥{{item.bid_amount}}</view> 
+              <form  bind:submit="formSubmit" report-submit="true"> 
+                <view class='text'  formType="submit"  bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>查看详情 ></view>
+              </form>           
+              <form bind:submit="formSubmit" report-submit="true">
+                <button wx:if="{{currentTab==1}}"  class="{{item.is_notice==true?'classCurr_view_but_success':'classCurr_view_but'}}" style='margin-top: 20rpx;' hover-class='classCurr_view_but_hover' formType="submit" open-type="getUserInfo" bindgetuserinfo='tourist' data-index="{{index}}">{{item.is_notice==true?'取消提醒':'设置提醒'}}</button> 
+              </form>
+              
+            </view>
+        
+        </view>
+      </block>
+      <view class="loading" hidden="{{!searchLoading}}">正在载入...</view>  
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+      </scroll-view>
+    </block>
+  </view>
+
+</view>
+<view wx:if="{{currentTab==3}}">
+  <view class='section' style='padding-bottom: 80rpx;'>
+    <block wx:if="{{openId==''}}">
+      <form bind:submit="formSubmit" report-submit="true">
+        <button formType="submit"  open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录授权查询 </button>
+      </form>
+    </block>
+    <block wx:else>
+      <block wx:if="{{activityList.length==0}}" wx:key="activity">
+        <view class='wnr'>
+            <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
+        </view>
+      </block>
+      <block wx:else>
+        <scroll-view scroll-y="scroll" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower">
+        <block wx:for="{{activityList}}" wx:key="activity" wx:index="index">
+        <form bind:submit="formSubmit" report-submit="true">
+          <view class='booktitleView' formType="submit" bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>
+            <view class='booktitle'>{{item.title}}</view>
+            
+            <block wx:if='{{item.timeDay.isTrue}}'>
+              <view class='topType' style='background: rgb(224, 12, 12);'><text style='color:#fff;margin-top:10rpx;'>竞拍中</text></view>
+            </block>
+            <block wx:else>
+              <view class='topType' style='background:#0ce041;' wx:if="{{item.is_suc}}"><text style='color:#fff;margin-top:10rpx;'>竞拍成功</text></view>
+              <view class='topType' style='background: rgb(204, 192, 192);' wx:if="{{!item.is_suc}}"><text style='color:#fff;margin-top:10rpx;'>竞拍失败</text></view>
+            </block>
+          </view>
+          </form>
+          <view class='bookList' >
+              <view class='bookListImg' formType="submit" bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>
+                <image src='{{item.list_img}}' bindload="imageLoad"  
+          style="width:100%; height:180rpx;border-radius: 20rpx;"></image>
+              </view>
+              <view class='bookListContent'>
+                <view class='lable'>最新价：￥{{item.bid_amount}}</view>
+                <form bind:submit="formSubmit" report-submit="true">            
+                <view class='text'formType="submit" bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>查看详情 ></view>
+                </form>
+                <block wx:if="{{!item.timeDay.isTrue && item.is_suc}}">
+                  <block wx:if="{{item.is_pay}}">
+                  <form bind:submit="formSubmit" report-submit="true">    
+                    <button formType="submit" class="wuliu" style='margin-top: 20rpx;'  data-id='{{item.id}}'  data-index="{{index}}" bindtap='query'>查看物流</button>
+                    </form>
+                  </block>
+                  <block wx:else>
+                  <form bind:submit="formSubmit" report-submit="true">    
+                    <button  formType="submit" class="pay" style='margin-top: 20rpx;' data-model='{{item}}'  data-index="{{index}}" bindtap='showModal'>立即支付</button>
+                  </form>
+                  </block>
+                </block>
+              </view>
+          
+          </view>
+        </block>
+        <view class="loading" hidden="{{!searchLoading}}">正在载入...</view>  
+        <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+        </scroll-view>
+      </block>
+    </block>
+
+    
+  </view>
+
+</view>
+
+ <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{hideModal}}" bindtap="showModal"></view>
+ 
+<view class="modalDlg" wx:if="{{hideModal}}">
+   <view class="container" style='padding-top:20rpx;'>
+         <view class="sel">
+            <input class="inputText" placeholder="拍卖人" bindinput="inputUser" focus="{{focus3}}" value="{{userName}}"/>
+          </view>
+         <view class="sel">
+            <input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/>
+         </view>
+         <view class="sel">
+            <textarea  class="inputText" placeholder="收货地址" bindinput="inputAddress" focus="{{focus2}}"  value='{{address}}' style='height:150rpx;'></textarea>
+         </view>
+         <view class="sel" style='padding-top: 40rpx;'>
+            <form name='pushMsgFm' report-submit bindsubmit='onPayCao'>
+             <button class='Btn' style='background-color: rgb(184, 10, 10);' size="default"  form-type="submit">支付</button> 
+            </form>
+         </view>
+      </view>
+    
+</view>

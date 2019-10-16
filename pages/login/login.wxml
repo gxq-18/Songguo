@@ -1,0 +1,22 @@
+<!--pages/teacher/shouquan/souquan.wxml-->
+<!-- <view class='title'>绑定账号</view> -->
+<view class="container">
+  <view class="sel">
+    <!--账号-->
+  <input class="inputText" placeholder="账号" bindinput="phoneInput" focus="{{focus1}}"/>
+  </view>
+  <view class="line"></view>
+  <view class="sel">
+    <!--密码-->
+    <input class="inputText" placeholder="密码" bindinput="passwordInput" focus="{{focus2}}"/>
+  </view>
+  <view class="line"></view>
+
+
+    <!--按钮-->
+    <view class="loginBtnView">
+      <button class="loginBtn"  bindtap="binding">绑定</button>
+    </view>
+  </view>
+
+

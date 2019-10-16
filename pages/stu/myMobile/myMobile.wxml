@@ -1,0 +1,21 @@
+<!--pages/stu/myMobile/myMobile.wxml-->
+<view class='margintop5'></view>
+
+<view class="container">
+  <view class="sel">
+    <!--账号-->
+  <input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/>
+  </view>
+  <!-- <view class="line"></view> -->
+  <!-- <view class="sel"> -->
+    <!--账号-->
+  <!-- <input class="inputText" style='width:60%' bindinput='inputSendCode' placeholder="验证码" focus="{{focus2}}"/>
+  <button class="{{sendmsg}}" hover-class='classCurr_view_but_hover' bindtap='sendmessg'>{{getmsg}}</button>
+  </view> -->
+  <view class="line"></view>
+  <!--按钮-->
+    <view class="loginBtnView">
+      <button class="loginBtn"    bindtap="editMobile">保 存</button>
+ 
+    </view>
+</view>

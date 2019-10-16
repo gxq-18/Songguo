@@ -1,0 +1,27 @@
+<!--pages/stu/switchAccount/switchAccount.wxml-->
+<view class='margintop5'></view>
+<view class='section'>
+  <view class='tou'>
+    <view class='touTitle'>轻触头像切换账号</view>
+  </view>
+  <view class="header">
+    <block wx:for='{{dataList}}' wx:key="d" >
+      <view class='codeImage'>
+        <image class="avatar" src="{{item.cpc.icon}}" data-id='{{item.id}}' data-index="{{index}}"  bindtap='editAppointment' />
+        <view class="nickname">{{item.cpc.name}}
+        <icon type='cancel' size="15" color="red" bindtap='delAppointment'  data-id='{{item.id}}' data-index="{{index}}" wx:if="{{item.is_default==0}}"></icon>
+        </view>
+      
+        <view class='default' wx:if="{{item.is_default==1}}">
+          <image class='defaultImage' src='../../../image/xiaohongdian.png'></image>
+        当前使用</view> 
+      </view>
+    </block>
+  
+    <view class='codeImage' hidden='{{dataList.length>=6}}' bindtap='switchAccountAdd'>
+      <image class="avatar" src="../../../image/change_id@2x.png" />
+      <view class="nickname">切换账号</view>
+    </view>
+	</view>
+   
+</view>

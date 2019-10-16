@@ -1,0 +1,165 @@
+<import src="wxSearch/wxSearch.wxml"/>
+<view class='margintop5'></view>
+
+  <view class="search-bar">  
+    <view class="search-wrap">  
+        <!-- <icon type="search" size="16" class="icon-search" />   -->
+        <input type="text" placeholder="请输入本节课题" class="search-input" name="searchKeyword" bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{theme_name}}" bindblur="wxSearchBlur" focus="{{searchKeyword}}"/>     
+    </view>  
+  </view>  
+<template is="wxSearch" data="{{wxSearchData}}"  />
+<view class="search-bar">  
+  <view class="search-wrap"> 
+     <input type="text" placeholder="课程形式" class="search-input" name="curriculum_form"  value="" bindinput="curriculum_form"  focus="{{curriculum_form}}"/>  
+    </view>
+</view>
+<view >
+<view class='margintop20'></view>
+
+<scroll-view scroll-y style="height: {{scrollHeight}}rpx;">
+<view class="separate"></view>
+<view class='record'>
+    <view><text class='placeholder-class'>————</text><label>本班学生</label><text class='placeholder-class'>————</text></view>
+</view>
+<view class='list'>
+  <view class='section'>
+  <!--班级学员-->
+    <view wx:for="{{carts}}" wx:for-index="idx" wx:key="car" >
+      <view class="cart_container" wx:if='{{item.cpcType==0}}'>
+        <image class="item-select" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}" src="{{item.isSelect?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+        <image class="item-image" src="{{item.icon}}" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}"></image>
+        <view class="column" >
+          <text class="column_title" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}">{{item.cpc_name}}
+            <text wx:if="{{item.is_audition==1}}" style='color:#f8ac59'>(试听)</text>
+          </text>
+        </view>
+        <view class="column_bir" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}" >{{item.birthday}}</view>
+        <view class="column_stepper" style='width:30%;' wx:if='{{item.is_audition!=1}}'>
+              <!-- 主容器 -->  
+              <view class="stepper"> 
+                  <!-- 减号 -->  
+                  <text class="{{item.minusStatus}}" bindtap="bindMinus" data-componentid="{{idx}}">-</text>  
+                  <!-- 数值 -->  
+                  <input type="number" bindchange="bindManual" value="{{item.count}}" data-componentid="{{idx}}"/>  
+                  <!-- 加号 -->  
+                  <text class="normal" bindtap="bindPlus" data-componentid="{{idx}}">+</text>  
+              </view>  
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='margintop20'></view>
+<view class='record'>
+    <view><text class='placeholder-class'>————</text><label>其它班学生</label><text class='placeholder-class'>————</text></view>
+</view>
+<view class='list'>
+  <view class='section'>
+  <!--班级学员-->
+    <view wx:for="{{carts}}" wx:for-index="idx" wx:key="car2">
+      <view class="cart_container" wx:if='{{item.cpcType==1}}'>
+        <image class="item-select" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}" src="{{item.isSelect?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+        <image class="item-image" src="{{item.icon}}" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}"></image>
+        <view class="column">
+          <text class="column_title" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}">{{item.cpc_name}}</text>
+        </view>
+        <view class="column_bir" bindtap="switchSelect" data-index="{{idx}}" data-id="{{idx}}">{{item.birthday}}</view>
+        <view class="column_stepper" style='width:30%;' >
+              <!-- 主容器 -->  
+              <view class="stepper"> 
+                  <!-- 减号 -->  
+                  <text class="{{item.minusStatus}}" bindtap="bindMinus" data-componentid="{{idx}}">-</text>  
+                  <!-- 数值 -->  
+                  <input type="number" bindchange="bindManual" value="{{item.count}}" data-componentid="{{idx}}"/>  
+                  <!-- 加号 -->  
+                  <text class="normal" bindtap="bindPlus" data-componentid="{{idx}}">+</text>  
+              </view>  
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--按钮-->
+   <form name='pushMsgFm' report-submit bindsubmit='searchStu'>
+      <button class="formBtn" form-type="submit" >
+        <view class="loginBtnView">
+            <image src='../../../image/seach@2x.png' > </image>
+        </view>
+      </button>
+   </form>
+
+
+</scroll-view>
+</view>
+<view class="bottom_total" >
+  <view class="bottom_line"></view>
+
+    <form name='pushMsgFm' report-submit bindsubmit='showModal'>
+      <view class="row">
+        <image class="item-allselect" bindtap="allSelect" src="{{isAllSelect?'../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+        <text class="small_text" bindtap="allSelect">全选</text>
+          <button class="button-red" form-type="submit" >消课</button>
+      </view>
+    </form>  
+</view>
+
+
+<!--屏幕背景变暗的背景  -->
+  <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view> 
+  <!--弹出框--详情  -->
+  <view animation="{{animationData}}" catchtouchmove='true' class="commodity_attr_box" wx:if="{{showModalStatus}}">
+   
+      <textarea placeholder="这一节课的情况..." auto-focus  maxlength='500' bindinput='addContent' value="{{content}}" style="margin-top:20rpx;margin-left:20rpx;width:680rpx;" focus="{{focusContent}}"/>
+      <view class="flexRow">
+         <view class="but_img " bindtap='chooseImg' wx:if="{{true}}">
+           <image src='../../../image/add@2x.png'></image>
+         </view>
+         <view class="but_img" wx:for="{{imgs}}" wx:for-item="item" wx:key="img">
+          <image src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+          <view class="but_img_del">
+            <icon type='cancel' size="15" color="red" bindtap='deleteImg' data-index='{{index}}'></icon>
+          </view>
+        </view>
+      </view>
+
+      <view style="width:100%;">
+        <view class="common-list" >
+            <view class="item" >
+              <view class="inner with-check" bindtap='getAddress'>
+                <view class="checker" >
+                  <image class='icon' src='../../../image/huodong_position@2x.png' ></image>
+                </view>
+                <view class="content2">
+                  <text class="title2">{{roomname==""?"所在位置":roomname}} </text>
+                </view>
+              </view>
+            </view>
+           
+            <view class="common-list" >
+              <view class="header" >
+                <view>
+                <image class="item-select" bindtap="claSelect" data-index="jzq" data-id="jzq" src="{{isCheckF?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+                </view>
+                <view class='item-select_text'  bindtap="claSelect" >分享到班级圈</view>
+              </view>
+            </view>
+             <view class="common-list" >
+              <view class="header" >
+                <view>
+                <image class="item-select" bindtap="claSelect2" data-index="jzq" data-id="jzq" src="{{isCheckF2?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+                </view>
+                <view class='item-select_text'  bindtap="claSelect2">仅老师可见</view>
+                <view style='padding-left:30rpx;'>
+                <image class="item-select" bindtap="claSelect3" data-index="jzq" data-id="jzq" src="{{isCheckF3?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+                </view>
+                <view class='item-select_text' bindtap="claSelect3" >所有人可见</view>
+              </view>
+            </view>
+            
+      </view>
+       <form name='pushMsgFm' report-submit bindsubmit='primary'>
+        <button class='address-add'  form-type="submit" >保   存</button> 
+       </form>
+    </view>
+  </view>

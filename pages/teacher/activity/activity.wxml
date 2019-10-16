@@ -1,0 +1,32 @@
+<!--pages/teacher/activity/activity.wxml-->
+<view class='margintop5'></view>
+<block wx:if="{{activityList.length==0}}" wx:key="activity">
+  <view class='wnr'>
+      <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
+  </view>
+</block>
+<block wx:else>
+  <scroll-view scroll-y="true" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower">
+    <view class='section' wx:for="{{activityList}}" wx:for-index="idx" wx:key="activity">
+      <view class='bookList' bindtap='activityView' data-model='{{item}}' data-id='{{item.id}}'>
+          <view class='bookListContent'>
+            <view class='lable'>{{item.title}}</view>            
+            <view class='text'>活动地点：{{item.activity_address}}</view>
+            <view class='text'>活动时间：{{item.star_time}}至{{item.end_time}}</view>
+            <view class='text' bindtap='view'>已有<text class='bookListState'>{{item.cpcList.length}}</text>位学生报名</view>
+          </view>
+          <view class='bookList_right'>
+            <image src='../../../image/arrows_right@2x.png'></image>
+          </view>
+      </view>
+    </view>
+    <view class="loading" hidden="{{!searchLoading}}">正在载入...</view>  
+    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+  </scroll-view>
+</block>
+<view style='padding-bottom: 50rpx;'></view>
+<view class='address-add'>
+  <form  report-submit bindsubmit='activityWrite'>
+    <button class='Btn' size="default"  form-type="submit">创建活动</button> 
+  </form>
+</view>  

@@ -1,0 +1,36 @@
+<view class='margintop5'></view>
+
+<!-- 我的课程 -->
+  <view class='section'>
+  <view class='currContent' >
+     <view class="currContent_list1">状态</view>
+      <view class="currContent_list3">金额</view>
+      <view class="currContent_list2">用户</view>
+      <view class="currContent_list4">时间</view>
+    </view>
+  <block wx:if="{{bidList.length==0}}" wx:key="activity">
+    <view class='wnr'>
+        <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
+    </view>
+  </block>
+  
+  <block wx:else>
+    
+    <scroll-view scroll-y="true" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower">
+      <block wx:for="{{bidList}}" wx:key="activity" wx:for-index="index">
+        <view class='currContent' style="background-color: red;color: #fff;"  wx:if="{{index==0}}">
+          <view class="currContent_list1"><image src='../../../image/zuixinjia.png' style="width:100rpx;height:50rpx;"></image></view>
+          <view class="currContent_list3">￥{{item.bid_amount}}</view>
+          <view class="currContent_list2"><image class="item-image" src="{{item.wx_icon}}" ></image><label>{{item.wx_name}}</label></view>
+          <view class="currContent_list4">{{item.createtime}}</view>
+        </view>
+        <view class='currContent'  wx:else>
+          <view class="currContent_list1"><image src='../../../image/lishijia.png' style="width:100rpx;height:50rpx;"></image></view>
+          <view class="currContent_list3">￥{{item.bid_amount}}</view>
+          <view class="currContent_list2"><image class="item-image" src="{{item.wx_icon}}" ></image><label>{{item.wx_name}}</label></view>
+          <view class="currContent_list4">{{item.createtime}}</view>
+        </view>
+      </block>
+    </scroll-view>  
+  </block>
+  </view> 

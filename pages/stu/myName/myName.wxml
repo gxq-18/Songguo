@@ -1,0 +1,16 @@
+<!--pages/stu/myMobile/myMobile.wxml-->
+<view class='margintop5'></view>
+
+<view class="container">
+  <view class="sel">
+    <!--账号-->
+  <input class="inputText" placeholder="姓名" bindinput="inputName" focus="{{focus1}}" value="{{name}}"/>
+  </view>
+
+  <view class="line"></view>
+  <!--按钮-->
+    <view class="loginBtnView">
+      <button class="loginBtn"    bindtap="editName">保 存</button>
+ 
+    </view>
+</view>

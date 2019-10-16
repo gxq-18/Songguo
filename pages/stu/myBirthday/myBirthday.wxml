@@ -1,0 +1,23 @@
+<!--pages/stu/myMobile/myMobile.wxml-->
+<view class='margintop5'></view>
+
+<view class="container">
+  <!-- <view class="sel"> -->
+    <!--账号-->
+  <!-- <input class="inputText" placeholder="生日" bindinput="inputBirthday" focus="{{focus1}}" value="{{birthday}}"/>
+  </view> -->
+ <view class="section"> 
+  <picker mode="date" placeholder="生日"  value="{{birthday}}" bindchange="inputBirthday"> 
+      <view class="picker"> 
+      {{birthday==''?'请选择':birthday}}
+      </view> 
+  </picker> 
+ </view> 
+
+  <view class="line"></view>
+  <!--按钮-->
+    <view class="loginBtnView">
+      <button class="loginBtn"    bindtap="editBirthday">保 存</button>
+ 
+    </view>
+</view>

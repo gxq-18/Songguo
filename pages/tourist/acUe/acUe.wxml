@@ -1,0 +1,5 @@
+<!--pages/tourist/acUe/acUe.wxml-->
+<import src="../../../wxParse/wxParse.wxml" />
+ <!-- <view class='section'>  -->
+      <template is="wxParse" data="{{wxParseData:aboutus.nodes}}"/>
+ <!-- </view>   -->

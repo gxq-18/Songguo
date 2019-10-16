@@ -1,0 +1,36 @@
+<!--pages/stu/mailboxWrite/mailboxWrite.wxml-->
+<view class='margintop5'></view>
+<view class="section">
+  <view >
+    <input class="inputText" placeholder="主题25字" placeholder-class='placeholder-class' bindinput="inputTitle" focus="{{focus1}}" maxlength='25'/>
+  </view>
+  <view>
+    <textarea class='textarea' placeholder="请提出您的宝贵意见" placeholder-class='placeholder-class' focus="{{focus2}}" bindinput="inputContent" maxlength='500'></textarea>
+  </view>
+   <view class="flexRow">
+        <view class="but_img " bindtap='chooseImg' wx:if="{{imgs.length<9}}">
+          <image src='../../../image/add@2x.png'></image>
+        </view>
+        <view class="but_img" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+         <image src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+          <view class="but_img_del">
+            <icon type='cancel' size="15" color="red" bindtap='deleteImg' data-index='{{index}}'></icon>
+          </view>
+      </view>
+    </view>
+     <view class="common-list" >
+        <view class="header" >
+          <view>
+          <image class="item-select" bindtap="claSelect" data-index="jzq" data-id="jzq" src="{{isCheckF?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+          </view>
+          <view class='item-select_text'>匿名</view>
+        </view>
+      </view>
+      
+    <!--按钮-->
+    <view class="loginBtnView">
+    <form  report-submit bindsubmit='saveMail'>
+      <button class="loginBtn" form-type="submit">发送</button>
+       </form>
+    </view>
+</view>

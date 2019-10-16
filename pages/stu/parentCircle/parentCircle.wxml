@@ -1,0 +1,78 @@
+<!--pages/teacher/parentCircle/parentCircle.wxml-->
+<view class='margintop5'></view>
+<form bindsubmit="formSubmit">
+  <view class="section" style='background-color: #fff;'>
+    <textarea bindblur="addContent" auto-height placeholder="这一刻的想法..." maxlength='500' style="margin-top:20rpx;margin-left:20rpx;width:680rpx;" name="textarea" />
+  </view>
+  <block wx:if="{{tp==0}}">
+    <view  style="padding-top:80rpx;float:left;padding-bottom:0;background-color: #fff;width:100%;">
+      <view class="page-body" style="float:left;">
+        <view class="page-section">
+          <view class="weui-cells" style="float:left;width:100%;">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <view class="weui-uploader">
+                  <view class="weui-uploader__hd">
+                    <view class="weui-uploader__title">已选择的照片</view>
+                    <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+                  </view>
+                  <view class="weui-uploader__bd">
+                    <view class="weui-uploader__files">
+                      <block wx:for="{{imageList}}" wx:for-item="image">
+                        <view class="weui-uploader__file">
+                          <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                        </view>
+                      </block>
+                      <view class="weui-uploader__input-box" wx:if='{{imageList.length<9}}'>
+                        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{tp==1}}">
+    <view   style="padding-top:80rpx;background-color: #fff;width:100%;">
+        <view class='section'>
+          <video id="myVideo" src="{{vioUrl}}" controls="false" ></video> 
+        </view>
+    </view>
+  </block>
+  
+  <view class="page-body" style="float:left;width:100%;border-bottom:1rpx solid #ccc;">
+    <view class="common-list" >
+       <view class="item" >
+          <view class="inner with-check" bindtap='getAddress'>
+            <view class="checker" >
+              <image class='icon' src='../../../image/huodong_position@2x.png' ></image>
+            </view>
+            <view class="content2">
+              <text class="title2">{{roomname==""?"所在位置":roomname}} </text>
+            </view>
+          </view>
+        </view> 
+          <!-- <view class="header" >
+            <view style='padding-left:30rpx;'>
+            <image class="item-select" bindtap="claSelect2" data-index="jzq" data-id="jzq" src="{{isCheckF2?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+            </view>
+            <view class='item-select_text' bindtap="claSelect2">仅老师可见</view>
+            <view style='padding-left:30rpx;'>
+            <image class="item-select" bindtap="claSelect3" data-index="jzq" data-id="jzq" src="{{isCheckF3?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+            </view>
+            <view class='item-select_text' bindtap="claSelect3">所有人可见</view>
+          </view> -->
+    </view> 
+  </view>
+ 
+   <view class="page-body" style="float:left;width:100%;">
+      <!--按钮-->
+      <view class="loginBtnView" style='padding-top:50rpx;padding-bottom: 20rpx;'>
+        <button class="loginBtn"   bindtap="primary">发送</button>
+      </view>
+   </view>
+</form>

@@ -1,0 +1,32 @@
+<!--pages/stu/scanningBook/scanningBook.wxml-->
+<view class='margintop5'></view>
+<view class='book'>
+  <view class='payView'>
+      <view class='scatitle'>
+          {{model.ca.title}}
+      </view>
+      <view class='pay'>
+        <view class='payMoney'>￥{{model.pay_money}}</view>
+      </view>
+
+  </view>
+ 
+<!--按钮-->
+    <view class="loginBtnView">
+     <form name='pushMsgFm' report-submit bindsubmit='onPay'>  
+        <button class="payBtn" type="primary"   form-type="submit">
+        <image src='../../../image/pay_weixin.png' style='width:50rpx;height:50rpx;padding-right:20rpx;'></image> 微信支付
+        </button>
+      </form>
+    </view>
+</view>
+
+<modal hidden="{{hidden}}"  confirm-text="我知道了" bindconfirm="confirm" no-cancel="true" >
+    <view class='sucModal'>
+      <image src='../../../image/success@2x.png'></image>
+    </view>
+    <view class='payTitle'>
+      支付成功
+    </view>
+    <view class='payTitle'>可在【我的-我参与的活动】查看详情</view>
+</modal>

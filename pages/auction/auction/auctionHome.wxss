@@ -1,0 +1,202 @@
+/* pages/auction/auction/auctionHome.wxss */
+page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.navbar{
+  flex: none;
+  display: flex;
+  background: #fff;
+  overflow:hidden;
+  border-top:1px solid rgb(187, 181, 181);
+  border-bottom: 1px solid rgb(187, 181, 181);
+}
+.navbar .item{
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 80rpx;
+
+  
+}
+.navbar .item.active{
+  color: #fff;
+  background: rgb(224, 12, 12);
+}
+.booktitleView{
+  display:flex;
+  justify-content: left; 
+  margin-top: 20rpx;
+  padding: 10rpx 10rpx 10rpx 10rpx;
+}
+.booktitle{
+  font-size: 40rpx;
+  width: 60%;
+  font-weight:700;
+  overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.bookTime{
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  width: 40%;
+
+}
+
+.bookList{
+  display:flex;
+  justify-content: center; 
+  height: 200rpx;
+  margin-top: 20rpx;
+  padding: 10rpx 10rpx 10rpx 10rpx;
+  border-bottom:1px solid  rgb(209, 204, 204);
+}
+
+.bookListImg{
+  width: 60%;
+}
+
+.bookListContent{
+  width: 40%;
+  padding-left: 40rpx;
+  
+}
+.bookListContent .lable{
+  font-size: 35rpx;
+  color:  rgb(224, 12, 12);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  padding-top: 20rpx;
+}
+.bookListContent .text{
+  font-size: 30rpx;
+  color: #9D9D9D;
+  padding-top: 25rpx;
+}
+
+.bookListContent .text2{
+  font-size: 20rpx;
+  color: #9D9D9D;
+  padding-top: 25rpx;
+}
+.bookListState{
+  width: 20%;
+  display:flex;
+  justify-content: center; 
+  font-size: 30rpx;
+  color: red;
+  
+}
+
+.classCurr_view_but{
+    font-size: 25rpx;
+    color: #fff;
+    width: 200rpx;
+    margin-top: -10rpx;
+   border-radius: 30rpx; 
+    background: rgb(224, 12, 12);  
+}
+
+.classCurr_view_but_hover{
+    font-size: 25rpx;
+    color: #fff;
+    background-color: rgb(184, 10, 10);
+    border: 1px solid #fff;
+    width: 200rpx;
+    margin-top: -10rpx;
+    border-radius: 30rpx;  
+}
+
+.classCurr_view_but_success{
+    font-size: 25rpx;
+    color: #fff;
+    width: 200rpx;
+    margin-top: -10rpx;
+   border-radius: 30rpx; 
+    background: rgb(204, 192, 192);  
+}
+.topType{
+  width: 250rpx;
+  height: 70rpx;
+  display:flex;
+  justify-content: center; 
+  margin-left: 50rpx;
+  border-bottom-left-radius:30rpx;
+  border-bottom-right-radius: 30rpx;
+  margin-top: -30rpx;
+}
+.section{
+  padding: 0px 10px 10px 10px; 
+}
+
+.wuliu{
+    font-size: 25rpx;
+    color: #fff;
+    width: 250rpx;
+    border-radius: 10rpx;
+    background: rgb(6, 173, 224);  
+}
+
+
+.pay{
+    font-size: 25rpx;
+    color: #fff;
+    width: 250rpx;
+    border-radius: 10rpx; 
+    background: #FF8247;
+    margin-left: 30rpx; 
+
+}
+
+.mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 9000;
+}
+ 
+.modalDlg{
+    width: 580rpx;
+    height: 620rpx;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    margin: -370rpx 85rpx;
+    background-color: #fff;
+    border-radius: 36rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family:microsoft yahei;
+}
+.sel {
+ padding-bottom: 10rpx;
+ width: 530rpx;
+}
+.inputText { 
+ flex: block; 
+ float: left; 
+ text-align: left; 
+ margin-top: 11px; 
+ font-size: 14px;
+ width: 500rpx;
+ border: 1px solid #ccc;
+} 

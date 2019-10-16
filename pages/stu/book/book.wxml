@@ -1,0 +1,61 @@
+<!--pages/stu/book/book.wxml-->
+<view class='margintop5'></view>
+<view class='book'>
+   <view class='bookSm' bindtap='scanning'>
+     <image src='../../../image/saomajieshu@2x.png' ></image>
+     <text>扫码借阅</text>
+   </view>
+   <view class='bookSm' bindtap='returnBook'>
+     <image src='../../../image/saomahuanshu@2x.png'></image>
+     <text>扫码还书</text>
+   </view>
+</view>
+<view class='margintop20'></view>
+<view class='book_record'>
+  <view class='tongzhi'>借阅记录</view>
+  <view class='margintop5'></view>
+  <block wx:if="{{bookLoaningList.length==0}}" wx:key="activity">
+    <view class='wnr'>
+        <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
+    </view>
+  </block>
+  <block wx:else>
+    <scroll-view scroll-y style="height: 900rpx;" bindscrolltolower="searchScrollLower">
+    <!-- <block wx:for="{{bookLoaningList}}" wx:key="bookLoaning">
+        <view class='bookList'>
+          <view class='bookListImg'>
+              <image src='{{item.book.list_img}}' bindload="imageLoad"  
+  style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
+          </view>
+          <view class='bookListContent'>
+              <view class='lable'>{{item.book.title}}</view>       
+              <view class='text'>{{item.book.press}}</view>     
+              <view class='text'>借阅时间：{{item.loan_time}}</view>
+              <view class='text'>还书时间：{{item.return_time}}</view>
+          </view>
+          <view class='bookListState'>{{item.state==0?"借阅中":"已归还"}}</view>
+        </view>
+    </block> -->
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for-index="idx"  data-index="{{idx}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{bookLoaningList}}" wx:key="">
+            <view class="content">
+                <view class='bookList'>
+                  <view class='bookListImg'>
+                      <image src='{{item.book.list_img}}' bindload="imageLoad"  
+          style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
+                  </view>
+                  <view class='bookListContent'>
+                      <view class='lable'>{{item.book.title}}</view>       
+                      <view class='text'>{{item.book.press}}</view>     
+                      <view class='text'>借阅时间：{{item.loan_time}}</view>
+                      <view class='text'>还书时间：{{item.return_time}}</view>
+                  </view>
+                  <view class='bookListState'>{{item.state==0?"借阅中":"已归还"}}</view>
+                </view>
+              </view>
+            <view class="del" catchtap="del" data-index="{{idx}}" data-id='{{item.id}}' data-state='{{item.state}}'>删除</view>
+          </view>
+        <view class="loading" hidden="{{!searchLoading}}">正在载入...</view>  
+          <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
+    </scroll-view>
+  </block>
+</view>

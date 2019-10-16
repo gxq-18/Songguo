@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="sel">
+  <input class="inputText" placeholder="学生姓名" bindinput="nameInput" focus="{{focus1}}"/>
+  </view>
+  <view class="line"></view>
+  <view class="sel">
+    <input class="inputText" placeholder="联系电话" bindinput="phoneInput" focus="{{focus2}}"/>
+  </view>
+  <view class="line"></view>
+  <view class="sel">
+      <view class="page-body" style="float:left;width:100%;">
+        <view class="common-list" >
+               <view class="header" >
+                <view style='padding-left:30rpx;'>
+                <image class="item-select" bindtap="claSelect2" data-index="jzq" data-id="jzq" src="{{isCheckF?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+                </view>
+                <view class='item-select_text' bindtap="claSelect2">男</view>
+                <view style='padding-left:30rpx;'>
+                <image class="item-select" bindtap="claSelect3" data-index="jzq" data-id="jzq" src="{{!isCheckF?    '../../../image/choose@2x.png':'../../../image/choose_no@2x.png'}}" />
+                </view>
+                <view class='item-select_text' bindtap="claSelect3">女</view>
+              </view> 
+        </view> 
+      </view>
+  </view>
+  <view class="line"></view>
+  <view class="sel">
+    <picker mode="date" value="{{date}}"  bindchange="bindDateChange">  
+      <view class="picker">  
+        出生日期: {{birthdy}}  
+      </view>  
+    </picker>  
+  </view>
+  <view class="line"></view>
+  <view class="sel">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">试听课程:{{array[index]}}</view>
+    </picker>
+  </view>
+  <view class="line"></view>
+
+    <!--按钮-->
+    <view class="loginBtnView">
+      <button class="loginBtn"  bindtap="shiting">提交预约</button>
+    </view>
+  </view>

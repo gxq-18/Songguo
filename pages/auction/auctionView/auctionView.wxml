@@ -1,0 +1,130 @@
+<import src="../../../wxParse/wxParse.wxml" />
+
+<view class='book'>
+   <!-- <view class='bookSm'>
+     <image src='{{model.img_path}}' bindload="imageLoad"  
+style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
+   </view> -->
+   <swiper class="swiper" style='height:350px;' indicator-dots="true" autoplay="true" interval="5000" duration="1000">  
+   <block wx:for="{{model.viewImgList}}" wx:for-index="index" wx:key="img">  
+    <swiper-item>  
+      <!-- <image src="{{item}}" class="slide-image" data-id='{{item.id}}' bindtap='topImgView'/>   -->
+      <image src='{{item}}' bindload="imageLoad"  
+style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
+    </swiper-item>  
+   </block>  
+  </swiper>
+   <view class='section'>
+     <view class='scaView'>
+      <view class='scatext'>
+         <view class='vtext' wx:if="{{model.timeDay.isTrue==2 || model.timeDay.isTrue==0}}"><lable wx:if="{{model.timeDay.isTrue==2}}">距结束</lable><lable wx:if="{{model.timeDay.isTrue==0}}">距开始              </lable>
+            <text style='color:red;'>{{model.timeDay.day}}</text>天
+            <text style='color:red;'>{{model.timeDay.hou}}</text>时
+            <text style='color:red;'>{{model.timeDay.min}}</text>分
+            <text style='color:red;'> {{model.timeDay.sec}}</text>秒
+          </view>
+          <view class='vtext' wx:if="{{model.timeDay.isTrue==3}}"><text style='color:red;'>已结束</text></view>
+      </view>
+      <view class='scatext'>
+        <view class='scatitle'>{{model.title}}</view>
+        <view class='gengduo' >
+         <button class="formBtnac" open-type="share"> <image src='../../../image/ion_share.png' style='width: 50rpx;height: 50rpx;'></image></button>
+        </view>
+      </view>
+      <view class='scatext'>
+       <view class='vtext' style='color:red;'>当前价:￥{{model.bid_amount}}</view>
+      </view>
+      <view class='scatext'>
+       <view class='vtext'>起拍价：￥{{model.star_price}}</view>
+       <view class='vtext' style='padding-left: 50rpx;'>加价幅度：￥{{model.increase_price}}</view>
+      </view>
+      
+     </view>
+     <view class='scaView'>
+     <form  bind:submit="formSubmit" report-submit="true"> 
+       <view class='scatext' bindtap='bidView' formType="submit" data-bidlist="{{model.bidList}}" >
+        <view class='scatitle'>出价记录：{{model.bidList.length}}次出价</view>
+        <view class='gengduo2' >
+         <image src='../../../image/arrows_right@2x.png' style='width: 30rpx;height: 30rpx;'></image>
+        </view>
+       </view>
+      </form>
+       <view class='scatext'>
+          <block wx:for="{{model.bidList}}" wx:for-index="index" wx:key="bid">  
+              <view class='vtext_zuixin' wx:if="{{index==0}}">￥{{item.bid_amount}}</view>
+              <view class='vtext_lishi' wx:if="{{index==1}}">￥{{item.bid_amount}}</view>
+              <view class='vtext_lishi' wx:if="{{index==2}}">￥{{item.bid_amount}}</view>
+          </block>
+        </view>
+     </view>
+     <view class='scaView'>
+       <view class='scatext'>
+        <view class='scatitle'>拍卖流程</view>
+       </view>
+       <view class='scatext'>
+         <image src='http://image.arter.net.cn/paimailiucheng@2x.png' style='width:100%;height:130rpx;'></image>
+        </view>
+      </view>
+       
+      <view class="order">
+          <span class="line"></span>
+          <span class="txt">商品详情</span>
+          <span class="line"></span>
+      </view>
+      <view class='scacontent'>
+         <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>  
+   </view>
+
+  <!-- 底部弹出框 -->
+  <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+    <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+       <view class='scatext'>
+        <view class='scatitle'>出价</view>
+       </view>
+      <view class="container" style='padding-top:20rpx;'>
+         <!-- <view class="sel">
+            <input class="inputText" placeholder="拍卖人" bindinput="inputUser" focus="{{focus3}}" value="{{userName}}"/>
+          </view>
+         <view class="sel">
+            <input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/>
+         </view>
+         <view class="sel">
+            <input class="inputText" placeholder="收货地址" bindinput="inputAddress" value="{{address}}"/>
+         </view> -->
+         <view class="sel">
+            <lable  style='color:red;'>当前价:￥{{model.bid_amount}}</lable>
+            <lable  style='padding-left: 50rpx;color:red;'>加价幅度：￥{{model.increase_price}}</lable>
+         </view>
+         <view class="sel">
+          <!-- 主容器 -->  
+          <view class="stepper">  
+              <!-- 减号 -->  
+              <text class="normal" bindtap="delCount" >-</text>  
+              <!-- 数值 -->  
+              <input type="number"  value="{{money}}"  disabled="disabled"/>  
+              <!-- 加号 -->  
+              <text class="normal" bindtap="addCount" >+</text>  
+          </view>  
+         </view>
+      </view>
+
+    </view>
+    <view class='address-add' style="z-index:10001" >
+       <form name='pushMsgFm' report-submit bindsubmit='offerPrice'>
+          <button class='Btn' style='background-color: rgb(184, 10, 10);' size="default"  form-type="submit">确定</button>
+       </form> 
+    </view>
+  </view>
+
+
+    <view class='address-add'>
+    <!-- <button class='Btn' style='background-color: rgb(184, 10, 10);' size="default" bindtap='pay' wx:if="{{viewType==1}}"> 
+      <image src='../../../image/naozhong.png' style='width:30rpx;height:30rpx;'></image>设置提醒 
+    </button> -->
+    <button class='Btn' style='background-color: rgb(184, 10, 10);' size="default"  open-type="getUserInfo" lang="zh_CN"  bindgetuserinfo="showModal" wx:if="{{viewType==2}}">出价</button> 
+    <button class='Btn' style='background: rgb(204, 192, 192);  ' size="default"  wx:if="{{viewType==3}}"> 已结束</button> 
+  </view>  
+
+</view>

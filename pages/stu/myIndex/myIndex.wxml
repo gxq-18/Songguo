@@ -1,0 +1,18 @@
+<!--pages/stu/myIndex/myIndex.wxml-->
+<view class='margintop5'></view>
+<view >
+	<view class="section">
+		<view class="line judgement">头像
+      <view class="tl">
+        <image class='avatar' src='{{cpc.icon}}' bindtap='changeImage'></image>
+      </view>
+    </view>
+<view class="line judgement" bindtap='myName' data-id='{{cpc.id}}' data-name='{{cpc.name}}'>名字<text class="tl">{{cpc.name}}</text></view> 
+<view class="line judgement" bindtap='myMobile' data-id='{{cpc.id}}' data-mobile='{{cpc.mobile}}'>手机号<text class="tl">{{cpc.mobile}}</text></view>
+<view class="line judgement" bindtap='myBirthday' data-id='{{cpc.id}}' data-birthday='{{cpc.birthday}}'>生日<text class="tl">{{cpc.birthday}}</text></view>
+
+		<!-- <view class="line judgement" bindtap='myPwd'>修改密码</view> -->
+
+	</view>
+</view>
+

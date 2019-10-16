@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="containerPoster">
+  <view class="card_wrap">
+    <view  animation="{{id === 0 ? animationData : ''}}" class="card_item card{{ id + 1 }} " wx:for="{{ cardInfoList }}"  wx:key="unique" wx:for-index="id" wx:for-item="item" data-index='{{id}}'>
+     <span class="change_icon" bindtap="slidethis" wx:if="{{ id === 0 }}">
+        <image src="../../../image/changeicon.png"></image>
+      </span>
+      <image src="{{ item }}" mode="widthFix" bindtap='previewImg'></image>
+      <!-- <view class="btn-cta buy_btn" id="{{ id }}" bindtap="buythis">订购烂漫计划</view> -->
+    </view>
+  </view>
+</view>
+<view class="canvas-box">
+    <canvas  style="width: {{bgWidth}}px;height: {{bgHeight}}px;" canvas-id="mycanvas"/>
+</view>
+ <button class="img-plus-style"  bindgetuserinfo="onGotUserInfo" open-type="getUserInfo" lang="zh_CN">分享</button> 
+ <action-sheet hidden="{{actionSheetHidden2}}" bindchange="actionSheetChange2">
+    <action-sheet-item  ><button open-type="share">分享给朋友</button> </action-sheet-item>
+     <action-sheet-item  bindtap="formSubmit" id='{{id}}'>生成分享图片</action-sheet-item>
+    <action-sheet-cancel >取消</action-sheet-cancel>
+</action-sheet>
