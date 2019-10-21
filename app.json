@@ -86,25 +86,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "官网",
-        "iconPath": "/image/guanwang.png",
-        "selectedIconPath": "/image/guanwang0.png"
+        "iconPath": "/image/shouye_1@2x.png",
+        "selectedIconPath": "/image/shouye@2x.png"
       },
       {
         "pagePath": "pages/tourist/activityHome/activityHome",
-        "text": "活动",
         "iconPath": "/image/huodong.png",
         "selectedIconPath": "/image/huodong0.png"
       },
       {
         "pagePath": "pages/classhome/classhome",
-        "text": "班级应用",
-        "iconPath": "/image/yingyong.png",
-        "selectedIconPath": "/image/yingyong0.png"
+        "iconPath": "/image/me_huodong@2x.png",
+        "selectedIconPath": "/image/me_huodong@2x.png"
       },
       {
         "pagePath": "pages/auction/auction/auctionHome",
-        "text": "拍卖",
         "iconPath": "/image/paimaiwei@2x.png",
         "selectedIconPath": "/image/paimaiyi@2x.png"
       }
