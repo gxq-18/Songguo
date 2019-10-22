@@ -75,7 +75,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "阿特的梦",
+    "navigationBarTitleText": "十艺教育",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -86,23 +86,23 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "/image/shouye_1@2x.png",
-        "selectedIconPath": "/image/shouye@2x.png"
+        "iconPath": "/image/nav_01_n.png",
+        "selectedIconPath": "/image/nav_01_s.png"
       },
       {
         "pagePath": "pages/tourist/activityHome/activityHome",
-        "iconPath": "/image/huodong.png",
-        "selectedIconPath": "/image/huodong0.png"
+        "iconPath": "/image/nav_02_n.png",
+        "selectedIconPath": "/image/nav_02_s.png"
       },
       {
         "pagePath": "pages/classhome/classhome",
-        "iconPath": "/image/me_huodong@2x.png",
-        "selectedIconPath": "/image/me_huodong@2x.png"
+        "iconPath": "/image/nav_03_n.png",
+        "selectedIconPath": "/image/nav_03_s.png"
       },
       {
-        "pagePath": "pages/auction/auction/auctionHome",
-        "iconPath": "/image/paimaiwei@2x.png",
-        "selectedIconPath": "/image/paimaiyi@2x.png"
+        "pagePath": "pages/tourist/home/home",
+        "iconPath": "/image/nav_04_n.png",
+        "selectedIconPath": "/image/nav_04_s.png"
       }
     ]
   },

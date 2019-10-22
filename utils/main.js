@@ -1,6 +1,6 @@
 
-var localUrl = "https://www.arter.net.cn/";
-//  var localUrl = "http://192.168.0.161:8081/aters_xcx_interface/";
+//var localUrl = "https://www.arter.net.cn/";
+var localUrl = "http://localhost:8080/aters_xcx_interface/";
 var crm_code = "crm0000";
 const qiniuUploader = require("qiniuUploader");
 

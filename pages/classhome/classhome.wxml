@@ -1,32 +1,35 @@
 <!--pages/classhome/classhome.wxml-->
+<view class="usermotto"></view>
 <view class="userinfo">
-  <text class="userinfo-nickname">请选择您的身份</text>
+  <text class="userinfo-nickname2">请选择您的身份</text>
 </view>
+<view class="usermotto"></view>
 <view class="userinfo">
   <form bind:submit="formSubmit" report-submit="true">
     <button class="formBtn" formType="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="stuNavigate" bindtouchstart="mytouchstart">
-      <image class="userinfo-avatar" src="{{home_01}}" background-size="cover"></image>
+      <image class="userinfo-avatar" src="{{userInfo!=null?userInfo.avatarUrl:'../../image/ion_01.png'}}" background-size="cover"></image>
     </button>
   </form>
   <text class="userinfo-nickname">家长/学生登录</text>
+</view>
+
+<view class="usermotto"></view>
+<view class="userinfo">
+  <form bind:submit="formSubmit" report-submit="true">
+    <button class="formBtn" formType="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="tourist">
+      <image class="userinfo-avatar" src="{{userInfo!=null?userInfo.avatarUrl:'../../image/ion_02.png'}}" background-size="cover"></image>
+    </button>
+  </form>
+  <text class="userinfo-nickname">游客登录</text>
 </view>
 <view class="usermotto"></view>
 <view class="userinfo">
   <form bind:submit="formSubmit" report-submit="true">
     <button class="formBtn" formType="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="teaLogin">
-      <image class="userinfo-avatar" src="{{home_02}}" background-size="cover"></image>
+      <text class="userinfo-nickname1">老师登录></text>
     </button>
   </form>
-  <text class="userinfo-nickname">老师登录</text>
-</view>
-<view class="usermotto"></view>
-<view class="userinfo">
-  <form bind:submit="formSubmit" report-submit="true">
-    <button class="formBtn" formType="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="tourist">
-      <image class="userinfo-avatar" src="{{userInfo!=null?userInfo.avatarUrl:'../../image/login_student@2x.png'}}" background-size="cover"></image>
-    </button>
-  </form>
-  <text class="userinfo-nickname">游客登录</text>
+  
 </view>
 <!-- <view class="usermotto" wx:if="{{posterList.length >0}}"></view>
     <button class="formBtn" wx:if="{{posterList.length >0}}"  open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="poster"> 
@@ -35,8 +38,8 @@
       </view>
     </button> -->
 <!-- 底部悬浮按钮 -->
-<form bind:submit="formSubmit" report-submit="true">
+<!--<form bind:submit="formSubmit" report-submit="true">
   <button class="formBtn" wx:if="{{posterList.length >0}}" formType="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="poster">
     <image src="http://image.arter.net.cn/tuijian.png" class="img-plus-style"></image>
   </button>
-</form>
+</form>-->
