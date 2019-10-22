@@ -95,15 +95,16 @@
         "selectedIconPath": "/image/nav_02_s.png"
       },
       {
-        "pagePath": "pages/classhome/classhome",
+        "pagePath": "pages/tourist/home/home",
         "iconPath": "/image/nav_03_n.png",
         "selectedIconPath": "/image/nav_03_s.png"
       },
       {
-        "pagePath": "pages/tourist/home/home",
+        "pagePath": "pages/classhome/classhome",
         "iconPath": "/image/nav_04_n.png",
         "selectedIconPath": "/image/nav_04_s.png"
       }
+      
     ]
   },
   "sitemapLocation": "sitemap.json"
