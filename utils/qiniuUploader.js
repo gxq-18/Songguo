@@ -81,6 +81,7 @@ function doUpload(filePath, success, fail, options, progress) {
         return
     }
     var url = uploadURLFromRegionCode(config.qiniuRegion);
+    console.log("点击上传头像后获得上传地址="+url);
     var fileName = filePath.split('//')[1];
     if (options && options.key) {
         fileName = options.key;

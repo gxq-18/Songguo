@@ -18,9 +18,9 @@ const qiniuUploader = require("qiniuUploader");
 //           data: {
 //             //小程序唯一标识
 //             appid: 'wxbb7fdd2c071b7dff',
-//             //小程序的 app secret
+//             //小程序的 app secret 
 //             secret: '915218a15c0c7c77ed102d665070a914',
-//             grant_type: 'authorization_code',
+//             grant_type: 'authorization_code', 
 //             js_code: res.code
 //           },
 //           method: 'GET',

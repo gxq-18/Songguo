@@ -130,7 +130,7 @@ Page({
     // main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800);//收集formId
     var that = this;
     var userInfo = e.detail.userInfo;
-
+    
     app.globalData.userInfo = e.detail.userInfo;
     // if (null != app.globalData.userInfo) {
 
@@ -215,6 +215,7 @@ Page({
     //   this.shouquan();
     // }  else{
     var userInfo = e.detail.userInfo;
+    console.log("userInfo=" + userInfo);
     app.globalData.userInfo = e.detail.userInfo;
     if (userInfo != null) {
       //获取openid

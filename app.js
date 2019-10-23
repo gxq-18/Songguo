@@ -23,7 +23,7 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
+              console.log(this.globalData.userInfo);
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -34,7 +34,7 @@ App({
         }
       }
     })
-  },
+  }, 
   globalData: {
     // appid: 'wxa9fe7f574b10e481',//appid需自己提供，此处的appid我随机编写
     // secret: '124b69cfc739ba1b8e8b47d86cea5926',//secret需自己提供，此处的secret我随机编写
@@ -48,7 +48,7 @@ App({
     openId: "",
     posterList:[],
     acList:[],
-    qrcode:"",
-    mobile:"86991095",
+    qrcode:"",   
+    mobile:"86991095", 
   }
 })

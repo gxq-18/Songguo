@@ -117,6 +117,9 @@ Page({
 
       }
     })
+    wx.setNavigationBarTitle({
+      title: '关于十艺教育'
+    })
   },
   mytouchstart: function (e) {
     this.setData({

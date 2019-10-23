@@ -50,8 +50,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/stu/parentCircleList/parentCircleList",
-					"pathName": "pages/stu/parentCircleList/parentCircleList",
+					"name": "pages/classhome/classhome",
+					"pathName": "pages/classhome/classhome",
 					"query": "",
 					"scene": null
 				}

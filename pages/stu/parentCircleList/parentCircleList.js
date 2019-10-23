@@ -42,7 +42,7 @@ Page({
       cpc: app.globalData.cpc,
       bpImage: bpImage
     });
-
+    console.log("cpc=" + cpc);
     wx.getSystemInfo({
       success: function (res) {
         that.setData({

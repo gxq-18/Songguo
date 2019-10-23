@@ -21,7 +21,7 @@ Page({
     searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
     searchLoadingComplete: false,  //“没有数据”的变量，默认false，隐藏 
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -109,6 +109,7 @@ Page({
       }
     })
   },
+  
   //滚动到底部触发事件  
   searchScrollLower: function () {
 
@@ -139,6 +140,12 @@ Page({
       url: "../activityView/activityView?id=" + id,
     })
   }, 
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '十艺活动'
+    })
+
+  },
   
   
 })
