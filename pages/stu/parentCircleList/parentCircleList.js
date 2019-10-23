@@ -390,7 +390,8 @@ Page({
   onShow: function () {
     wx.setNavigationBarTitle({
       title: '艺瞬间'
-    })
+    });
+   
 
   },
   //查询位置
