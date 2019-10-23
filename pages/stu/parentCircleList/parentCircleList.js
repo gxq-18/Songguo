@@ -42,7 +42,6 @@ Page({
       cpc: app.globalData.cpc,
       bpImage: bpImage
     });
-    console.log("cpc=" + cpc);
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -388,7 +387,12 @@ Page({
       })
     }.bind(this), 200)
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '艺瞬间'
+    })
 
+  },
   //查询位置
   openMap:function(e){
     var latitude = parseFloat(e.currentTarget.dataset.latitude);
@@ -443,6 +447,7 @@ function circleList(pageindex, callbackcount, dataList) {
       }
     })
  }
+
   //回复
   function saveComment(circle_id, content, parent_id, dataList) {
     wx.request({

@@ -84,7 +84,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    wx.setNavigationBarTitle({
+      title: '十艺登录'
+    })
   },
 
   /**
@@ -142,7 +144,7 @@ Page({
           if (res.code) {
             //获取openId
             wx.showLoading({ mask: true });
-            wx.request({
+             wx.request({
               url: main.localUrl + 'mobileXcx/getOpenId', //仅为示例，并非真实的接口地址
               data: {
                 code: res.code
@@ -240,8 +242,8 @@ Page({
                   // 有一点需要注意 询问用户 是否授权 那提示 是这API发出的
                   console.info("登录成功返回的openId：" + openIdRes.data.openid);
                   app.globalData.openId = openIdRes.data.openid;
-
-                  wx.request({
+ 
+                  wx.request({ 
                     url: main.localUrl + 'mobileXcx/getUserByOpenId', //仅为示例，并非真实的接口地址
                     data: {
                       crm_code: main.crm_code,

@@ -32,7 +32,7 @@ const qiniuUploader = require("qiniuUploader");
 //             if (openIdRes.data.openid != null & openIdRes.data.openid != undefined) {
 //               console.info("获取用户openId成功");
               
-//             } else {
+//             } else { 
 //               console.info("获取用户openId失败1");
 
 //             }
