@@ -283,6 +283,7 @@ Page({
     // main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800);//收集formId
     // if (null!=app.globalData.userInfo){
     var userInfo = e.detail.userInfo;
+    console.log(userInfo);
     app.globalData.userInfo = e.detail.userInfo;
     if (userInfo != null) {
       this.setData({

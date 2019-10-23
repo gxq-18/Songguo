@@ -90,7 +90,7 @@
         "selectedIconPath": "/image/nav_01_s.png"
       },
       {
-        "pagePath": "pages/tourist/activityHome/activityHome",
+        "pagePath": "pages/stu/parentCircleList/parentCircleList",
         "iconPath": "/image/nav_02_n.png",
         "selectedIconPath": "/image/nav_02_s.png"
       },

@@ -411,7 +411,8 @@ function circleList(pageindex, callbackcount, dataList) {
     data: {
       crm_code: main.crm_code,
       account_type: 0,
-      account_code: app.globalData.cpc.id,
+      //account_code: app.globalData.cpc.id,
+      account_code:0,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
     },

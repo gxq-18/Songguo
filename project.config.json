@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -45,7 +45,15 @@
 				{
 					"id": -1,
 					"name": "zz",
-					"pathName": "pages/index/index"
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "pages/stu/parentCircleList/parentCircleList",
+					"pathName": "pages/stu/parentCircleList/parentCircleList",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
