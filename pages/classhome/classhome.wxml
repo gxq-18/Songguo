@@ -1,7 +1,7 @@
 <!--pages/classhome/classhome.wxml-->
 <view class="usermotto"></view>
 <view class="userinfo">
-  <text class="userinfo-nickname2">请选择您的身份</text>
+  <text class="userinfo-nickname2"style="font-size:60rpx;">请选择您的身份</text>
 </view>
 <view class="usermotto"></view>
 <view class="userinfo">
