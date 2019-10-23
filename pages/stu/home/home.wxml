@@ -52,13 +52,21 @@
             </form>
             <text>课程表</text>
         </view>
-        <view class="client_head_style" id="2">
+        <!--<view class="client_head_style" id="2">
             <form  report-submit bindsubmit='book'>
                 <button class="formBtn" form-type="submit" >
                   <image src="{{stu_menu_02}}"></image>
                 </button>
             </form>
             <text>图书借阅</text>
+        </view>-->
+         <view class="client_head_style" id="4">
+            <form  report-submit bindsubmit='parentCircleList'>
+                <button class="formBtn" form-type="submit" >
+                   <image src="{{stu_menu_04}}"></image>
+                </button>
+            </form> 
+            <text>班级圈</text>
         </view>
         <view class="client_head_style"  id="3">
             <form  report-submit bindsubmit='activity'>
@@ -66,15 +74,31 @@
                   <image src="{{stu_menu_03}}"></image>
                 </button>
             </form> 
-            <text>优惠活动</text>
+            <text>活动</text>
         </view>
-        <view class="client_head_style" id="4">
-            <form  report-submit bindsubmit='parentCircleList'>
+        <view class="client_head_style"  id="1">
+            <form  report-submit bindsubmit='layout'>
                 <button class="formBtn" form-type="submit" >
-                   <image src="{{stu_menu_04}}"></image>
+                  <image src="{{stu_menu_02}}"></image>
+                </button>
+            </form>
+            <text>考级报名</text>
+        </view>
+        <view class="client_head_style" id="2">
+            <form  report-submit bindsubmit='book'>
+                <button class="formBtn" form-type="submit" >
+                  <image src="../../../image/ion_06.png"></image>
+                </button>
+            </form>
+            <text>艺瞬间</text>
+        </view>
+        <view class="client_head_style"  id="3">
+            <form  report-submit bindsubmit='activity'>
+                <button class="formBtn" form-type="submit" >
+                  <image src="../../../image/ion_08.png"></image>
                 </button>
             </form> 
-            <text>阿特圈</text>
+            <text>校长信箱</text>
         </view>
   </view>
 

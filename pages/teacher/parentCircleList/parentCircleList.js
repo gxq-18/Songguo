@@ -261,6 +261,13 @@ Page({
     }
     
   },
+  bindReply1: function (e) {
+    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    wx.navigateTo({
+      url: "../parentCircle/parentCircle",
+    })
+  },
+
   //发送回复信息
   addCommentL:function(){
     var that = this;

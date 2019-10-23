@@ -73,7 +73,7 @@
                   <image src="{{tea_menu_03}}"></image>
                 </button>
             </form> 
-            <text>活动</text>
+            <text>艺瞬间</text>
         </view>
         <view class="client_head_style" id="4">
             <form  report-submit bindsubmit='cpcList'>

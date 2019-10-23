@@ -226,6 +226,7 @@ Page({
           if (res.code) {
             //获取openId
             wx.showLoading({ mask: true });
+            console.log(res.code);
             wx.request({
               url: main.localUrl + 'mobileXcx/getOpenId', //仅为示例，并非真实的接口地址
               data: {

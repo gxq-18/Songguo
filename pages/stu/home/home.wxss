@@ -114,8 +114,8 @@
 .client_head_style{
     float: left;
     background: white;
-    width: 25%;
-    height: 200rpx;
+    width: 33%;
+    height: 210rpx;
 }
 .client_head_style:active{
   background: #eeeeee;

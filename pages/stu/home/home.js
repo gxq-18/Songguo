@@ -42,10 +42,10 @@ Page({
 
     var that = this;
      //获取菜单图片
-    var stu_menu_01 = "../../../image/kebiao@2x.png";
-    var stu_menu_02 = "../../../image/tushujieyue@2x.png";
-    var stu_menu_03 = "../../../image/huodong@2x.png";
-    var stu_menu_04 = "../../../image/t_banjiquan@2x.png";
+    var stu_menu_01 = "../../../image/ion_03.png";
+    var stu_menu_02 = "../../../image/ion_07.png";
+    var stu_menu_03 = "../../../image/ion_05.png";
+    var stu_menu_04 = "../../../image/ion_04.png";
     // 获取菜单图片
     wx.request({
       url: main.localUrl + 'mobileXcx/initialization', //仅为示例，并非真实的接口地址
