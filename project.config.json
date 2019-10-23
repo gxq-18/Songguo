@@ -61,8 +61,13 @@
 				},
 				{
 					"id": 2,
+<<<<<<< Updated upstream
 					"name": "pages/teacher/parentCircle/parentCircle",
 					"pathName": "pages/teacher/parentCircle/parentCircle",
+=======
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+>>>>>>> Stashed changes
 					"query": "",
 					"scene": null
 				}
