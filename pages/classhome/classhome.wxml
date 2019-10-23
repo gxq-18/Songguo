@@ -7,7 +7,7 @@
 <view class="userinfo">
   <form bind:submit="formSubmit" report-submit="true">
     <button class="formBtn" formType="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="stuNavigate" bindtouchstart="mytouchstart">
-      <image class="userinfo-avatar" src="{{userInfo!=null?userInfo.avatarUrl:'../../image/ion_01.png'}}" background-size="cover"></image>
+      <image class="userinfo-avatar" src="../../image/ion_01.png" background-size="cover"></image>
     </button>
   </form>
   <text class="userinfo-nickname">家长/学生登录</text>
