@@ -28,6 +28,27 @@
 .sectiontext image{
  width: 100%;
 }
+/* 十艺介绍 */
+.syjs-wc{
+width: 100%;
+height:100%;
+padding-left: 10rpx;
+padding:10rpx auto;
+}
+.syjs-nc{
+width: 80%;
+height: 180rpx;
+margin-top: 40rpx;
+margin-bottom: 40rpx;
+
+}
+.text-classA{
+ padding:20rpx 20rpx;
+
+}
+.textB{
+ color:#808080;
+}
 
 .btMyIcon{
   width: 100%;

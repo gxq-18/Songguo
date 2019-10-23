@@ -9,6 +9,8 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -20,8 +22,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx9bb8a57bc96cb180",
-	"projectname": "arter2",
+	"appid": "wx585221285ccbb75f",
+	"projectname": "aters",
 	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -61,8 +63,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/teacher/parentCircle/parentCircle",
-					"pathName": "pages/teacher/parentCircle/parentCircle",
+					"name": "pages/teacher/parentCircleList/parentCircleList",
+					"pathName": "pages/teacher/parentCircleList/parentCircleList",
 					"query": "",
 					"scene": null
 				}

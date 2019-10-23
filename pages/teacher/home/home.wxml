@@ -65,15 +65,7 @@
                   <image src="{{tea_menu_02}}"></image>
                 </button>
             </form> 
-            <text>阿特圈</text>
-        </view>
-        <view class="client_head_style" id="3">
-            <form  report-submit bindsubmit='activity'>
-                <button class="formBtn" form-type="submit" >
-                  <image src="{{tea_menu_03}}"></image>
-                </button>
-            </form> 
-            <text>艺瞬间</text>
+            <text>班级圈</text>
         </view>
         <view class="client_head_style" id="4">
             <form  report-submit bindsubmit='cpcList'>
@@ -83,6 +75,15 @@
             </form> 
             <text>学员查询</text>
         </view>
+        <view class="client_head_style" id="3">
+            <form  report-submit bindsubmit='activity'>
+                <button class="formBtn" form-type="submit" >
+                  <image src="{{tea_menu_03}}"></image>
+                </button>
+            </form> 
+            <text>艺瞬间</text>
+        </view>
+        
   </view>
 <view class="clear"></view>
 <view class='section'>
