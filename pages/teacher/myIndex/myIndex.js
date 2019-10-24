@@ -45,6 +45,7 @@ Page({
       count: 1,
       success: function (res) {
         var filePath = res.tempFilePaths[0];
+        console.log("filePath=");
         console.log(filePath);
         
         if (null == filePath || filePath == "") {

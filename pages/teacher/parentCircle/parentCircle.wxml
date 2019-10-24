@@ -1,6 +1,14 @@
 <!--pages/teacher/parentCircle/parentCircle.wxml-->
 <view class='margintop5'></view>
 <form bindsubmit="formSubmit">
+   <view class="sectionA" style='background-color: #fff;'>
+   <picker bindchange="bindPickerChange" style="font-size:16px;" value="{{bjlistindex}}" range="{{arra}}">
+    <view class="picker">
+      当前选择：{{array[index]}}
+    </view>
+  </picker>
+ </view>
+    
   <view class="section" style='background-color: #fff;'>
     <textarea bindblur="addContent" auto-height placeholder="这一刻的想法..." maxlength='500' style="margin-top:20rpx;margin-left:20rpx;width:680rpx;" name="textarea" />
   </view>

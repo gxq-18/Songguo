@@ -12,6 +12,7 @@ Page({
     imageList: [],//图片列表
     vioUrl:"",//视频地址
     tp:0,
+    arra: ['三年级二班', '八年级三班', '一年级七班', '六年级五班'],
     imgPath:[],
     sourceTypeIndex: 2,
     sourceType: ["拍照", "相册", "拍照或相册"],
@@ -26,7 +27,7 @@ Page({
     isCpc:1,
     isCheckF2: true,//仅老师可见
     isCheckF3: true,//所有人可见
-
+    bjlistindex:0,
   },
   /**
   * 生命周期函数--监听页面加载
@@ -53,6 +54,12 @@ Page({
   addContent:function (e) {
     this.setData({
       content: e.detail.value
+    })
+  },
+  bindPickerChange:function(e){
+    console.log("携带的值为" + e.detail.value);
+    this.setData({
+      bjlistindex: e.detail.value
     })
   },
   //仅老师

@@ -1130,3 +1130,10 @@ icon {
   margin: 10rpx;
   border-radius: 50%;
 }
+/* 老师登录选择班级 2019年10月23日16:49:24 */
+.sectionA{
+ width:100%;
+ height:50rpx;
+
+
+}

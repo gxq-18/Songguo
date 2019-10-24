@@ -203,10 +203,10 @@ function initQiniu() {
     success: function (res) {
       console.log(res.data.dataInfo.token);
       var options = {
-        region: 'ECN', // 华东区
+        region: 'SCN', // 华东区
         uptokenURL: 'https://up.qbox.me/api/uptoken',
         uptoken: res.data.dataInfo.token,
-        domain: 'http://image.arter.net.cn',
+        domain: 'http://pzuu7skza.bkt.clouddn.com',
         shouldUseQiniuFileName: false
       };
       qiniuUploader.init(options);

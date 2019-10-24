@@ -53,24 +53,26 @@ function upload(filePath, success, fail, options, progress) {
         console.error('qiniu uploader need filePath to upload');
         return;
     }
-    if (options) {
+  
+   if (options) {
       updateConfigWithOptions(options);
+     
     }
     if (config.qiniuUploadToken) {
         doUpload(filePath, success, fail, options, progress);
     } else if (config.qiniuUploadTokenURL) {
-        getQiniuToken(function() {
+     getQiniuToken(function() {
             doUpload(filePath, success, fail, options, progress);
         });
     } else if (config.qiniuUploadTokenFunction) {
-        config.qiniuUploadToken = config.qiniuUploadTokenFunction();
+      config.qiniuUploadToken = config.qiniuUploadTokenFunction();
         if (null == config.qiniuUploadToken && config.qiniuUploadToken.length > 0) {
             console.error('qiniu UploadTokenFunction result is null, please check the return value');
             return
         }
         doUpload(filePath, success, fail, options, progress);
     } else {
-        console.error('qiniu uploader need one of [uptoken, uptokenURL, uptokenFunc]');
+       console.error('qiniu uploader need one of [uptoken, uptokenURL, uptokenFunc]');
         return;
     }
 }
@@ -98,7 +100,7 @@ function doUpload(filePath, success, fail, options, progress) {
         name: 'file',
         formData: formData,
         success: function (res) {
-          var dataString = res.data
+          var dataString = res.data;
           if(res.data.hasOwnProperty('type') && res.data.type === 'Buffer'){
             dataString = String.fromCharCode.apply(null, res.data.data)
           }          
