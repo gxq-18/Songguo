@@ -47,7 +47,7 @@
         <view class="client_head_style"  id="1">
             <form  report-submit bindsubmit='layout'>
                 <button class="formBtn" form-type="submit" >
-                  <image src="{{stu_menu_01}}"></image>
+                  <image src="../../../image/ion_03.png"></image>
                 </button>
             </form>
             <text>课程表</text>
@@ -63,7 +63,7 @@
          <view class="client_head_style" id="4">
             <form  report-submit bindsubmit='parentCircleList'>
                 <button class="formBtn" form-type="submit" >
-                   <image src="{{stu_menu_04}}"></image>
+                   <image src="../../../image/ion_04.png"></image>
                 </button>
             </form> 
             <text>班级圈</text>
@@ -71,7 +71,7 @@
         <view class="client_head_style"  id="3">
             <form  report-submit bindsubmit='activity'>
                 <button class="formBtn" form-type="submit" >
-                  <image src="{{stu_menu_03}}"></image>
+                  <image src="../../../image/ion_05.png"></image>
                 </button>
             </form> 
             <text>活动</text>
@@ -79,7 +79,7 @@
         <view class="client_head_style"  id="1">
             <form  report-submit bindsubmit='layout'>
                 <button class="formBtn" form-type="submit" >
-                  <image src="{{stu_menu_02}}"></image>
+                  <image src="../../../image/ion_07.png"></image>
                 </button>
             </form>
             <text>考级报名</text>
