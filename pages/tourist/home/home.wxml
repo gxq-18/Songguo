@@ -35,5 +35,5 @@
     </scroll-view>
   </view>
 
-    <!-- 底部悬浮按钮 -->
-  <image src="../../../image/shiting.png" class="img-plus-style" bindtap='shiting' ></image> 
+    <!-- 底部悬浮按钮  免费试听 -->
+  <!-- <image src="../../../image/shiting.png" class="img-plus-style" bindtap='shiting' ></image>  -->

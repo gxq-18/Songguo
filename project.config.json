@@ -22,13 +22,15 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx585221285ccbb75f",
+	"appid": "wx9bb8a57bc96cb180",
 	"projectname": "aters",
 	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -64,7 +66,7 @@
 				{
 					"id": 2,
 					"name": "pages/teacher/parentCircleList/parentCircleList",
-					"pathName": "pages/teacher/parentCircleList/parentCircleList",
+					"pathName": "pages/stu/parentCircleList/parentCircleList",
 					"query": "",
 					"scene": null
 				}

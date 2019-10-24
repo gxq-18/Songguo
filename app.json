@@ -70,7 +70,10 @@
     "pages/login/login",
     "pages/stu/circle/circle",
     "pages/contentView/contentView",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/tourist/parentCircleList/parentCircleList",
+    "pages/tourist/parentCircleListBp/parentCircleListBp",
+    "pages/tourist/parentCircleListVio/parentCircleListVio"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -90,7 +93,7 @@
         "selectedIconPath": "/image/nav_01_s.png"
       },
       {
-        "pagePath": "pages/stu/parentCircleList/parentCircleList",
+        "pagePath": "pages/tourist/parentCircleList/parentCircleList",
         "iconPath": "/image/nav_02_n.png",
         "selectedIconPath": "/image/nav_02_s.png"
       },

@@ -54,7 +54,7 @@
         <view class="client_head_style"  id="1">
             <form  report-submit bindsubmit='layout'>
                 <button class="formBtn" form-type="submit" >
-                  <image src="{{tea_menu_01}}"></image>
+                  <image src="../../../image/ion_03.png"></image>
                 </button>
             </form> 
             <text>课程表</text>
@@ -62,7 +62,7 @@
         <view class="client_head_style" id="2">
             <form  report-submit bindsubmit='parentCircleList'>
                 <button class="formBtn" form-type="submit" >
-                  <image src="{{tea_menu_02}}"></image>
+                  <image src="../../../image/ion_04.png"></image>
                 </button>
             </form> 
             <text>班级圈</text>
@@ -70,7 +70,7 @@
         <view class="client_head_style" id="4">
             <form  report-submit bindsubmit='cpcList'>
                 <button class="formBtn" form-type="submit" >
-                  <image src="{{tea_menu_04}}"></image>
+                  <image src="../../../image/ion_05.png"></image>
                 </button>
             </form> 
             <text>学员查询</text>
@@ -78,7 +78,7 @@
         <view class="client_head_style" id="3">
             <form  report-submit bindsubmit='activity'>
                 <button class="formBtn" form-type="submit" >
-                  <image src="{{tea_menu_03}}"></image>
+                  <image src="../../../image/ion_06.png"></image>
                 </button>
             </form> 
             <text>艺瞬间</text>
