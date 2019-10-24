@@ -119,6 +119,12 @@ Page({
       url: "../layout/layout",
     })
   },
+  baoming: function (e) {
+    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    wx.navigateTo({
+      url: "../baoming/baoming",
+    })
+  },
   book: function (e) {
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
     wx.navigateTo({

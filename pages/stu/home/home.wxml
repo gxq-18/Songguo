@@ -77,7 +77,7 @@
             <text>活动</text>
         </view>
         <view class="client_head_style"  id="1">
-            <form  report-submit bindsubmit='layout'>
+            <form  report-submit bindsubmit='baoming'>
                 <button class="formBtn" form-type="submit" >
                   <image src="../../../image/ion_07.png"></image>
                 </button>

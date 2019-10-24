@@ -86,7 +86,7 @@
       <view style="width:100%;padding-bottom:50rpx"></view> 
 </block>
   <!-- 底部悬浮按钮 -->
-  <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' ></image> 
+  <!-- <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' ></image>  -->
 
 <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
     <action-sheet-item  bindtap="bpImage">更换封面</action-sheet-item>

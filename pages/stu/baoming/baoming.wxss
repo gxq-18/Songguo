@@ -1,0 +1,59 @@
+@import "../home/home.wxss";
+
+.text1{
+  margin-left: 12%;
+}
+.img1{
+  width:23%;
+  height:56%;
+  margin-top: 5%;
+}
+/* 今日课程 */
+.myCurr-view{
+  display:flex;
+  width: 700rpx;
+  padding-top:20rpx;
+  margin-left: 30rpx;
+  min-height: 150rpx;
+}
+.curr{
+  width: 100%;
+  box-shadow:0 0 10px 0 #ADADAD;
+  border-radius:10rpx; 
+  padding-bottom: 20rpx;
+  background-color: #FFFFFF;
+  
+}
+.currTitle{
+  display:flex;
+  justify-content: center; 
+  height: 60rpx;
+  font-size: 40rpx;
+  margin-top: 25rpx;
+  color: #9D9D9D;
+}
+.currContent{
+  display:flex;
+  height: 100rpx;
+}
+.currContent_time{
+  margin-top: 15rpx;
+  width: 15rpx;
+  height: 90rpx;
+}
+.currContent_list1{
+  width: 25%;
+  display:flex;
+  justify-content: center; 
+  font-size: 30rpx;
+}
+page {
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+}
+.bg_red{
+  background: #9D9D9D;
+}

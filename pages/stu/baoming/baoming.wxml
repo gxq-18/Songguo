@@ -1,0 +1,21 @@
+
+  <view class='myCurr-view'>
+    <view class='curr' hover-class="bg_red" bindtap="checkToDay">
+        <image class="img1" src="../../../image/ion_15_n.png"></image>
+        <text class="text1">考级报名</text>
+      </view>
+  </view>
+  <view class='myCurr-view'>
+    <view class='curr' hover-class="bg_red" bindtap="checkToDay">
+        <image class="img1" src="../../../image/ion_16_n.png"></image>
+        <text class="text1">准考证查询</text>
+      </view>
+  </view>
+ 
+  <view class='myCurr-view'>
+    <view class='curr' hover-class="bg_red" bindtap="checkToDay">
+        <image class="img1" src="../../../image/ion_17_n.png"></image>
+        <text class="text1">成绩查询</text>
+    </view>
+  </view>
+
