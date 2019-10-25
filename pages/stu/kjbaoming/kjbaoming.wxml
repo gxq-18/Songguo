@@ -13,6 +13,7 @@
   <view class="sel1">
     <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
       <view class="top-selected">{{dateValue}}</view>
+      <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right" src="../../../image/ion_18.png"></image></view>
     </picker>
     
   </view>
@@ -21,10 +22,12 @@
 
 
 <view class='container'>
-  <view class="sel1">
-    <view class='top-selected' bindtap='bindShowMsg'>
+  <view class="sel1" bindtap='bindShowMsg'>
+    <view class='top-selected'>
       <text>{{grade_name}}</text>
+      
   </view>
+   <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right" src="../../../image/ion_18.png"></image></view>
 </view>
     <view class="line"></view>
     <!-- 下拉需要显示的列表 -->
@@ -54,10 +57,11 @@
 
 
 <view class='container'>
-  <view class="sel1">
-    <view class='top-selected' bindtap='bindGender'>
+  <view class="sel1" bindtap='bindGender'>
+    <view class='top-selected'>
       <text>{{gender}}</text>
   </view>
+  <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right" src="../../../image/ion_18.png"></image></view>
 </view>
     <view class="line"></view>
     <!-- 下拉需要显示的列表 -->
