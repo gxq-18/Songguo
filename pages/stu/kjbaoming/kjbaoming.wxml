@@ -1,24 +1,32 @@
-
-  <view class="top">
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <view class='top-text'> 姓名</view><input class="top-selected" auto-focus placeholder="请填写"/>
-      </view>
+<view class="container">
+  <text style="font-size:10%;">请填写并核对报名信息</text>
+</view>
+<view class="line"></view>
+<view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请填写姓名"></input>
     </view>
-  </view>
+<view class="line"></view>
+</view>
 
-  <view class = "top">
+<view class = "container">
+  <view class="sel1">
     <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
-      <text>出生日期：</text> <view class="top-selected">{{dateValue}}</view>
+      <view class="top-selected">{{dateValue}}</view>
     </picker>
+    
   </view>
+  <view class="line"></view>
+</view>
 
-<view class='top'>
-    <view class='top-text'> 证件类型</view>
-    <!-- 下拉框 -->
+
+<view class='container'>
+  <view class="sel1">
     <view class='top-selected' bindtap='bindShowMsg'>
       <text>{{grade_name}}</text>
-    </view>
+  </view>
+</view>
+    <view class="line"></view>
     <!-- 下拉需要显示的列表 -->
     <view class="select_box" wx:if="{{select}}">
       <view wx:for="{{grades}}" wx:key="unique">
@@ -27,19 +35,110 @@
     </view>
   </view>
 
-  <view class="top">
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-       <view class="top-text">证件号码</view> <input class="top-selected" type="idcard" placeholder="请填写" />
+
+<view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请填写证件号"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+
+
+<view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请填报考级别"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+
+<view class='container'>
+  <view class="sel1">
+    <view class='top-selected' bindtap='bindGender'>
+      <text>{{gender}}</text>
+  </view>
+</view>
+    <view class="line"></view>
+    <!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{select1}}">
+      <view wx:for="{{genders}}" wx:key="unique">
+        <view class="select_one" bindtap="mySelect1" data-name="{{item}}">{{item}}</view>
       </view>
     </view>
   </view>
 
-  <view class="top">
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <view class='top-text'> 报考级别</view><input class="top-selected" auto-focus placeholder="请填写"/>
-      </view>
+  <view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请输入指导老师"></input>
     </view>
+<view class="line"></view>
+</view>
+
+<view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请输入所在学校"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+<view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请填写通讯地址"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+<view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请填写父亲手机号"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+<view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请填写母亲手机号"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+<view class="container">
+<view class="sel">
+    <input bindinput="inputName" class="inputText" placeholder="请填写目前所在培训学校"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+<view class="container">
+  <view class="sel">
+  <view><text class="text3">考生报名须知</text></view>
+  
+  <view><text decode="{{true}}" class="text1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、考生可在网站上考点分丰查找当地考点，查找到考点后可进行网上报名或者去所在考点领取报名表报名。</text></view>
+  <view>
+    <text decode="{{true}}" class="text1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、填报名表时请准确先写您的相关信息，按要求认真填写个人信息，请不要留空项。
+</text>
   </view>
+  <view><text decode="{{true}}" class="text1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、提示:考试经国家课程大纲为准，基础不牢的考生不建议越级考，优秀考生自愿越级考。</text></view>
+
+  <view><text class="text2">*.上面所有信息必须都填写完整后方可报名。</text></view>
+  </view>
+</view>
+<view class="line"></view>
+
+<view class="loginBtnView">
+      <button class="loginBtn" bindtap="editName">提交报名</button>
+ 
+</view>
+  <!-- <view class="top">
+      <view style="width:100%;">
+         <view class='top-text' style="width:45%;"> 姓名 </view> 
+        <input class="top-selected" style="width:100%;" auto-focus placeholder="请填写" placeholder-style="float:right;" />
+      </view>
+      
+  </view> -->
+
+  
+
+  
  

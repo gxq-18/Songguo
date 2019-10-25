@@ -12,13 +12,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dateValue: '             请选择您的预约日期',
+    dateValue: '请选择出生日期',
     select: false,
-    grade_name: '--请选择--',
+    grade_name: '请选择证件类型',
     grades: [
       '猛犸机器人1班',
       '猛犸机器人2班',
       '口才1班',
+    ],
+    gender: '请选择性别',
+    genders: [
+      '男',
+      '女',
     ]
   },
   /**
@@ -34,6 +39,11 @@ Page({
       select: !this.data.select
     })
   },
+  bindGender() {
+    this.setData({
+      select1: !this.data.select1
+    })
+  },
   /**
    * 已选下拉框
    */
@@ -43,6 +53,14 @@ Page({
     this.setData({
       grade_name: name,
       select: false
+    })
+  },
+  mySelect1(e) {
+    console.log(e)
+    var name = e.currentTarget.dataset.name
+    this.setData({
+      gender: name,
+      select1: false
     })
   },
   

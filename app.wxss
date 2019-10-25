@@ -47,11 +47,11 @@
 .loginBtn { 
  width: 80%; 
  border-radius: 25px;  
- background-color:#E14848;
+ background-color:#00E3E3;
  color: #fff;
 }
 .loginBtn:active{ 
- background-color:#c00;
+ background-color:#BBFFFF;
  color: #fff;
 }
 .margintop5{

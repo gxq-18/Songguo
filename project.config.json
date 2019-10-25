@@ -65,8 +65,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/teacher/parentCircleList/parentCircleList",
-					"pathName": "pages/stu/parentCircleList/parentCircleList",
+					"name": "pages/stu/kjbaoming/kjbaoming",
+					"pathName": "pages/stu/kjbaoming/kjbaoming",
 					"query": "",
 					"scene": null
 				}

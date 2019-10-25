@@ -8,23 +8,25 @@
   border-bottom: 1px solid #000;
 }
 .top-text{
-  float: left
+  float: left;
+  width:100%;
 }
 /* 下拉框 */
 .top-selected{
     width: 50%;
     display: flex;
-    float: right;
+    float: left;
     align-items: center;
     justify-content: space-between;
     padding: 0 10rpx;
-    font-size: 30rpx;
+    font-size: 14px;
+    color:#6C6C6C;
 }
 /* 下拉内容 */
 .select_box {
     background-color: #fff;
     padding: 0 20rpx;
-    width: 50%;
+    width: 80%;
     float: right;
     position: relative;
     right: 0;
@@ -60,3 +62,63 @@
   right: 0rpx;
   top: 20rpx;
 }
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80rpx 0;
+  box-sizing: border-box;
+  font-family: microsoft yahei;
+
+}
+.sel {
+padding-top: 15rpx;
+padding-bottom: 15rpx;
+width: 90%;
+
+}
+.sel1 {
+padding-top: 35rpx;
+padding-bottom: 25rpx;
+width: 90%;
+padding-right: 3%;
+}
+.inputText {
+flex: block;
+float: left;
+text-align: left;
+margin-top: 11px;
+font-size: 14px;
+width: 680rpx;
+
+}
+.line {
+width: 90%;
+height: 1px;
+background-color: #cccccc;
+margin-top: 1px;
+
+}
+.container {
+height: 10%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+padding: 0rpx 0;
+box-sizing: border-box;
+font-family: microsoft yahei;
+
+}
+.text1{
+  font-size:80%;
+}
+.text3{font-size: 90%;}
+.text2{font-size: 90%;color:#FF0000;}
+
+
+
+
