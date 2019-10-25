@@ -1,6 +1,6 @@
 
   <view class='myCurr-view'>
-    <view class='curr' hover-class="bg_red" bindtap="checkToDay">
+    <view class='curr' hover-class="bg_red" bindtap="kjbaoming">
         <image class="img1" src="../../../image/ion_15_n.png"></image>
         <text class="text1">考级报名</text>
       </view>

@@ -1,0 +1,45 @@
+
+  <view class="top">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class='top-text'> 姓名</view><input class="top-selected" auto-focus placeholder="请填写"/>
+      </view>
+    </view>
+  </view>
+
+  <view class = "top">
+    <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
+      <text>出生日期：</text> <view class="top-selected">{{dateValue}}</view>
+    </picker>
+  </view>
+
+<view class='top'>
+    <view class='top-text'> 证件类型</view>
+    <!-- 下拉框 -->
+    <view class='top-selected' bindtap='bindShowMsg'>
+      <text>{{grade_name}}</text>
+    </view>
+    <!-- 下拉需要显示的列表 -->
+    <view class="select_box" wx:if="{{select}}">
+      <view wx:for="{{grades}}" wx:key="unique">
+        <view class="select_one" bindtap="mySelect" data-name="{{item}}">{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="top">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+       <view class="top-text">证件号码</view> <input class="top-selected" type="idcard" placeholder="请填写" />
+      </view>
+    </view>
+  </view>
+
+  <view class="top">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class='top-text'> 报考级别</view><input class="top-selected" auto-focus placeholder="请填写"/>
+      </view>
+    </view>
+  </view>
+ 
