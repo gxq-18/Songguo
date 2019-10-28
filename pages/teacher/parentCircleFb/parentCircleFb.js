@@ -80,8 +80,7 @@ Page({
       })
     }
     
-  },
-  
+  }, 
   addContent: function (e) {
     this.setData({
       content: e.detail.value
@@ -187,6 +186,14 @@ Page({
   },
   primary: function () {//点名保存
     var that = this;
+    if (that.data.content == "") {
+      wx.showToast({
+        title: '内容为空，请填写发布内容',
+        icon: 'none',
+        duration: 2000//持续的时间
+      })
+      return;
+    }
     main.initQiniu();//初始化七牛
     wx.showLoading({ mask: true });
     //查看权限

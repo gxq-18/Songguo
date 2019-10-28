@@ -4,13 +4,13 @@
 <view class="section">
 	 <view class="line judgement" bindchange="bindPickerChange" data-id='{{teacher.id}}' data-mobile='{{teacher.mobile}}'>
    请选择班级
-     <picker  class="tl" bindchange="bindPickerChange" style="font-size:16px;" value="{{bjlistindex}}" range="{{bjnamelist}}">
+     <picker  class="tl" bindchange="bindPickerChange"  value="{{bjlistindex}}" range="{{bjnamelist}}">
          <view bindblur="adddifult" class="picker-input">{{default}}</view>
       </picker>
    </view>
 </view>
   <view class="section" style='background-color: #fff;'>
-    <textarea bindblur="addContent" auto-height placeholder="这一刻的想法..." maxlength='500' style="margin-top:20rpx;                  margin-left:20rpx;width:680rpx;" name="textarea" />
+    <textarea bindblur="addContent" auto-height placeholder="说点什么呢..." maxlength='500' style="margin-top:20rpx;                  margin-left:20rpx;width:680rpx;" name="textarea" />
   </view>
   <block wx:if="{{tp==0}}">
     <view  style="padding-top:80rpx;float:left;padding-bottom:0;background-color: #fff;width:100%;">

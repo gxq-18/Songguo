@@ -10,7 +10,7 @@
  </view> -->
      
   <view class="section" style='background-color: #fff;'>
-    <textarea bindblur="addContent" auto-height placeholder="这一刻的想法..." maxlength='500' style="margin-top:20rpx;margin-left:20rpx;width:680rpx;" name="textarea" />
+    <textarea bindblur="addContent" auto-height placeholder="孩子回忆生活中的危险,并用简单的线条表达出来。画纸的装帧,锻炼孩子的手眼协调一致。" maxlength='500' style="margin-top:20rpx;margin-left:20rpx;width:680rpx;" name="textarea" />
   </view>
   <block wx:if="{{tp==0}}">
     <view  style="padding-top:80rpx;float:left;padding-bottom:0;background-color: #fff;width:100%;">
@@ -51,7 +51,7 @@
         </view>
     </view>
   </block>
-  
+<!--   
   <view class="page-body" style="float:left;width:100%;border-bottom:1rpx solid #ccc;">
     <view class="common-list" >
        <view class="item" >
@@ -75,12 +75,13 @@
                 <view class='item-select_text' bindtap="claSelect3">所有人可见</view>
               </view>
     </view> 
-  </view>
+  </view> -->
  
    <view class="page-body" style="float:left;width:100%;">
       <!--按钮-->
       <view class="loginBtnView" style='padding-top:50rpx;padding-bottom: 20rpx;'>
-        <button class="loginBtn"   bindtap="primary">分享到朋友圈</button>
+        <!-- <button class="loginBtn" open-type="share"  bindtap="primary">分享到朋友圈</button> -->
+        <button class="loginBtn" open-type="share">分享到朋友圈</button>
       </view>
    </view>
 </form>
