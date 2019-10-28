@@ -54,15 +54,20 @@ Page({
   },
   // 更换封面
   actionSheetChange: function (e) {
-    this.setData({
-      actionSheetHidden: !this.data.actionSheetHidden
-    });
+   
+     this.setData({
+       actionSheetHidden: !this.data.actionSheetHidden
+     });
   },
   // 发布家长圈
   actionSheetChange2: function (e) {
-    this.setData({
-      actionSheetHidden2: !this.data.actionSheetHidden2
-    });
+    // this.setData({
+    //   actionSheetHidden2: !this.data.actionSheetHidden2
+    // });
+    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    wx.navigateTo({
+      url: "../parentCircleFb/parentCircleFb",
+    })
   },
   // 删除评论
   actionSheetChange3: function (e) {

@@ -1,16 +1,16 @@
 <!--pages/teacher/parentCircle/parentCircle.wxml-->
 <view class='margintop5'></view>
 <form bindsubmit="formSubmit">
-   <!-- <view class="sectionA" style='background-color: #fff;'>
-   <picker bindchange="bindPickerChange" style="font-size:16px;" value="{{bjlistindex}}" range="{{arra}}">
-    <view class="picker">
-      当前选择：{{array[index]}}
-    </view>
-  </picker>
- </view> -->
-     
+<view class="section">
+	 <view class="line judgement" bindchange="bindPickerChange" data-id='{{teacher.id}}' data-mobile='{{teacher.mobile}}'>
+   请选择班级
+     <picker  class="tl" bindchange="bindPickerChange" style="font-size:16px;" value="{{bjlistindex}}" range="{{bjnamelist}}">
+         <view bindblur="adddifult" class="picker-input">{{default}}</view>
+      </picker>
+   </view>
+</view>
   <view class="section" style='background-color: #fff;'>
-    <textarea bindblur="addContent" auto-height placeholder="这一刻的想法..." maxlength='500' style="margin-top:20rpx;margin-left:20rpx;width:680rpx;" name="textarea" />
+    <textarea bindblur="addContent" auto-height placeholder="这一刻的想法..." maxlength='500' style="margin-top:20rpx;                  margin-left:20rpx;width:680rpx;" name="textarea" />
   </view>
   <block wx:if="{{tp==0}}">
     <view  style="padding-top:80rpx;float:left;padding-bottom:0;background-color: #fff;width:100%;">
@@ -80,7 +80,8 @@
    <view class="page-body" style="float:left;width:100%;">
       <!--按钮-->
       <view class="loginBtnView" style='padding-top:50rpx;padding-bottom: 20rpx;'>
-        <button class="loginBtn"   bindtap="primary">分享到朋友圈</button>
+        <button class="loginBtn"   bindtap="primary">发布</button>
       </view>
    </view>
 </form>
+

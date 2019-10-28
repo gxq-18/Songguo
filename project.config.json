@@ -22,7 +22,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx9bb8a57bc96cb180",
+	"appid": "wx585221285ccbb75f",
 	"projectname": "aters",
 	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
@@ -65,8 +65,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/stu/kjbaoming/kjbaoming",
-					"pathName": "pages/stu/kjbaoming/kjbaoming",
+					"name": "pages/auction/auction/auctionHome",
+					"pathName": "pages/auction/auction/auctionHome",
 					"query": "",
 					"scene": null
 				}

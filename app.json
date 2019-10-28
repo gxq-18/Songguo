@@ -13,6 +13,7 @@
     "pages/teacher/parentCircleListBp/parentCircleListBp",
     "pages/teacher/parentCircleListVio/parentCircleListVio",
     "pages/teacher/parentCircle/parentCircle",
+    "pages/teacher/parentCircleFb/parentCircleFb",
     "pages/teacher/layout/layout",
     "pages/teacher/layoutDetail/detail",
     "pages/teacher/layoutDetailView/detailView",

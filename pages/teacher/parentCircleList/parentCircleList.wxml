@@ -25,7 +25,7 @@
           <image class="avatar_friend" src="{{item.teacher.icon}}" />   
         </block>
         <view class="list_right">
-          <view class="friend_name" wx:if='{{item.type==0}}'>{{item.cpc.name}}</view>
+          <view class="friend_name" wx:if='{{item.type==0}}'>{{item.cpc.name}}</view> 
           <view class="friend_name" wx:else>{{item.teacher.name}}</view>
           <view class="friend_mood">{{item.content}}</view>
           <view class="friend_img">    
