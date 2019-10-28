@@ -1,0 +1,17 @@
+<view class="text" style="font-size:30px">准考证查询</view>
+
+<view class="page-body">
+<view class="text">姓名</view>
+  <view class="inputView">
+        <input bindinput="inputName" class="input" auto-focus placeholder="请输入姓名" placeholder-style="color: #BEBEBE	" />
+  </view>
+  
+  <view class="text">证件号</view>
+  <view class="inputView">
+        <input bindblur="inputIdCard" class="input" type="idcard" placeholder="身份证输入键盘" placeholder-style="color: #BEBEBE	" />
+  </view>
+  <view class="loginBtnView">
+      <button class="loginBtn" bindtap="editName" disabled="{{disabled}}">提交报名</button>
+ 
+</view>
+</view>

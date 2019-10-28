@@ -6,7 +6,7 @@
       </view>
   </view>
   <view class='myCurr-view'>
-    <view class='curr' hover-class="bg_red" bindtap="checkToDay">
+    <view class='curr' hover-class="bg_red" bindtap="zkzQuery">
         <image class="img1" src="../../../image/ion_16_n.png"></image>
         <text class="text1">准考证查询</text>
       </view>
