@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    cpc:'',
     inputName:'',
     dateValue: '请选择出生日期',
     grade_name: '请选择证件类型',
@@ -37,6 +38,15 @@ Page({
     ],
     disabled:false
   },
+
+  onLoad: function (options) {
+    console.log(app.globalData.cpc)
+    var that = this;
+    this.setData({
+      cpc: app.globalData.cpc
+    });
+  },
+
   //填写姓名
   inputName: function (e) {
     var regNum = new RegExp('[0-9]', 'g');//判断用户输入的是否为数字
@@ -160,7 +170,43 @@ Page({
       this.setData({
         disabled: false
       })
+    wx.request({
+      url: main.localUrl + 'mobileXcx/saveKaoji', //仅为示例，并非真实的接口地址
+      data: {
+        name: this.data.inputName,
+        leaver: this.data.inputLevel,
+        brithday: this.data.dateValue,
+        cardtype: this.data.grade_name,
+        IDcard: this.data.inputIdCard,
+        school: this.data.inputSchool,
+        teacher: this.data.inputTea,
+        address: this.data.inputAdress,
+        phoneDad: this.data.inputFphone,
+        phoneMom: this.data.inputMphone,
+        peischool: this.data.inputTrain
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+          duration: 2000,
+          mask: true
+        })
+        setTimeout(function () {
+          //成功
+          var pages = getCurrentPages(); // 当前页面  
+          var beforePage = pages[pages.length - 2]; // 前一个页面
+          beforePage.onLoad();
+          wx.navigateBack();  //返回上个页面
+        }, 2000)
+
+      }
+    })
     }
+
   },
   
   /**

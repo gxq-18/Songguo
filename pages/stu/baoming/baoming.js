@@ -20,7 +20,23 @@ const conf = {
       url: "../kjbaoming/kjbaoming",
     })
   },
+  zkzQuery: function (e) {
+    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    wx.navigateTo({
+      url: "../zkzQuery/zkzQuery",
+    })
+  },
+  
+  onLoad: function (options) {
+    var id = options.id;
+    consoln.log(id+"!!!!!!!!!");
+    var name = options.name;
+    this.setData({
+      id: id,
+      name: name
+    })
 
+  },
 
 
 

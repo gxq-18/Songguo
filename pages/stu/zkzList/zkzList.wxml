@@ -1,0 +1,13 @@
+
+<view class="page-body">
+<view class="text">姓名</view>
+  <view class="inputView">
+        <input bindinput="inputName" class="input" auto-focus placeholder="请输入姓名" placeholder-style="color: #BEBEBE	" />
+  </view>
+  
+  <view class="text">证件号</view>
+  <view class="inputView">
+        <input bindblur="inputIdCard" class="input" type="idcard" placeholder="身份证输入键盘" placeholder-style="color: #BEBEBE	" />
+  </view>
+  
+</view>
