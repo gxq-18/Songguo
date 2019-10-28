@@ -22,6 +22,16 @@
     font-size: 14px;
     color:#6C6C6C;
 }
+.top-selected1{
+    width: 50%;
+    display: flex;
+    float: left;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10rpx;
+    font-size: 14px;
+    color:red;
+}
 /* 下拉内容 */
 .select_box {
     background-color: #fff;

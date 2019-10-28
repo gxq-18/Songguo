@@ -12,20 +12,157 @@ Page({
    * 页面的初始数据
    */
   data: {
+    inputName:'',
     dateValue: '请选择出生日期',
-    select: false,
     grade_name: '请选择证件类型',
-    grades: [
-      '猛犸机器人1班',
-      '猛犸机器人2班',
-      '口才1班',
-    ],
+    inputIdCard:'',
+    inputLevel: '',
     gender: '请选择性别',
-    genders: [
+    inputTea:'',
+    inputSchool:'',
+    inputAdress:'',
+    inputFphone:'',
+    inputMphone:'',
+    inputTrain:'',
+    select: false,
+    bjlistindex: 0,
+    bjnamelist: [
+      '居民身份证',
+      '护照',
+    ],
+    kjlistindex:0,
+    kjnamelist: [
       '男',
       '女',
-    ]
+    ],
+    disabled:false
   },
+  //填写姓名
+  inputName: function (e) {
+    var regNum = new RegExp('[0-9]', 'g');//判断用户输入的是否为数字
+    var rsNum = regNum.exec(e.detail.value);
+    if (rsNum || e.detail.value == '') {
+      wx.showToast({
+        title: '姓名有误',
+        duration: 1500,
+        icon: 'none'
+      });
+      this.setData({
+        disabled: true
+      })
+    } else{
+      this.setData({
+        inputName: e.detail.value,
+        disabled: false
+      })
+    }
+  },
+  //填写证件号
+  inputIdCard:function(e){
+    //var idCard = ;
+    //身份证验证： 
+    if (!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(e.detail.value)) || e.detail.value=='') {
+      wx.showToast({
+         title: '身份证号码有误',
+         duration: 1500,
+         icon: 'none'
+       });
+      this.setData({
+        disabled: true
+      })
+     }else{
+      this.setData({
+        inputIdCard: e.detail.value,
+        disabled: false
+      })
+     }
+  },
+  //填写报考级别
+  inputLevel:function(e){
+    this.setData({
+      inputLevel:e.detail.value,
+    })
+  },
+  //输入指导老师
+  inputTea: function (e) {
+    this.setData({
+      inputTea: e.detail.value,
+    })
+  },
+  //输入所在学校
+  inputSchool:function(e){
+    this.setData({
+      inputSchool:e.detail.value
+    })
+  },
+  //填写通讯地址
+  inputAdress:function(e){
+    this.setData({
+      inputAdress: e.detail.value
+    })
+  },
+  //填写父亲手机号
+  inputFphone:function(e){
+    if (!(/^((13[0-9])|(14[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\d{8}$/.test(e.detail.value)) || e.detail.value == ''){
+      wx.showToast({
+        title: '手机号有误',
+        duration: 1500,
+        icon: 'none'
+      });
+      this.setData({
+        disabled: true
+      })
+    }else{
+      this.setData({
+        inputFphone:e.detail.value,
+        disabled: false
+      })
+    }
+  },
+  //填写父亲手机号
+  inputMphone: function (e) {
+    if (!(/^((13[0-9])|(14[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\d{8}$/.test(e.detail.value)) || e.detail.value == '') {
+      wx.showToast({
+        title: '手机号有误',
+        duration: 1500,
+        icon: 'none'
+      });
+      this.setData({
+        disabled: true
+      })
+    }else{
+      this.setData({
+        inputMphone: e.detail.value,
+        disabled:false
+      })
+    }
+  },
+
+  //培训学校
+  inputTrain: function (e) {
+    this.setData({
+      inputTrain: e.detail.value
+    })
+  },
+
+  //按钮
+  editName: function (e) {
+    if (this.data.inputName == '' || this.data.dateValue == '请选择出生日期' || this.data.grade_name == '请选择证件类型' || this.data.inputLevel == '' || this.data.gender == '请选择性别' || this.data.inputTea == '' || this.data.inputSchool == '' || this.data.inputAdress == '' || this.data.inputTrain == ''){
+      wx.showToast({
+        title: '没有填完整',
+        duration: 1500,
+        icon: 'none'
+      })
+      this.setData({
+        disabled: !this.data.disabled
+      })
+    } else {
+      this.setData({
+        disabled: false
+      })
+    }
+  },
+  
   /**
   *  点击下拉框
   */
@@ -34,19 +171,22 @@ Page({
       dateValue: e.detail.value
     })
   },
+  bindPickerChange: function (e) {
+    this.setData({
+      grade_name: this.data.bjnamelist[e.detail.value]
+    })
+  },
+  bindGenderChange: function (e) {
+    this.setData({
+      gender: this.data.kjnamelist[e.detail.value]
+    })
+  },
   bindShowMsg() {
     this.setData({
       select: !this.data.select
     })
   },
-  bindGender() {
-    this.setData({
-      select1: !this.data.select1
-    })
-  },
-  /**
-   * 已选下拉框
-   */
+
   mySelect(e) {
     console.log(e)
     var name = e.currentTarget.dataset.name
@@ -55,13 +195,5 @@ Page({
       select: false
     })
   },
-  mySelect1(e) {
-    console.log(e)
-    var name = e.currentTarget.dataset.name
-    this.setData({
-      gender: name,
-      select1: false
-    })
-  },
-  
+
   })
