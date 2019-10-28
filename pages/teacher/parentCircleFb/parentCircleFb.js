@@ -28,7 +28,7 @@ Page({
     isCheckF2: true,//仅老师可见
     isCheckF3: true,//所有人可见
     //picker
-   
+    teacherid:'',
     bjnamelist:[],
     bjlistindex: 0,
     bjidlistlist:[],
@@ -46,12 +46,13 @@ Page({
     var idarray = [];
     wx.request({
       url: main.localUrl + 'mobileXcx/getbjList', //仅为示例，并非真实的接口地址
+      data:{
+        id: app.globalData.teacher.id,
+      },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log("请求成功后的数据=");
-        console.log(res.data);
         for (var a = 0; a < res.data.sucInfo.length; a++) {
           teamarray.push(res.data.sucInfo[a].name);
           idarray.push(res.data.sucInfo[a].id);

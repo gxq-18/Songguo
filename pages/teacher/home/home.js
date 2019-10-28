@@ -97,7 +97,8 @@ Page({
   activity: function (e) {
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
     wx.navigateTo({
-      url: "../activity/activity",
+      // url: "../activity/activity",
+      url: "../parentCircleList/parentCircleList",
     })
   },
   cpcList: function (e) {
@@ -130,7 +131,8 @@ Page({
   },
   activity: function () {
     wx.navigateTo({
-      url: "../activity/activity",
+      // url: "../activity/activity",
+      url: "../parentCircleList/parentCircleList",
     })
   },
   contentView: function (e) {

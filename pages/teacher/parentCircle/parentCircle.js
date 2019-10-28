@@ -148,6 +148,10 @@ Page({
       hasLocation: false
     })
   },
+  onShareAppMessage: function(){
+     
+     
+  },
   primary: function () {//点名保存
     var that = this;
     if (that.data.content == ""){
