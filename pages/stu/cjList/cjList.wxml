@@ -1,0 +1,35 @@
+
+<view class="page-body">
+<view class="text1">全国青少年书写能力综合测评考级成绩</view>
+<view class="text2">Examination certificate of the national youth writing ability comprehensive evaluation examination level</view>
+<view class="text">姓名：</view>
+  <view class="inputView">
+        <view class="input" auto-focus placeholder-style="color: #BEBEBE	" >{{inputName}}</view>
+  </view>
+  
+  <view class="text">考号：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{IdCard}}</view>
+  </view>
+  <view class="text">书法考级成绩：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{leaver_Calligraphy}}</view>
+  </view>
+  <view class="text">绘画考级成绩：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{leaver_painting}}</view>
+  </view>
+  <view class="text">音乐考级成绩：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{leaver_music}}</view>
+  </view>
+  <view class="text">考级地点：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{address}}</view>
+  </view>
+  <view class="text">考级时间：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{time}}</view>
+  </view>
+  
+</view>

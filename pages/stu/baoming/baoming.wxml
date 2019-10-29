@@ -13,7 +13,7 @@
   </view>
  
   <view class='myCurr-view'>
-    <view class='curr' hover-class="bg_red" bindtap="checkToDay">
+    <view class='curr' hover-class="bg_red" bindtap="cjSome">
         <image class="img1" src="../../../image/ion_17_n.png"></image>
         <text class="text1">成绩查询</text>
     </view>

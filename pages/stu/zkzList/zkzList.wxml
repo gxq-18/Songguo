@@ -1,13 +1,27 @@
 
 <view class="page-body">
-<view class="text">姓名</view>
+<view class="text1">全国青少年书写能力综合测评考级准考证</view>
+<view class="text2">Examination certificate of the national youth writing ability comprehensive evaluation examination level</view>
+<view class="text">姓名：</view>
   <view class="inputView">
-        <input bindinput="inputName" class="input" auto-focus placeholder="请输入姓名" placeholder-style="color: #BEBEBE	" />
+        <view class="input" auto-focus placeholder-style="color: #BEBEBE	" >{{inputName}}</view>
   </view>
   
-  <view class="text">证件号</view>
+  <view class="text">级别：</view>
   <view class="inputView">
-        <input bindblur="inputIdCard" class="input" type="idcard" placeholder="身份证输入键盘" placeholder-style="color: #BEBEBE	" />
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{leaver}}</view>
+  </view>
+  <view class="text">学校：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{school}}</view>
+  </view>
+  <view class="text">生日：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{brithday}}</view>
+  </view>
+  <view class="text">准考证号：</view>
+  <view class="inputView">
+        <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{inputIdCard}}</view>
   </view>
   
 </view>

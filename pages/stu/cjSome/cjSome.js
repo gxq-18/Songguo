@@ -10,7 +10,7 @@ Page({
   data: {
     inputName: '',
     inputIdCard: '',
-    disabled:false
+    disabled: false
   },
   inputName: function (e) {
     this.setData({
@@ -54,7 +54,7 @@ Page({
       })
     }
     wx.request({
-      url: main.localUrl + 'mobileXcx/selectKj', //仅为示例，并非真实的接口地址
+      url: main.localUrl + 'mobileXcx/selectCj', //仅为示例，并非真实的接口地址
       data: {
         name: this.data.inputName,
         IDcard: this.data.inputIdCard
@@ -63,16 +63,16 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        if (res.data.ok == ''){
+        if (res.data.ok == '') {
           wx.showToast({
             title: '未查到',
             icon: 'none',
             duration: 2000
           })
-        }else{
+        } else {
           wx.navigateTo({
-            url: "../zkzList/zkzList?leaver=" + res.data.ok[0].leaver + "&name=" + res.data.ok[0].name + "&school=" + res.data.ok[0].school+
-              "&brithday=" + res.data.ok[0].brithday + "&IDCard=" + res.data.ok[0].IDCard,
+            url: "../cjList/cjList?name=" + res.data.ok[0].name + "&leaver_Calligraphy=" + res.data.ok[0].leaver_Calligraphy + 
+              "&leaver_painting=" + res.data.ok[0].leaver_painting + "&leaver_music=" + res.data.ok[0].leaver_music + "&address=" + res.data.ok[0].address + "&time=" + res.data.ok[0].time + "&IdCard=" + res.data.ok[0].IdCard,
           })
         }
 

@@ -26,6 +26,12 @@ const conf = {
       url: "../zkzQuery/zkzQuery",
     })
   },
+  cjSome: function (e) {
+    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    wx.navigateTo({
+      url: "../cjSome/cjSome",
+    })
+  },
   
   onLoad: function (options) {
     var id = options.id;

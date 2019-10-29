@@ -9,19 +9,23 @@ Page({
    */
   data: {
     inputName: '',
-    inputIdCard: '',
-    leaver:'',
-    school:'',
-    brithday:''
+    IdCard: '',
+    leaver_Calligraphy:'',
+    leaver_painting:'',
+    leaver_music:'',
+    address:'',
+    time:''
   },
 
   onLoad: function (options) {
     this.setData({
       inputName : options.name,
-      inputIdCard:options.IDCard,
-      leaver :options.leaver,
-      school:options.school,
-      brithday:options.brithday
+      IdCard: options.IdCard,
+      leaver_Calligraphy: options.leaver_Calligraphy,
+      leaver_painting: options.leaver_painting,
+      leaver_music: options.leaver_music,
+      address: options.address,
+      time:options.time
     })
 
   },
