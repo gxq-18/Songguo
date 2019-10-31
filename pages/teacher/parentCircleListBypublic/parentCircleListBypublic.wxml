@@ -3,10 +3,10 @@
   <!-- <image src="../../../image/t_me_head.png" style="width:100%;height:400rpx;">背景图</image> -->
 
   <!-- <scroll-view scroll-y="true" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower" > -->
-  <view bindtap="actionSheetChange" style="background-image: url('{{bpImage}}');background-size:100%; background-repeat:no-repeat;width:100%;height:400rpx;">
+  <!-- <view bindtap="actionSheetChange" style="background-image: url('{{bpImage}}');background-size:100%; background-repeat:no-repeat;width:100%;height:400rpx;">
     <image class="avatar" src="{{teacher.icon}}"/>
     <text class="nickname">{{teacher.name}}</text>
-  </view>
+  </view> -->
   <view style="width:100%;height:40rpx"></view>
   <view class="loading" hidden="{{!pullDownRefresh}}">正在载入...</view>  
 <!-- class="{{showModalStatus?'noscroll':''}}" -->
@@ -27,7 +27,7 @@
         <view class="list_right">
           <view class="friend_name" wx:if='{{item.type==0}}'>{{item.cpc.name}}</view> 
           <view class="friend_name" wx:else>{{item.teacher.name}}</view>
-          <view class="friend_mood">{{item.content}}</view>
+          <view class="friend_mood" bindtap="xqym" data-circle_id="{{item.id}}">{{item.content}}</view>
           <view class="friend_img">    
               <view class="weui-uploader__file" >
                 <block wx:for="{{item.img_path}}" wx:if='{{item.isUrl==0}}'  wx:for-index="imgidx" wx:key="image" wx:for-item="imgItem">
@@ -45,19 +45,19 @@
               </view>    
           </view>
           <view class='clear' wx:if="{{item.roomname!=null && item.roomname!=''}}"></view>
-          <view class="publist_time" wx:if="{{item.roomname!=null && item.roomname!=''}}" style="float:left;margin-bottom:20rpx;font-size:28rpx;color:#426ab3;width:100%;" data-latitude='{{item.latitude}}' data-longitude='{{item.longitude}}' bindtap='openMap' >{{item.roomname}}</view>
+          <!-- <view class="publist_time" wx:if="{{item.roomname!=null && item.roomname!=''}}" style="float:left;margin-bottom:20rpx;font-size:28rpx;color:#426ab3;width:100%;" data-latitude='{{item.latitude}}' data-longitude='{{item.longitude}}' bindtap='openMap' >{{item.roomname}}</view> -->
           <view class='clear'></view>
-          <view class="publist_time" style="float:left;margin-top:4rpx;margin-bottom:10rpx;font-size:22rpx;color:#c2c2c2;width:45%;">{{item.createtime}}</view>
-          <view style='float:left;color:#4a86e8' wx:if="{{item.teacher.id==teacher.id}}"  data-index='{{idx}}' data-id='{{item.id}}' bindtap='delCpc'> 删除 </view>
-          <view style='float:left;'>
+          <!-- <view class="publist_time" style="float:left;margin-top:4rpx;margin-bottom:10rpx;font-size:22rpx;color:#c2c2c2;width:45%;">{{item.createtime}}</view> -->
+          <!-- <view style='float:left;color:#4a86e8' wx:if="{{item.teacher.id==teacher.id}}"  data-index='{{idx}}' data-id='{{item.id}}' bindtap='delCpc'> 删除 </view> -->
+          <!-- <view style='float:left;'>
               <image class="item-allselect" bindtap="selLike" data-circle_id='{{item.id}}' data-index='{{idx}}' data-is_like='{{item.is_like}}' src="{{item.is_like==1?'../../../image/dianzan_blue@2x.png':'../../../image/dianzan@2x.png'}}"/>
           </view>
           <view style='float:left;'><image class="item-allselect" bindtap="bindReply" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view>
-          <view style='float:left;'><image class="item-allselect" bindtap="bindReply1" data-index='{{idx}}' data-circle_id='{{item.id}},{{item.content}},{{item.img_path}}' data-parent_id='' data-parent_user='' src="../../../image/ion_09.png"/></view>
+          <view style='float:left;'><image class="item-allselect" bindtap="bindReply1" data-index='{{idx}}' data-circle_id='{{item.id}},{{item.content}},{{item.img_path}}' data-parent_id='' data-parent_user='' src="../../../image/ion_09.png"/></view> -->
         </view> 
       </view>
       <!-- 评论 -->
-        <view class="list_right_comment" wx:if='{{item.cpccList.length>0 || item.likeNameStr!=""}}'>
+        <!-- <view class="list_right_comment" wx:if='{{item.cpccList.length>0 || item.likeNameStr!=""}}'>
           <view class='section'>
             <view class="list_right_comment_fabulous" wx:if='{{item.likeNameStr!=""}}'>
               <image src='../../../image/dianzan_line@2x.png'></image>
@@ -67,7 +67,7 @@
                 <view class="list_right_comment_fabulous"  bindtap="bindReply" data-index='{{idx}}' data-cpccIndex='{{cpccidx}}' data-circle_id='{{item.id}}' data-parent_id='{{cpcc.id}}' data-parent_name='{{cpcc.userName}}' data-parent_tid='{{cpcc.teacher_id}}' data-cid='{{cpcc.id}}'>{{cpcc.userName}}<lable wx:if='{{cpcc.coverUserName!=""}}'>回复</lable>{{cpcc.coverUserName}}:<text>{{cpcc.content}}</text>  </view>
             </block>
           </view>
-        </view>
+        </view> -->
     </view>
         
       <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view> 
@@ -87,7 +87,7 @@
     <view style="width:100%;padding-bottom:50rpx"></view> 
 </block>
   <!-- 底部悬浮按钮 -->
-  <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' ></image> 
+  <!-- <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' ></image>  -->
 
 <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
     <action-sheet-item  bindtap="bpImage">更换封面</action-sheet-item>
