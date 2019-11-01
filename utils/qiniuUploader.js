@@ -77,13 +77,12 @@ function upload(filePath, success, fail, options, progress) {
     }
 }
 
-function doUpload(filePath, success, fail, options, progress) {
+function  doUpload(filePath, success, fail, options, progress) {
     if (null == config.qiniuUploadToken && config.qiniuUploadToken.length > 0) {
         console.error('qiniu UploadToken is null, please check the init config or networking');
         return
     }
     var url = uploadURLFromRegionCode(config.qiniuRegion);
-    console.log("点击上传头像后获得上传地址="+url);
     var fileName = filePath.split('//')[1];
     if (options && options.key) {
         fileName = options.key;

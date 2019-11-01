@@ -65,8 +65,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/auction/auction/auctionHome",
-					"pathName": "pages/auction/auction/auctionHome",
+					"name": "pages/teacher/xiangqing/xiangqing",
+					"pathName": "pages/teacher/xiangqing/xiangqing",
 					"query": "",
 					"scene": null
 				}

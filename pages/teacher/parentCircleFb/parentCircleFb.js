@@ -237,6 +237,7 @@ Page({
     }
 
     setTimeout(function () {
+      
       // 发布家长圈
       wx.request({
         url: main.localUrl + 'mobileXcx/addCircle', //仅为示例，并非真实的接口地址 

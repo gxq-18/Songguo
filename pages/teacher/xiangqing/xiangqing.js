@@ -2,47 +2,52 @@ var main = require('../../../utils/main.js');
 const qiniuUploader = require("../../../utils/qiniuUploader");
 //获取应用实例
 const app = getApp()
-
+var ids="95";
 
 Page({
   data: {
-    bpImage:'http://p7mq9gjza.bkt.clouddn.com/t_me_head.png',
-    teacher:[],
-    circleList:[],
-    content:"",
+    bpImage: 'http://p7mq9gjza.bkt.clouddn.com/t_me_head.png',
+    teacher: [],
+    circleList: [],
+    content: "",
     searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
     callbackcount: 15,      //返回数据的个数  
     totalPage: 0,
     searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
     searchLoadingComplete: false,  //“没有数据”的变量，默认false，隐藏 
-    releaseFocus:false, //回复
-    releaseText:"评论",
-    releaseCircle_id:"",
+    releaseFocus: false, //回复
+    releaseText: "评论",
+    releaseCircle_id: "",
     releaseParent_id: "",
-    delCommentId:0,
-    delCirclIndex:"",
-    dexCommentIndex:"",
+    delCommentId: 0,
+    delCirclIndex: "",
+    dexCommentIndex: "",
     releaseIndex: "",
-    pullDownRefresh:false,
+    pullDownRefresh: false,
     actionSheetHidden: true,
-    actionSheetHidden2:true,
-    actionSheetHidden2:true,
+    actionSheetHidden2: true,
+    actionSheetHidden2: true,
     actionSheetHidden3: true,
     showModalStatus: false,
+    prentid:ids,
+    fx:'h',
   },
-  onLoad: function () {
+  
+  onLoad: function (options) {
     var that = this;
     main.initQiniu();//初始化七牛
     var bpImage = app.globalData.teacher.bp_image;
-    if (null == bpImage || "" == bpImage){
+    if (null == bpImage || "" == bpImage) {
       bpImage = "http://p7mq9gjza.bkt.clouddn.com/t_me_head.png";
     }
-
     this.setData({
       teacher: app.globalData.teacher,
-      bpImage: bpImage
+      bpImage: bpImage,
+      //prentid: options.id,
+      fx: options.fx
     });
-
+    ids = this.data.prentid;
+    console.log("ids="+ids);
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -51,13 +56,22 @@ Page({
       }
     });
     this.fetchSearchList();
-  },
-  // 更换封面
-  actionSheetChange: function (e) {
-   
-     this.setData({
-       actionSheetHidden: !this.data.actionSheetHidden
+
+
+    // 开启转发功能
+     wx.showShareMenu({
+       withShareTicket: true
      });
+    
+
+    
+  },
+   // 更换封面
+  actionSheetChange: function (e) {
+
+    this.setData({
+      actionSheetHidden: !this.data.actionSheetHidden
+    });
   },
   // 发布家长圈
   actionSheetChange2: function (e) {
@@ -69,13 +83,14 @@ Page({
       url: "../parentCircleFb/parentCircleFb",
     })
   },
+  
   // 删除评论
   actionSheetChange3: function (e) {
     this.setData({
       actionSheetHidden3: !this.data.actionSheetHidden3
     });
   },
-  addContent:function (e) {
+  addContent: function (e) {
     console.log(e.detail.value);
     this.setData({
       content: e.detail.value
@@ -107,7 +122,7 @@ Page({
       url: "../parentCircle/parentCircle",
     })
   },
-  circleImg: function() {
+  circleImg: function () {
     var that = this;
     wx.chooseImage({
       count: 9, // 默认9  
@@ -117,7 +132,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
         var imgmodel = JSON.stringify(res.tempFilePaths);
         wx.navigateTo({
-          url: "../parentCircle/parentCircle?imgmodel=" + imgmodel+"&tp=0",
+          url: "../parentCircle/parentCircle?imgmodel=" + imgmodel + "&tp=0",
         })
         that.actionSheetChange2();
       }
@@ -131,7 +146,7 @@ Page({
       camera: 'back',
       success: function (res) {
         wx.navigateTo({
-          url: "../parentCircle/parentCircle?vioUrl=" + res.tempFilePath+"&tp=1",
+          url: "../parentCircle/parentCircle?vioUrl=" + res.tempFilePath + "&tp=1",
         })
         that.actionSheetChange2();
       }
@@ -143,12 +158,12 @@ Page({
     // searchPageNum = that.data.searchPageNum,//把第几次加载次数作为参数  
     // callbackcount = that.data.callbackcount; //返回数据的个数  
     //访问网络  
-      circleList( that.data.searchPageNum, that.data.callbackcount, (data) => {
+    circleList(that.data.searchPageNum, that.data.callbackcount, (data) => {
       console.log(data.dataInfo.dataList);
       //console.log(data.dataInfo.dataList[0].img_path[0]);  获得图片列表
       //判断是否有数据，有则取数据   
       if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
-       
+
         let searchList = [];
         //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
         that.data.isFromSearch ? searchList = data.dataInfo.dataList : searchList = that.data.circleList.concat(data.dataInfo.dataList)
@@ -161,7 +176,7 @@ Page({
           that.setData({
             searchLoadingComplete: true, //把“没有数据”设为true，显示  
             searchLoading: false,  //把"上拉加载"的变量设为false，隐藏 
-          }); 
+          });
         }
         //没有数据了，把“没有数据”显示，把“上拉加载”隐藏  
       } else {
@@ -184,7 +199,7 @@ Page({
       that.fetchSearchList();
     }
   },
-  onReachBottom:function(){
+  onReachBottom: function () {
     this.searchScrollLower();
   },
   onPullDownRefresh: function () {
@@ -198,9 +213,9 @@ Page({
     wx.stopPullDownRefresh() //停止下拉刷新
 
   },
-  backLoad(){
+  backLoad() {
     this.setData({
-      circleList:[],
+      circleList: [],
       searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
       callbackcount: 15,      //返回数据的个数  
       totalPage: 0,
@@ -210,25 +225,28 @@ Page({
     this.fetchSearchList();
   },
   // 点赞、取消点赞
-  selLike:function(e){
+  selLike: function (e) {
     var that = this;
     var circle_id = e.currentTarget.dataset.circle_id;
     var isLike = e.currentTarget.dataset.is_like;
     var index = e.currentTarget.dataset.index;
     circleLike(circle_id, isLike, (data) => {
-       that.data.circleList[index].is_like = data.dataInfo.isLike;
-       that.data.circleList[index].likeNameStr = data.dataInfo.likeNameStr;
+      that.data.circleList[index].is_like = data.dataInfo.isLike;
+      that.data.circleList[index].likeNameStr = data.dataInfo.likeNameStr;
       this.setData({
         circleList: that.data.circleList
       })
     })
   },
   // 隐藏回复
-  releaseBlur: function(){
+  releaseBlur: function () {
     this.setData({
       releaseFocus: false
     })
   },
+
+
+  
   /**
 * 点击回复
 */
@@ -236,27 +254,27 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.index;
     var cpccIndex = e.currentTarget.dataset.cpccIndex;
-    
+
     var circle_id = e.currentTarget.dataset.circle_id;
     var parent_id = e.currentTarget.dataset.parent_id;
     var parent_tid = e.currentTarget.dataset.parent_tid;
     var cid = e.currentTarget.dataset.cid;
-    
+
     var releaseText = e.currentTarget.dataset.parent_name;
-    if (parent_tid==that.data.teacher.id){
+    if (parent_tid == that.data.teacher.id) {
       this.setData({
-        actionSheetHidden3:false,
+        actionSheetHidden3: false,
         delCommentId: cid,
         delCirclIndex: index,
         dexCommentIndex: cpccIndex,
       })
-    }else{
-      if (releaseText !=null && releaseText!=""){
+    } else {
+      if (releaseText != null && releaseText != "") {
         releaseText = "回复 " + releaseText;
-      }else{
+      } else {
         releaseText = "评论";
       }
-      
+
       this.setData({
         releaseFocus: true,
         releaseIndex: index,
@@ -265,18 +283,20 @@ Page({
         releaseText: releaseText,
       })
     }
-    
+
   },
   bindReply1: function (e) {
-     //console.log("id="+e.currentTarget.dataset.circle_id);
-     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-     wx.navigateTo({
-       url: "../parentCircle/parentCircle?id=" + e.currentTarget.dataset.circle_id,
-    })
+    console.log("点击图标了");
+    //console.log("id="+e.currentTarget.dataset.circle_id);
+    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    //this.onShareAppMessage();
+    // wx.navigateTo({
+    //   url: "../parentCircle/parentCircle?id=" + e.currentTarget.dataset.circle_id,
+    // })
   },
 
   //发送回复信息
-  addCommentL:function(){
+  addCommentL: function () {
     var that = this;
     var releaseIndex = that.data.releaseIndex;
     var releaseCircle_id = that.data.releaseCircle_id;
@@ -298,13 +318,13 @@ Page({
     wx.request({
       url: main.localUrl + 'mobileXcx/delCpc', //仅为示例，并非真实的接口地址
       data: {
-        circle_id: id,    
+        circle_id: id,
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        if (res.data.succeed=='000'){
+        if (res.data.succeed == '000') {
           that.data.circleList.splice(e.currentTarget.dataset.index, 1)
           that.setData({
             circleList: that.data.circleList
@@ -337,7 +357,7 @@ Page({
     })
   },
   // 更换封面
-  bpImage:function(){
+  bpImage: function () {
     var _this = this;
     main.initQiniu();//初始化七牛
     wx.chooseImage({
@@ -345,13 +365,13 @@ Page({
       sizeType: ['original'],
       success: function (res) {
         wx.navigateTo({
-          url: "../../wx-cropper/index?url=" + res.tempFilePaths[0]+"&tp=1",
+          url: "../../wx-cropper/index?url=" + res.tempFilePaths[0] + "&tp=1",
         })
         _this.actionSheetChange();
       }
     })
   },
-  
+
   showModal: function (e) {
     var videoUrl = e.currentTarget.dataset.src;
     wx.navigateTo({
@@ -402,9 +422,15 @@ Page({
       })
     }.bind(this), 200)
   },
-
+  onShareAppMessage: function (res) {
+    return {
+      title: '十艺教育小程序测试',
+      path: '/pages/teacher/xiangqing/xiangqing?id=' + this.data.prentid,
+      imageUrl: circleList[0]//自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径。支持PNG及JPG。显       示图片长宽比是 5:4。
+    }
+  },
   //查询位置
-  openMap:function(e){
+  openMap: function (e) {
     var latitude = parseFloat(e.currentTarget.dataset.latitude);
     var longitude = parseFloat(e.currentTarget.dataset.longitude);
     wx.openLocation({
@@ -413,20 +439,44 @@ Page({
       scale: 28
     })
   },
-  preventD:function(){},
+  preventD: function () { },
+  //查询家长圈集合
+  
 
 
 })
-//查询家长圈集合
-  function circleList(pageindex, callbackcount, dataList) {
+
+function circleList(pageindex, callbackcount, dataList) {
+   wx.request({
+     url: main.localUrl + 'mobileXcx/circleListxq', //仅为示例，并非真实的接口地址
+     data: {
+       crm_code: main.crm_code,
+       account_type: 1,
+       prentid: ids,
+       account_code: 49,
+       currentPage: pageindex,
+       rowCountPerPage: callbackcount,
+     },
+     header: {
+       'content-type': 'application/json' // 默认值
+     },
+     success: function (res) {
+       console.log(res)
+       dataList(res.data)
+     }
+   })
+}
+//查询点赞、取消点赞
+function circleLike(circle_id, isLike, dataList) {
+  
   wx.request({
-    url: main.localUrl + 'mobileXcx/circleList', //仅为示例，并非真实的接口地址
+    url: main.localUrl + 'mobileXcx/circleLike', //仅为示例，并非真实的接口地址
     data: {
       crm_code: main.crm_code,
       account_type: 1,
       account_code: app.globalData.teacher.id,
-      currentPage: pageindex,
-      rowCountPerPage: callbackcount,
+      circle_id: circle_id,
+      isLike: isLike,
     },
     header: {
       'content-type': 'application/json' // 默认值
@@ -436,43 +486,23 @@ Page({
     }
   })
 }
-
-  //查询点赞、取消点赞
-  function circleLike(circle_id, isLike, dataList) {
-    wx.request({
-      url: main.localUrl + 'mobileXcx/circleLike', //仅为示例，并非真实的接口地址
-      data: {
-        crm_code: main.crm_code,
-        account_type: 1,
-        account_code: app.globalData.teacher.id,
-        circle_id: circle_id,
-        isLike: isLike,
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        dataList(res.data)
-      }
-    })
- }
-  //回复
-  function saveComment(circle_id, content, parent_id, dataList) {
-    wx.request({
-      url: main.localUrl + 'mobileXcx/addComment', //仅为示例，并非真实的接口地址
-      data: {
-        crm_code: main.crm_code,
-        account_type: 1,
-        account_code: app.globalData.teacher.id,
-        circle_id: circle_id,
-        content: content,
-        parent_id: parent_id,
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        dataList(res.data)
-      }
-    })
-  }
+//回复
+function saveComment(circle_id, content, parent_id, dataList) {
+   wx.request({
+    url: main.localUrl + 'mobileXcx/addComment', //仅为示例，并非真实的接口地址
+    data: {
+      crm_code: main.crm_code,
+      account_type: 1,
+      account_code: app.globalData.teacher.id,
+      circle_id: circle_id,
+      content: content,
+      parent_id: parent_id,
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      dataList(res.data)
+    }
+  })
+}

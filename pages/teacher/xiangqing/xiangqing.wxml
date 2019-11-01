@@ -1,0 +1,73 @@
+<view wx:for="{{circleList}}" wx:for-index="idx" wx:key="circle" bindscrolltolower="searchScrollLower" >
+      <view class="friend_list">
+        <block wx:if="{{item.type==0}}">
+          <image class="avatar_friend" src="{{item.cpc.icon}}" />   
+        </block>
+        <block wx:if="{{item.type==1}}">
+          <image class="avatar_friend" src="{{item.teacher.icon}}" />   
+        </block>
+        <view class="list_right">
+          <view class="friend_name" wx:if='{{item.type==0}}'>{{item.cpc.name}}</view> 
+          <view class="friend_name" wx:else>{{item.teacher.name}}</view>
+          <view class="friend_mood">{{item.content}}</view>
+          <view class="friend_img">    
+              <view class="weui-uploader__file" >
+                <block wx:for="{{item.img_path}}" wx:if='{{item.isUrl==0}}'  wx:for-index="imgidx" wx:key="image" wx:for-item="imgItem">
+                  <image class="weui-uploader__img" src="{{imgItem}}" data-src="{{item.img_path}}" bindtap="previewImage" data-index="{{imgidx}}" ></image>
+                </block>  
+                <block  wx:if='{{item.isUrl==1}}' >
+                    <!-- <video id="myVideo" src="{{item.img_path}}" controls="false" ></video>    -->
+                     <view class="but_img" >
+                      <image class="weui-uploader__imgVio" src="{{item.img_path}}?vframe/jpg/offset/1/w/480/h/360" ></image>
+                      <view class="but_img_del" data-src="{{item.img_path}}" bindtap="showModal">
+                        <image src='../../../image/pengyouquan_play@2x.png'  ></image>
+                      </view>
+                    </view> 
+                </block> 
+              </view>    
+          </view>
+          <view class='clear' wx:if="{{item.roomname!=null && item.roomname!=''}}"></view>
+          <!-- <view class="publist_time" wx:if="{{item.roomname!=null && item.roomname!=''}}" style="float:left;margin-bottom:20rpx;font-size:28rpx;color:#426ab3;width:100%;" data-latitude='{{item.latitude}}' data-longitude='{{item.longitude}}' bindtap='openMap' >{{item.roomname}}</view> -->
+          <view class='clear'></view>
+          <view class="publist_time" style="float:left;margin-top:4rpx;margin-bottom:10rpx;font-size:22rpx;color:#c2c2c2;width:45%;">{{item.createtime}}</view>
+          <!-- <view style='float:left;color:#4a86e8' wx:if="{{item.teacher.id==teacher.id}}"  data-index='{{idx}}' data-id='{{item.id}}' bindtap='delCpc'> 删除 </view> -->
+          <!-- <view style='float:left;'>
+              <image class="item-allselect" bindtap="selLike" data-circle_id='{{item.id}}' data-index='{{idx}}' data-is_like='{{item.is_like}}' src="{{item.is_like==1?'../../../image/dianzan_blue@2x.png':'../../../image/dianzan@2x.png'}}"/>
+          </view> -->
+          <!-- <view style='float:left;'><image class="item-allselect" bindtap="bindReply" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view> -->
+          <view wx:if="{{fx=='h'}}" style='float:left;margin-left:35%;'>
+          <button open-type="share" type="primary" style="width:36px;height:20px;background-color:transparent;plain:true;" bindtap="bindReply1"              data-circle_id=' {{item.id}},{{item.content}},{{item.img_path}}'>
+          <image class="item-allselect" style="float: right;" bindtap="bindReply1" data-index='{{idx}}' data-circle_id='{{item.id}}           ,{    {item.content}},{{item.img_path}}' data-parent_id='' data-parent_user='' src="../../../image/ion_09.png"/>
+           </button>
+          </view>
+         </view> 
+      </view>
+      <!-- 评论 -->
+        <!-- <view class="list_right_comment" wx:if='{{item.cpccList.length>0 || item.likeNameStr!=""}}'>
+          <view class='section'>
+            <view class="list_right_comment_fabulous" wx:if='{{item.likeNameStr!=""}}'>
+              <image src='../../../image/dianzan_line@2x.png'></image>
+              {{item.likeNameStr}}
+            </view>
+            <block wx:for="{{item.cpccList}}" wx:for-index="cpccidx" wx:key="cpcc" wx:for-item="cpcc">
+                <view class="list_right_comment_fabulous"  bindtap="bindReply" data-index='{{idx}}' data-cpccIndex='{{cpccidx}}' data-circle_id='{{item.id}}' data-parent_id='{{cpcc.id}}' data-parent_name='{{cpcc.userName}}' data-parent_tid='{{cpcc.teacher_id}}' data-cid='{{cpcc.id}}'>{{cpcc.userName}}<lable wx:if='{{cpcc.coverUserName!=""}}'>回复</lable>{{cpcc.coverUserName}}:<text>{{cpcc.content}}</text>  </view>
+            </block>
+          </view>
+        </view> -->
+    </view>
+        
+      <!-- <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>  -->
+    <!-- </scroll-view>  -->
+     <!-- <view class="release" wx:if="{{releaseFocus}}">
+        <textarea class="text" 
+        placeholder-class="input_null"
+        fixed="true"
+        maxlength="200"
+        show-confirm-bar="false"
+        cursor-spacing="15"
+        auto-height="true"
+        focus="{{releaseFocus}}"
+        placeholder="{{releaseText}}" bindinput='addContent' bindblur="releaseBlur"></textarea>
+        <view class="submit" bindtap='addCommentL'>发送</view>
+    </view>  -->
+    <view style="width:100%;padding-bottom:50rpx"></view> 

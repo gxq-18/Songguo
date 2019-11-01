@@ -49,7 +49,14 @@ Page({
         vioUrl: vioUrl,
       })
     }
-
+    //编辑页面初始化参数
+    var peram = options.id.split(",");
+    var newarray = peram.splice(2, peram.length);
+    this.setData({
+      content: peram[1].toString(),
+      imageList: newarray,
+    })
+    
   },
   addContent:function (e) {
     this.setData({
@@ -112,7 +119,7 @@ Page({
             imgs.push(tempFilePaths[i]);
           }
         }
-  
+
         that.setData({
           imageList: imgs
         })
@@ -152,7 +159,7 @@ Page({
      
      
   },
-  primary: function () {//点名保存
+  primary:  function () {//点名保存
     var that = this;
     if (that.data.content == ""){
       wx.showToast({
@@ -174,25 +181,21 @@ Page({
     }
     var imgPathStr = ""; //视频、图片上传后拼接路径
     //判断是上传视频还是图片
+    console.log("tp=" + that.data.tp);
     if (that.data.tp==0){ 
       //七牛上传图片
       for (var i = 0; i < that.data.imageList.length;i++){
-        // 交给七牛上传
-        qiniuUploader.upload(that.data.imageList[i], (qiniu) => {
-          if (null != qiniu.imageURL && "" != qiniu.imageURL) {
-            if (imgPathStr == "") {
-              imgPathStr = qiniu.imageURL;
-            } else {
-              imgPathStr += "," + qiniu.imageURL;
-            }
-          }
-          
-        }, (error) => {
-          console.error('error: ' + JSON.stringify(error));
-        });
+        //交给七牛上传
+        if (that.data.imageList[i].indexOf("pzuu7skza.bkt.clouddn.com") == -1){
+            qiniuUploader.upload(that.data.imageList[i], (qiniu) => {
+           }, (error) => {
+            console.error('error: ' + JSON.stringify(error));
+          });
+        }
+        imgPathStr += that.data.imageList[i] + ",";
       }
-    }else{//上传视频
-      
+      imgPathStr = imgPathStr.substring(0, imgPathStr.length-1);
+      }else{//上传视频
       // 交给七牛上传
       qiniuUploader.upload(that.data.vioUrl, (qiniu) => {
         if (null != qiniu.imageURL && "" != qiniu.imageURL) {
@@ -206,7 +209,7 @@ Page({
     setTimeout(function () {
       // 发布家长圈
       wx.request({
-        url: main.localUrl + 'mobileXcx/addCircle', //仅为示例，并非真实的接口地址
+        url: main.localUrl + 'mobileXcx/addCirclepublic', //仅为示例，并非真实的接口地址
         data: {
           crm_code: main.crm_code,
           account_type: 1,
@@ -227,10 +230,13 @@ Page({
           if (res.statusCode == 200) {
             wx.hideLoading();
             //成功
-            var pages = getCurrentPages(); // 当前页面  
-            var beforePage = pages[pages.length - 2]; // 前一个页面
-            beforePage.backLoad();
-            wx.navigateBack();  //返回上个页面
+            wx.navigateTo({
+              url: "../parentCircleListBypublic/parentCircleListBypublic?id=" + res.data.dataInfo.id+"&fx=h",
+            })
+            // var pages = getCurrentPages(); // 当前页面  
+            // var beforePage = pages[pages.length - 2]; // 前一个页面
+            // beforePage.backLoad();
+            // wx.navigateBack();  //返回上个页面
           }
         }
       })

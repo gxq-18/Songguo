@@ -27,6 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log((0.01+0.05)+"1111");
     var that = this;
     //初始化接口
     wx.request({
