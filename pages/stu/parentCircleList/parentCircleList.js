@@ -138,7 +138,7 @@ Page({
     // callbackcount = that.data.callbackcount; //返回数据的个数  
     //访问网络  
     circleList( that.data.searchPageNum, that.data.callbackcount, (data) => {
-      console.log(data.dataInfo.dataList);
+     // console.log(data.dataInfo.dataList);
       //判断是否有数据，有则取数据  
       if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
        
@@ -411,6 +411,7 @@ Page({
 
 //查询家长圈集合
 function circleList(pageindex, callbackcount, dataList) {
+  console.log(app.globalData.csc.ccm_id);
   wx.request({
     url: main.localUrl + 'mobileXcx/circleList', //仅为示例，并非真实的接口地址
     data: {
@@ -420,6 +421,7 @@ function circleList(pageindex, callbackcount, dataList) {
       account_code:0,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
+      ccmid: app.globalData.csc.ccm_id,
     },
     header: {
       'content-type': 'application/json' // 默认值

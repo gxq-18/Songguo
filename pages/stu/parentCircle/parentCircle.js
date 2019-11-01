@@ -200,6 +200,7 @@ Page({
           latitude: that.data.latitude,
           longitude: that.data.longitude,
           lookType: lookType,
+          theclass: app.globalData.csc.ccm_id
         },
         header: {
           'content-type': 'application/json' // 默认值
