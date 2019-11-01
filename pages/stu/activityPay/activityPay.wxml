@@ -2,33 +2,66 @@
 <view class='margintop5'></view>
 <view class='book'>
   <view class='payView'>
-      <view class='scatitle'>
-          {{model.title}}
+      <view class='margintop5'></view>
+
+  <view class='section' style='padding-bottom: 10%'>
+    <block wx:if="{{activityList.length==0}}" wx:key="activity">
+      <view class='wnr'>
+          <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
       </view>
-      <block wx:if='{{model.ca_type==1}}'>
-        <view class='scatext'>
-            购买课时{{model.pay_class}}节
-        </view>
-        <view class='pay'>
-          <view class='payMoney'>￥{{model.pay_money}}</view>
-          <view class='scatext' style='margin-top: 20rpx;text-decoration:line-through;'>￥{{model.old_money}}</view>
+    </block>
+    <block wx:else>
+      <scroll-view scroll-y="true" style="height: 100%"  bindscrolltolower="searchScrollLower">
+      <block wx:for="{{activityList}}" wx:key="activity">
+        <view class='bookList' bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>
+            <view class='bookListImg'>
+              <image src='{{item.img_path}}' bindload="imageLoad"  
+        style="width:200rpx; height:150rpx;"></image>
+            </view>
+            <view class='bookListContent'>
+              <view class='lable'>{{item.title}}</view>            
+              <view class='text'>时间：{{item.star_time}}至{{item.end_time}}</view>
+              <view class='text' >查看详情 ></view>
+            </view>
         </view>
       </block>
-      <block wx:if='{{model.ca_type==2}}'>
-        <block wx:if='{{model.is_pay==1}}'>
-          <view class='pay'>
-            <view class='payMoney'>￥{{model.deposit_money}}</view>
-            <view class='scatext' style='margin-top: 20rpx;text-decoration:line-through;'>￥{{model.old_deposit_money}}</view>
-          </view>
-        </block>
-      </block>
+      </scroll-view>
+    </block>
+  </view>
+ <view class="line"></view>
        <view class="container">
+           <view class="sel">
+          <view style="width: 100%;">活动费用：<text class="inputText" focus="{{focus3}}">￥{{deposit_money}}元</text></view>
+          </view>
+          <view class="line"></view>
           <view class="sel">
-          <input class="inputText" placeholder="{{pay_user}}" bindinput="inputUser" focus="{{focus3}}" value="{{userName}}"/>
+          <view style="width: 100%;">份数：
+          
+            <view style="width:100%">
+              <button class="but1" style="margin:0px;" bindtap="button1">
+                <text>+</text>
+              </button>
+              <view>
+                <input class="inputText1" bindinput="inputFs" focus="{{focus3}}" type="number" value="{{inputFs}}" /> 
+              </view>
+            <button class="but1" style="margin:0px;" bindtap="button2">
+            <text>-</text>
+            </button>
+          
+          </view>
+        </view>
+        </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">姓名：<input class="inputText" placeholder="{{pay_user}}" bindinput="inputUser" focus="{{focus3}}" value="{{userName}}"/></view>
           </view>
           <view class="line"></view>
          <view class="sel">
-          <input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/>
+          <view style="width: 100%;">手机号：<input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/></view>
+          </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">应支付：<text class="inputText" focus="{{focus1}}" >{{money}}</text></view>
           </view>
           <view class="line"></view>
           <!-- <view class="sel">
@@ -37,7 +70,7 @@
           </view>
           <view class="line"></view> -->
         </view>
-  </view>
+  
  
 <!--按钮-->
     <view class="loginBtnView">
@@ -83,3 +116,4 @@
     </view>
     <view class='payTitle'>可在【我的-我参与的活动】查看详情</view>
 </modal>
+</view>

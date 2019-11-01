@@ -135,7 +135,6 @@ Page({
     
     app.globalData.userInfo = e.detail.userInfo;
     // if (null != app.globalData.userInfo) {
-
     if (userInfo != null) {
      
       //获取openid

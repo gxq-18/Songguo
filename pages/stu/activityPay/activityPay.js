@@ -1,6 +1,7 @@
 // pages/stu/activityPay/activityPay.js
 var main = require('../../../utils/main.js');
 var util = require('../../../utils/util.js');
+var WxParse = require('../../../wxParse/wxParse.js');
 //获取应用实例
 const app = getApp()
 Page({
@@ -9,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:'',
     hidden: true,
     nocancel: false,
     pay_user:"",
@@ -19,6 +21,21 @@ Page({
     userName:'',
     mobile: '',
     sendCode: "",
+    deposit_money:0,
+    inputFs:1,
+    money:0,
+
+    screenWidth: 0,
+    screenHeight: 0,
+    imgwidth: 0,
+    imgheight: 0,
+    activityList: [],
+    content: "",
+    searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
+    callbackcount: 15,      //返回数据的个数  
+    totalPage: 0,
+    searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
+    searchLoadingComplete: false,  //“没有数据”的变量，默认false，隐藏 
 
   },
 
@@ -28,7 +45,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var id = options.id;
-
+    console.log(options.id);
     findView(id, (data) => {
       var pay_user = "";
       var caType = data.ca_type;
@@ -36,15 +53,25 @@ Page({
         pay_user = "购买人姓名";
       if (caType = 2)
         pay_user = "报名人姓名";
-
-
-      that.setData({
-        model: data,
-        userName: app.globalData.cpc.name,
-        mobile: app.globalData.cpc.mobile,
-        pay_user: pay_user,
+      findView(id, (data) => {
+        that.setData({
+          model: data,
+        })
+        /**
+       * html解析示例
+       */
+        WxParse.wxParse('article', 'html', data.content, that, 5);
       })
+      
     })
+    
+    that.setData({
+      userName: options.name,
+      mobile: options.phone,
+      id: options.id,
+      
+    })
+    this.fetchSearchList();
   },
 
   /**
@@ -88,6 +115,7 @@ Page({
   onReachBottom: function () {
   
   },
+  
 
   /**
    * 用户点击右上角分享
@@ -95,6 +123,7 @@ Page({
   onShareAppMessage: function () {
   
   },
+  
   cancel: function () {
     this.setData({
       hidden: false
@@ -106,6 +135,7 @@ Page({
     });
     wx.navigateBack();  //返回上个页面
   },
+  
   inputUser: function (e) {
     this.setData({
       userName: e.detail.value
@@ -120,6 +150,32 @@ Page({
     this.setData({
       sendCode: e.detail.value
     })
+  },
+  button1:function(e){
+    console.log(this.data.inputFs+"www");
+    console.log("aaaaaaaaaaaaaa" + this.data.deposit_money + this.data.money);
+    console.log(this.data.deposit_money * this.data.inputFs);
+    // console.log(eval(0.01+0.05));
+    this.setData({
+      inputFs: this.data.inputFs + 1,
+      money: (this.data.deposit_money * (this.data.inputFs+1))
+    })
+  },
+  button2: function (e) {
+    console.log(this.data.inputFs + "www");
+    if(this.data.inputFs == 1){
+      wx.showToast({
+        title: '最少购买一份',
+        duration: 1500,
+        icon: 'none'
+      });
+    }else{
+      this.setData({
+        inputFs: this.data.inputFs - 1,
+        money:(this.data.deposit_money*(this.data.inputFs-1))
+
+      })
+    }
   },
 
   /** 
@@ -203,6 +259,7 @@ Page({
             ca_id: that.data.model.id,
             user_name: that.data.userName,
             user_mobile: that.data.mobile,
+            money:that.data.money
           },
           header: {
             'content-type': 'application/json' // 默认值
@@ -271,6 +328,7 @@ Page({
             ca_id: that.data.model.id,
             user_name: that.data.userName,
             user_mobile: that.data.mobile,
+            money: that.data.money
           },
           header: {
             'content-type': 'application/json' // 默认值
@@ -313,6 +371,95 @@ Page({
       }
   },
   
+  
+  imageLoad: function (e) {
+    var _this = this;
+    var $width = e.detail.width,    //获取图片真实宽度  
+      $height = e.detail.height,
+      ratio = $width / $height;   //图片的真实宽高比例  
+    var viewWidth = 230,           //设置图片显示宽度，  
+      viewHeight = 230 / ratio;    //计算的高度值     
+    this.setData({
+      imgwidth: viewWidth,
+      imgheight: viewHeight
+    })
+  },
+  view: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "../activityView/activityView?id=" + id + "&isPay=0",
+    })
+  },
+  //分页搜索活动
+  fetchSearchList: function () {
+    let that = this;
+    // searchPageNum = that.data.searchPageNum,//把第几次加载次数作为参数  
+    // callbackcount = that.data.callbackcount; //返回数据的个数  
+    //访问网络  
+    
+    findList( that.data.id,that.data.searchPageNum, that.data.callbackcount, (data) => {
+      console.log(data.dataInfo.dataList[0].deposit_money);
+      //判断是否有数据，有则取数据  
+      if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
+
+        let searchList = [];
+        //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
+        that.data.isFromSearch ? searchList = data.dataInfo.dataList : searchList = that.data.activityList.concat(data.dataInfo.dataList)
+        that.setData({
+          deposit_money: data.dataInfo.dataList[0].deposit_money,
+          money: data.dataInfo.dataList[0].deposit_money,
+          activityList: searchList, //获取数据数组  
+          searchLoading: true   //把"上拉加载"的变量设为false，显示  
+        });
+        //判断页码是否是最后一页
+        if (data.dataInfo.totalPage <= that.data.searchPageNum) {
+          that.setData({
+            searchLoadingComplete: true, //把“没有数据”设为true，显示  
+            searchLoading: false  //把"上拉加载"的变量设为false，隐藏  
+          });
+        }
+        //没有数据了，把“没有数据”显示，把“上拉加载”隐藏  
+      } else {
+        that.setData({
+          searchLoadingComplete: true, //把“没有数据”设为true，显示  
+          searchLoading: false  //把"上拉加载"的变量设为false，隐藏  
+        });
+      }
+    })
+  },
+  //滚动到底部触发事件  
+  searchScrollLower: function () {
+
+    let that = this;
+    if (that.data.searchLoading && !that.data.searchLoadingComplete) {
+      that.setData({
+        searchPageNum: that.data.searchPageNum + 1,  //每次触发上拉事件，把searchPageNum+1  
+        isFromSearch: false  //触发到上拉事件，把isFromSearch设为为false  
+      });
+      that.fetchSearchList();
+    }
+  },
+  backLoad() {
+    this.setData({
+      activityList: [],
+      searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
+      callbackcount: 15,      //返回数据的个数  
+      totalPage: 0,
+      searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
+      searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏  
+    })
+    this.fetchSearchList();
+  },
+  activityView: function (e) {
+    // var model = JSON.stringify(e.currentTarget.dataset.model);
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "../activityView/activityView?id=" + id,
+    })
+  },
+
+
+
 
 })
 
@@ -345,6 +492,7 @@ function getSmsCode(mobile, data) {
       data(res.data)
     }
   })
+
 }
 
 //发起支付
@@ -373,4 +521,27 @@ function doWxPay(param, payState) {
       console.log("pay complete")
     }
   });
+
 }  
+
+
+
+//查询活动
+function findList(id,pageindex, callbackcount, dataList) {
+  wx.request({
+    url: main.localUrl + 'mobileXcx/stuActivityList', //仅为示例，并非真实的接口地址
+    data: {
+      id1:id,
+      crm_code: main.crm_code,
+      account_code: app.globalData.cpc.id,
+      currentPage: pageindex,
+      rowCountPerPage: callbackcount,
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      dataList(res.data)
+    }
+  })
+}

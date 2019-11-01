@@ -103,7 +103,7 @@ Page({
   pay: function (e) {
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
     wx.navigateTo({
-      url: "../activityPay/activityPay?id="+this.data.model.id,
+      url: "../activitydata/activitydata?id="+this.data.model.id,
     })
   }  
 })
