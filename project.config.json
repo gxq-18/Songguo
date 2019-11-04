@@ -18,11 +18,12 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"enhance": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx585221285ccbb75f",
+	"appid": "wx224233d288ff0175",
 	"projectname": "aters",
 	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
