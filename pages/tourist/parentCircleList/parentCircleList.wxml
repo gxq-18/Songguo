@@ -3,11 +3,11 @@
   <!-- <image src="../../../image/t_me_head.png" style="width:100%;height:400rpx;">背景图</image> -->
 
   <!-- <scroll-view scroll-y="true" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower" > -->
-  <view bindtap="actionSheetChange" style="background-image: url('{{bpImage}}');background-size:100%; background-repeat:no-repeat;width:100%;height:400rpx;">
+  <!-- <view bindtap="actionSheetChange" style="background-image: url('{{bpImage}}');background-size:100%; background-repeat:no-repeat;width:100%;height:400rpx;">
     <image class="avatar" src="{{cpc.icon}}"/>
     <text class="nickname">{{cpc.name}}</text>
   </view>
-  <view style="width:100%;height:40rpx"></view>
+  <view style="width:100%;height:40rpx"></view> -->
   <view class="loading" hidden="{{!pullDownRefresh}}">正在载入...</view>  
 <!-- class="{{showModalStatus?'noscroll':''}}" -->
 <block wx:if="{{circleList.length==0}}" wx:key="activity">

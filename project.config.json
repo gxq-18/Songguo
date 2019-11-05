@@ -23,7 +23,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx224233d288ff0175",
+	"appid": "wx8d292fb8b61a51d2",
 	"projectname": "aters",
 	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
@@ -66,8 +66,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/teacher/xiangqing/xiangqing",
-					"pathName": "pages/teacher/xiangqing/xiangqing",
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
 					"query": "",
 					"scene": null
 				}

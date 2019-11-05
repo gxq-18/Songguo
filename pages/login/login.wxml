@@ -1,6 +1,15 @@
 <!--pages/teacher/shouquan/souquan.wxml-->
 <!-- <view class='title'>绑定账号</view> -->
+
 <view class="container">
+<view class="userinfo">
+  <form bind:submit="formSubmit" report-submit="true">
+    <button class="formBtn" formType="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="teaLogin">
+      <image class="userinfo-avatar" src="../../image/ion_02.png" background-size="cover"></image>
+     </button>
+  </form>
+  <text class="userinfo-nickname">老师登录</text>
+</view> 
   <view class="sel">
     <!--账号-->
   <input class="inputText" placeholder="账号" bindinput="phoneInput" focus="{{focus1}}"/>
@@ -15,7 +24,7 @@
 
     <!--按钮-->
     <view class="loginBtnView">
-      <button class="loginBtn"  bindtap="binding">绑定</button>
+      <button class="loginBtn"  bindtap="binding">登录</button>
     </view>
   </view>
 

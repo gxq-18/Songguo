@@ -1,6 +1,7 @@
-
 //var localUrl = "https://www.arter.net.cn/";
 var localUrl = "http://121.40.104.182:8088/shiyi_xcx/";
+//var localUrl = "http://121.40.104.182:8088/shiyi_xcx/";
+//var localUrl = "http://localhost:8080/aters_xcx_interface/";
 //var localUrl ="http://www.songguoyun.com.cn:8088/jn_aters_xcx_interface/";
 var crm_code = "crm0000";
 const qiniuUploader = require("qiniuUploader");
@@ -218,7 +219,8 @@ function initQiniu() {
 }
 // 收集formid
 function collectFomrId(formId, time, openId) {
-
+  console.log("openid=↓↓↓↓↓↓↓↓");
+  console.log(openId);
   wx.request({
     url: localUrl + 'mobileXcx/collectFomrId', //仅为示例，并非真实的接口地址
     data: {

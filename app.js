@@ -39,8 +39,8 @@ App({
   globalData: {
     // appid: 'wxa9fe7f574b10e481',//appid需自己提供，此处的appid我随机编写
     // secret: '124b69cfc739ba1b8e8b47d86cea5926',//secret需自己提供，此处的secret我随机编写
-    appid: 'wx9b1d48f2eb0fece9',//appid需自己提供，此处的appid我随机编写  
-    secret: '915218a15c0c7c77ed102d665070a914',//secret需自己提供，此处的secret我随机编写  
+    appid: 'wx8d292fb8b61a51d2',//appid需自己提供，此处的appid我随机编写  
+    secret: '5514e9cdd9385e89c6511538a198f1dd',//secret需自己提供，此处的secret我随机编写  
     menuList:[],
     userInfo: null,
     teacher: {},

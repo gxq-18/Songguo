@@ -216,7 +216,8 @@ Page({
     //   this.shouquan();
     // }  else{
     var userInfo = e.detail.userInfo;
-    console.log("userInfo=" + userInfo);
+    console.log("userInfo↓↓↓↓↓↓↓↓");
+    console.log(userInfo);
     app.globalData.userInfo = e.detail.userInfo;
     if (userInfo != null) {
       //获取openid
