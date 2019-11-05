@@ -389,7 +389,7 @@ Page({
   },
   onShow: function () {
     wx.setNavigationBarTitle({
-      title: '艺瞬间'
+      title: '班级圈'
     });
    
 

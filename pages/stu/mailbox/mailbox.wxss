@@ -1,4 +1,62 @@
 /* pages/stu/mailbox/mailbox.wxss */
+/* 悬浮添加按钮 */
+
+.friend_name{
+    margin-bottom: 16rpx;
+    font-weight: 900;
+    color:#767998;
+}
+.friend_mood{
+    margin-bottom: 16rpx; 
+    width:95%
+}
+.weui-uploader__file {
+  float: left;
+}
+.list_right{
+   flex:6;
+   flex-direction: coulmn;
+}
+.friend_list{
+  width:95%;
+  margin:40rpx 20rpx 0 20rpx;
+  margin-right: 20rpx;
+ 
+  display: -webkit-flex;
+  flex-direction: row;
+  min-height:240rpx;
+  font-size:35rpx;
+  font: "宋体", "微软雅黑";
+}
+.weui-uploader__img {
+  display: block;
+  width: 160rpx;
+  height: 160rpx;
+  float:left;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.avatar_friend {  
+  width: 100rpx;
+  height: 100rpx;
+  flex:1;
+  margin-right:20rpx;
+  border-radius: 50%;
+
+}
+
+.img-plus-style{  
+  height: 150rpx;  
+  width: 150rpx;  
+  position: fixed;  
+  bottom: 10rpx;  
+  right: 40%;  
+  opacity: 0.5
+}  
+.img-plus-style:active{
+  opacity: 1;
+}
 .mbox{
   padding-top: 10rpx;
 }
@@ -29,3 +87,38 @@
   height: 50rpx;
 }
 
+/* 评论 */
+.list_right_comment{
+   width:80%;
+   margin-left: 110rpx;
+   margin-right: 20rpx;
+   flex-direction: coulmn;
+   background-color: #F0F0F0;
+}
+.list_right_comment_fabulous{
+   margin-bottom: 10rpx; 
+   width:100%;
+   font-size:30rpx;
+   color: #4a86e8;
+   word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+}
+.list_right_comment_fabulous:active{ 
+ background-color:#ccc;
+
+}
+.list_right_comment_fabulous image{
+  width: 35rpx;
+  height: 35rpx;
+}
+.list_right_comment_fabulous text{
+  padding-left: 20rpx;
+  color: #434343;
+  
+}
+.list_right_comment_fabulous lable{
+  padding-left: 5rpx;
+  padding-right: 5rpx;
+  color: #434343;
+}

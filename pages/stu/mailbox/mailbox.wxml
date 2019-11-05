@@ -16,17 +16,39 @@
           <view class='mtime'>{{item.createtime}}</view>
         </view>
       </block> -->
+      
       <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for-index="idx"  data-index="{{idx}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{mailList}}" wx:key="">
-            <view class="content">
+            
               <view class='mbox' bindtap='view' data-model='{{item}}'>
-                <view class='mtitle'>{{item.title}}</view>
-                <view class="mcontent">
-                  {{item.content}}
+              <view class="friend_list">
+                <image class="avatar_friend" src="{{cpc.icon}}" />
+              
+              <view class="list_right">
+                <view class='friend_name'>{{cpc.name}}</view>
+                <view class='friend_mood'>{{item.title}}</view>
+                <view  class="mcontent">{{item.content}}</view>
+                <view class="friend_img">
+                <block wx:for="{{item.img_path}}"   wx:for-index="imgidx" wx:key="image" wx:for-item="imgItem">
+                    <image class="weui-uploader__img" src="{{imgItem}}" data-src="{{item.img_path}}" bindtap="previewImage" data-index="{{imgidx}}" ></image>
+                  </block> 
                 </view>
-                <view class='mtime'>{{item.createtime}}</view>
-              </view>
+                <view class="publist_time" style="float:left;margin-top:8rpx;margin-bottom:20rpx;font-size:24rpx;color:#c2c2c2;width:100%;">{{item.createtime}}</view>
+        
+                </view>
+                
             </view>
-            <view class="del" catchtap="del" data-index="{{idx}}" data-id='{{item.id}}'>删除</view>
+             <view class="list_right_comment" wx:if='{{item.is_handle!=0}}'>
+            <view class='section'>
+              <view class="list_right_comment_fabulous" wx:if='{{item.is_handle!=0}}'>
+                <text>校长：</text>{{item.handle_content}}
+              </view>
+              
+            </view>
+          </view>
+          
+
+            </view>
+
           </view>
 
       <view class="loading" hidden="{{!searchLoading}}">正在载入...</view>  
@@ -38,6 +60,7 @@
 
 <view class='address-add'>
 <form  report-submit bindsubmit='write'>
-  <button class='Btn' size="default" form-type="submit">写 信</button> 
+  <!-- <button class='Btn' size="default" form-type="submit">写 信</button> -->
+  <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='write' ></image>  
   </form>
 </view>  

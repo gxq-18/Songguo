@@ -93,7 +93,7 @@
             <text>艺瞬间</text>
         </view>
         <view class="client_head_style"  id="3">
-            <form  report-submit bindsubmit='activity'>
+            <form  report-submit bindsubmit='XzEmail'>
                 <button class="formBtn" form-type="submit" >
                   <image src="../../../image/ion_08.png"></image>
                 </button>

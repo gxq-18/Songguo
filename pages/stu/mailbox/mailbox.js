@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    cpc:[],
     mailList: [],
     searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
     callbackcount: 15,      //返回数据的个数  
@@ -24,10 +25,14 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    main.initQiniu();//初始化七牛
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
           scrollHeight: res.windowHeight + 700
+        });
+        that.setData({
+          cpc: app.globalData.cpc,
         });
       }
     });
@@ -109,6 +114,7 @@ Page({
         let searchList = [];
         //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
         that.data.isFromSearch ? searchList = data.dataInfo.dataList : searchList = that.data.mailList.concat(data.dataInfo.dataList)
+        console.log(searchList);
         that.setData({
           mailList: searchList, //获取数据数组  
           searchLoading: true   //把"上拉加载"的变量设为false，显示  
