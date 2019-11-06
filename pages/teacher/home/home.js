@@ -133,7 +133,7 @@ Page({
   activity: function () {
     wx.navigateTo({
       // url: "../activity/activity",
-      url: "../parentCircleList/parentCircleList",
+      url: "../../tourist/parentCircleList/parentCircleList",
     })
   },
   contentView: function (e) {

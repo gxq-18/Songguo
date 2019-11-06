@@ -227,7 +227,8 @@ Page({
             if (null != qiniu.imageURL && "" != qiniu.imageURL) {
               var tId = 0;
               var cId = 0;
-              if (_this.data.tp == 1) {
+              console.log("databj=" + (_this.data.tp));
+              if (!_this.data.tp == 1) {
                 tId = app.globalData.teacher.id;
               }else{
                 cId = app.globalData.cpc.id;

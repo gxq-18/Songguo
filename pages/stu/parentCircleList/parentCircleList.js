@@ -330,7 +330,7 @@ Page({
       sizeType: ['original'],
       success: function (res) {
         wx.navigateTo({
-          url: "../../wx-cropper/index?url=" + res.tempFilePaths[0]+"&tp=1",
+          url: "../../wx-cropper/index?url=" + res.tempFilePaths[0]+"&tp=0",
         })
         _this.actionSheetChange();
       }

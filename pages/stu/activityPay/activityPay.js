@@ -24,6 +24,8 @@ Page({
     deposit_money:0,
     inputFs:1,
     money:0,
+    weixin:true,
+    zhifubao:false,
 
     screenWidth: 0,
     screenHeight: 0,
@@ -149,6 +151,18 @@ Page({
   inputSendCode: function (e) {
     this.setData({
       sendCode: e.detail.value
+    })
+  },
+  weixin:function(e){
+    this.setData({
+      weixin:true,
+      zhifubao:false
+    })
+  },
+  zhifubao: function (e) {
+    this.setData({
+      weixin: false,
+      zhifubao: true
     })
   },
   button1:function(e){

@@ -28,28 +28,27 @@
       </scroll-view>
     </block>
   </view>
- <view class="line"></view>
+ <view class="line1"></view>
        <view class="container">
            <view class="sel">
           <view style="width: 100%;">活动费用：<text class="inputText" focus="{{focus3}}">￥{{deposit_money}}元</text></view>
           </view>
           <view class="line"></view>
           <view class="sel">
-          <view style="width: 100%;">份数：
           
-            <view style="width:100%">
+          <view style="width: 100%;">份数：
+              
               <button class="but1" style="margin:0px;" bindtap="button1">
-                <text>+</text>
+                <view>+</view>
               </button>
-              <view>
+         
                 <input class="inputText1" bindinput="inputFs" focus="{{focus3}}" type="number" value="{{inputFs}}" /> 
-              </view>
+              
             <button class="but1" style="margin:0px;" bindtap="button2">
             <text>-</text>
             </button>
-          
           </view>
-        </view>
+         
         </view>
           <view class="line"></view>
           <view class="sel">
@@ -70,12 +69,38 @@
           </view>
           <view class="line"></view> -->
         </view>
-  
- 
+
+        
+        <view class="payTitle">
+        <text>请选择支付方式</text>
+    </view>
+    <view class="payType">
+        <view class="payList">
+            <view class="payImg"><image src="../../../image/ion_11.png"></image></view>
+            <view>微信支付</view>
+            <radio style="float:right;" class="radio" bindtap="weixin" checked="{{weixin}}"></radio>
+        </view>
+        <view class="payList">
+            <view class="payImg"><image src="../../../image/ion_12.png"></image></view>
+            <view>支付宝支付</view>
+            <radio style="float:right;" class="radio" bindtap="zhifubao" checked="{{zhifubao}}"></radio>
+        </view>
+    </view>
+ <view class="bottom_total">
+    <view class="row">
+      <block>
+        <text class="total_money" >合计￥{{money}}</text>
+        <form  report-submit bindsubmit='onPayCas'>
+          <button class="button-red"  formType="submit">报 名</button>
+        </form>
+      </block>
+    </view>
+  </view>
+
 <!--按钮-->
-    <view class="loginBtnView">
+    <!-- <view class="loginBtnView">
       <form name='pushMsgFm' report-submit bindsubmit='onPayCao'>  
-        <block wx:if='{{model.ca_type==1}}'>
+        <block wx:if='{{model.ca_type==2}}'>
           <button class="payBtn" type="primary" form-type="submit" >
           <image src='../../../image/pay_weixin.png' style='width:50rpx;height:50rpx;padding-right:20rpx;'></image> 微信支付
           </button>
@@ -99,7 +124,7 @@
           </block>
         </block>
      
-    </view>
+    </view> -->
 </view>
 
 <modal hidden="{{hidden}}"  confirm-text="我知道了" bindconfirm="confirm" no-cancel="true" >
