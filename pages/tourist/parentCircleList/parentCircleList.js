@@ -29,8 +29,15 @@ Page({
     actionSheetHidden2:true,
     actionSheetHidden3: true,
     showModalStatus: false,
+    thetype: '', 
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    if (app.globalData.cpc.id != undefined || app.globalData.teacher.id != undefined) {
+      this.setData({
+        thetype: 'ysj',
+        
+      }); 
+    }
     var that = this;
     main.initQiniu();//初始化七牛
     var bpImage = app.globalData.cpc.bp_image;
@@ -40,7 +47,7 @@ Page({
 
     this.setData({
       cpc: app.globalData.cpc,
-      bpImage: bpImage
+      bpImage: bpImage,
     });
     wx.getSystemInfo({
       success: function (res) {
@@ -49,6 +56,7 @@ Page({
         });
       }
     });
+    
     this.fetchSearchList();
   },
   // 更换封面
@@ -102,6 +110,7 @@ Page({
     })
   },
   circleImg: function() {
+
     var that = this;
     wx.chooseImage({
       count: 9, // 默认9  
@@ -111,7 +120,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
         var imgmodel = JSON.stringify(res.tempFilePaths);
         wx.navigateTo({
-          url: "../parentCircle/parentCircle?imgmodel=" + imgmodel+"&tp=0",
+          url: "../parentCircle/parentCircle?imgmodel=" + imgmodel + "&tp=0" +"&thetype=ysj",
         })
         that.actionSheetChange2();
       }
@@ -200,6 +209,11 @@ Page({
       searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
       searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏  
     })
+    if (app.globalData.cpc.id != undefined || app.globalData.teacher.id != undefined) {
+      this.setData({
+        thetype: 'ysj',
+      });
+    }
     this.fetchSearchList();
   },
   // 点赞、取消点赞
@@ -412,7 +426,7 @@ Page({
 //查询家长圈集合
 function circleList(pageindex, callbackcount, dataList) {
   wx.request({
-    url: main.localUrl + 'mobileXcx/circleList', //仅为示例，并非真实的接口地址
+    url: main.localUrl + 'mobileXcx/circleListForysj', //仅为示例，并非真实的接口地址
     data: {
       crm_code: main.crm_code,
       account_type: 0,

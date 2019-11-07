@@ -106,6 +106,23 @@ Page({
 
    
   },
+  activity1: function () {
+    // wx.navigateTo({
+    //   // url: "../activity/activity",
+    //   url: "../../tourist/parentCircleList/parentCircleList",
+    // })
+    app.globalData.thetype = "ysj";
+    app.globalData.typeid = "0";
+    app.globalData.codeid = app.globalData.cpc.id;
+    wx.switchTab({
+      url: "/pages/tourist/parentCircleList/parentCircleList",
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
+    })
+  },
 
   my: function (e) {
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId

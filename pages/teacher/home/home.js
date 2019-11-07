@@ -135,6 +135,17 @@ Page({
       // url: "../activity/activity",
       url: "../../tourist/parentCircleList/parentCircleList",
     })
+    app.globalData.thetype = "ysj";
+    app.globalData.typeid = "1";
+    app.globalData.codeid = app.globalData.teacher.id;
+    wx.switchTab({
+      url: "/pages/tourist/parentCircleList/parentCircleList",
+      success: function (e) {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
+    }) 
   },
   contentView: function (e) {
     var that = this;

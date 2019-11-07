@@ -85,7 +85,7 @@
             <text>考级报名</text>
         </view>
         <view class="client_head_style" id="2">
-            <form  report-submit bindsubmit='book'>
+            <form  report-submit bindsubmit='activity1'>
                 <button class="formBtn" form-type="submit" >
                   <image src="../../../image/ion_06.png"></image>
                 </button>

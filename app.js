@@ -50,6 +50,8 @@ App({
     posterList:[],
     acList:[],
     qrcode:"",   
-    mobile:"86991095", 
+    mobile:"86991095",
+    typeid:'',
+    codeid:'', 
   }
 })
