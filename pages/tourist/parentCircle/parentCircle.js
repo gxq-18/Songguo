@@ -159,26 +159,29 @@ Page({
     if (that.data.tp == 0) {
       //七牛上传图片 
       for (var i = 0; i < that.data.imageList.length; i++) {
+        imgPathStr += that.data.imageList[i]+",";
         // 交给七牛上传 
         qiniuUploader.upload(that.data.imageList[i], (qiniu) => {
-          if (null != qiniu.imageURL && "" != qiniu.imageURL) {
-            if (imgPathStr == "") {
-              imgPathStr = qiniu.imageURL;
-            } else {
-              imgPathStr += "," + qiniu.imageURL;
-            }
-          }
+          // if (null != qiniu.imageURL && "" != qiniu.imageURL) {
+          //   if (imgPathStr == "") {
+          //     imgPathStr = qiniu.imageURL;
+          //   } else {
+          //     imgPathStr += "," + qiniu.imageURL;
+          //   }
+          // }
 
         }, (error) => {
           console.error('error: ' + JSON.stringify(error));
         });
+        
       }
+      imgPathStr = imgPathStr.substring(0, imgPathStr.length - 1); 
     } else {//上传视频 
-
+      imgPathStr = that.data.vioUrl;
       // 交给七牛上传 
       qiniuUploader.upload(that.data.vioUrl, (qiniu) => {
         if (null != qiniu.imageURL && "" != qiniu.imageURL) {
-          imgPathStr = qiniu.imageURL;
+          // imgPathStr = qiniu.imageURL;
         }
       }, (error) => {
         console.error('error: ' + JSON.stringify(error));
@@ -202,7 +205,7 @@ Page({
           longitude: that.data.longitude,
           lookType: lookType,
           theclass: '',
-          thetype: that.data.thetype
+          thetype: 'ysj'
         },
         header: {
           'content-type': 'application/json' // 默认值 

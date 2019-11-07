@@ -89,8 +89,7 @@ Page({
   },
  
   bindPickerChange: function (e) {
-    console.log("携带的值为" + e.detail.value);
-    let array = this.data.bjnamelist;
+     let array = this.data.bjnamelist;
     let idarray = this.data.bjidlistlist;
     let index = e.detail.value;
     this.setData({
@@ -212,28 +211,27 @@ Page({
       for (var i = 0; i < that.data.imageList.length; i++) {
         // 交给七牛上传
         qiniuUploader.upload(that.data.imageList[i], (qiniu) => {
-          if (null != qiniu.imageURL && "" != qiniu.imageURL) {
-            if (imgPathStr == "") {
-              imgPathStr = qiniu.imageURL;
-            } else {
-              imgPathStr += "," + qiniu.imageURL;
-            }
-          }
+          //因处理过慢 交给后台处理
 
-        }, (error) => {
+         }, (error) => {
           console.error('error: ' + JSON.stringify(error));
         });
+        imgPathStr += that.data.imageList[i] + ","
       }
+      //处理掉最后一个逗号
+      imgPathStr = imgPathStr.substring(0, imgPathStr.length-1);
     } else {//上传视频
 
       // 交给七牛上传
       qiniuUploader.upload(that.data.vioUrl, (qiniu) => {
-        if (null != qiniu.imageURL && "" != qiniu.imageURL) {
-          imgPathStr = qiniu.imageURL;
-        }
+        //因处理过慢 交给后台处理
+        // if (null != qiniu.imageURL && "" != qiniu.imageURL) {
+        //   imgPathStr = qiniu.imageURL;
+        // } 
       }, (error) => {
         console.error('error: ' + JSON.stringify(error));
       });
+      imgPathStr = that.data.vioUrl;
     }
 
     setTimeout(function () {

@@ -71,7 +71,8 @@ Page({
     var that = this;
     var url = options.url;
     var tp = options.tp;
-  
+    console.log("tp="+tp);
+    console.log("url=" + url);
     that.setData({
       imageSrc: url,
       tp: tp
@@ -228,12 +229,12 @@ Page({
               var tId = 0;
               var cId = 0;
               console.log("databj=" + (_this.data.tp));
-              if (!_this.data.tp == 1) {
+              if (_this.data.tp == 1) {
                 tId = app.globalData.teacher.id;
               }else{
                 cId = app.globalData.cpc.id;
               }
-              wx.request({
+               wx.request({
                 url: main.localUrl + 'mobileXcx/editBpImage', //仅为示例，并非真实的接口地址
                 data: {
                   tp: _this.data.tp,

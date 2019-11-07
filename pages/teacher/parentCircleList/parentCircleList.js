@@ -61,13 +61,13 @@ Page({
   },
   // 发布家长圈
   actionSheetChange2: function (e) {
-    // this.setData({
-    //   actionSheetHidden2: !this.data.actionSheetHidden2
-    // });
-    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-    wx.navigateTo({
-      url: "../parentCircleFb/parentCircleFb",
-    })
+     this.setData({
+       actionSheetHidden2: !this.data.actionSheetHidden2
+     });
+    // main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    // wx.navigateTo({
+    //   url: "../parentCircleFb/parentCircleFb",
+    // })
   },
   // 删除评论
   actionSheetChange3: function (e) {
@@ -117,7 +117,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
         var imgmodel = JSON.stringify(res.tempFilePaths);
         wx.navigateTo({
-          url: "../parentCircle/parentCircle?imgmodel=" + imgmodel+"&tp=0",
+          url: "../parentCircleFb/parentCircleFb?imgmodel=" + imgmodel+"&tp=0",
         })
         that.actionSheetChange2();
       }
@@ -131,7 +131,7 @@ Page({
       camera: 'back',
       success: function (res) {
         wx.navigateTo({
-          url: "../parentCircle/parentCircle?vioUrl=" + res.tempFilePath+"&tp=1",
+          url: "../parentCircleFb/parentCircleFb?vioUrl=" + res.tempFilePath+"&tp=1",
         })
         that.actionSheetChange2();
       }

@@ -34,13 +34,13 @@
                   <image class="weui-uploader__img" src="{{imgItem}}" data-src="{{item.img_path}}" bindtap="previewImage" data-index="{{imgidx}}" ></image>
                 </block>  
                 <block  wx:if='{{item.isUrl==1}}' >
-                    <!-- <video id="myVideo" src="{{item.img_path}}" controls="false" ></video>    -->
-                     <view class="but_img" >
+                     <!-- <video id="myVideo" src="{{item.img_path}}" controls="false"></video> -->
+                      <view class="but_img">
                       <image class="weui-uploader__imgVio" src="{{item.img_path}}?vframe/jpg/offset/1/w/480/h/360" ></image>
                       <view class="but_img_del" data-src="{{item.img_path}}" bindtap="showModal">
                         <image src='../../../image/pengyouquan_play@2x.png'  ></image>
                       </view>
-                    </view> 
+                    </view>  
                 </block> 
               </view>    
           </view>

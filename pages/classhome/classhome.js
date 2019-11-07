@@ -3,7 +3,6 @@ var main = require('../../utils/main.js');
 
 //获取应用实例
 const app = getApp()
-
 Page({
 
   /**
@@ -15,6 +14,7 @@ Page({
     home_01_btn: "../../image/stuloginCheck.png",
     home_02: "../../image/login_teather@2x.png",
     posterList: [],
+    teachericon:'',
     
     stuloginCheck: false,
   },
@@ -255,7 +255,6 @@ Page({
                       'content-type': 'application/json' // 默认值
                     },
                     success: function (res) {
-                      console.log(res.data)
                       //为绑定，跳转绑定页面
                       if (res.data.succeed != "000") {
                         wx.navigateTo({
@@ -264,6 +263,7 @@ Page({
                       } else {
                         if (res.data.dataInfo.tea != null) {
                           app.globalData.teacher = res.data.dataInfo.tea;
+                          console.log("laoshiid=" + app.globalData.teacher.id);
                         }
                         wx.navigateTo({
                           url: '../teacher/home/home'
