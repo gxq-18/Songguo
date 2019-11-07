@@ -40,7 +40,6 @@ Page({
         tp: tp,
         imageList: imgmodel,
         thetype: options.thetype,
-        thetype: options.thetype
       })
     }
     if (tp == 1) {
