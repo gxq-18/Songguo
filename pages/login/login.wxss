@@ -1,4 +1,18 @@
 @import "../binding/binding.wxss";
+
+.sel {
+ padding-top: 50rpx;
+ padding-bottom: 20rpx;
+ width: 90%;
+}
+.inputText { 
+ flex: block; 
+ float: left; 
+ text-align: left; 
+ margin-top: 11px; 
+ font-size: 14px;
+ width: 680rpx;
+}
  .userinfo {
   display: flex;
   flex-direction: column;
@@ -29,3 +43,23 @@
   color: #4F4F4F;
   font-size:75%
 }
+
+.userinfo-nickname1 {
+ 
+  color: #4F4F4F;
+ 
+  font-size:75%
+ 
+}
+ 
+.titles{
+ 
+display: flex;
+ 
+font-size: 26px;
+ 
+font-weight: 700;
+ 
+}
+ 
+

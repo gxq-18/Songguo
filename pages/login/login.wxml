@@ -8,9 +8,10 @@
       <image class="userinfo-avatar" src="../../image/ion_02.png" background-size="cover"></image>
      </button>
   </form>
-  <text class="userinfo-nickname">老师登录</text>
+  <text class="titles">老师登录</text>
 </view> 
-  <view class="sel">
+  
+<view class="sel">
     <!--账号-->
   <input class="inputText" placeholder="账号" bindinput="phoneInput" focus="{{focus1}}"/>
   </view>
@@ -26,6 +27,6 @@
     <view class="loginBtnView">
       <button class="loginBtn"  bindtap="binding">登录</button>
     </view>
-  </view>
-
+ 
+ </view>
 

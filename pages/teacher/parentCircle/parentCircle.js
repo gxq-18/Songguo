@@ -64,7 +64,6 @@ Page({
     })
   },
   bindPickerChange:function(e){
-    console.log("携带的值为" + e.detail.value);
     this.setData({
       bjlistindex: e.detail.value
     })

@@ -131,10 +131,6 @@ Page({
     })
   },
   activity: function () {
-    wx.navigateTo({
-      // url: "../activity/activity",
-      url: "../../tourist/parentCircleList/parentCircleList",
-    })
     app.globalData.thetype = "ysj";
     app.globalData.typeid = "1";
     app.globalData.codeid = app.globalData.teacher.id;

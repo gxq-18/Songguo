@@ -1,7 +1,14 @@
 <!--pages/teacher/shouquan/souquan.wxml-->
-<view class='title'>绑定账号</view>
 <view class="container">
-    <!-- <view class="sel">
+<view class="userinfo"> 
+  <form bind:submit="formSubmit" report-submit="true"> 
+    <button class="formBtn" formType="submit" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="stuNavigate" bindtouchstart="mytouchstart"> 
+      <image class="userinfo-avatar" src="../../image/ion_01.png" background-size="cover"></image> 
+    </button> 
+  </form> 
+  <text class="titles">家长/学生账号</text> 
+ </view> 
+   <view class="sel">
       <input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}"/>
     </view>
     <view class="line"></view>
@@ -9,7 +16,7 @@
     <input class="inputText" style='width:60%' placeholder="验证码" bindinput="inputSendCode"  focus="{{focus2}}"/>
     <button class="{{sendmsg}}" hover-class='classCurr_view_but_hover' bindtap='sendmessg'>{{getmsg}}</button>
   </view>
-  <view class="line"></view> -->
+  <view class="line"></view>
     
   <view class="sel">
     <!--账号-->
@@ -20,7 +27,7 @@
 
     <!--按钮-->
     <view class="loginBtnView">
-      <button class="loginBtn"  size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}"  bindtap="binding">绑定</button>
+      <button class="loginBtn"  size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}"  bindtap="binding">登录</button>
  
     </view>
   </view>

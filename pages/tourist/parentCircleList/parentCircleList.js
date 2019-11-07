@@ -31,11 +31,10 @@ Page({
     showModalStatus: false,
     thetype: '', 
   },
-  onLoad: function (options) {
+onLoad: function (options) {
     if (app.globalData.cpc.id != undefined || app.globalData.teacher.id != undefined) {
       this.setData({
         thetype: 'ysj',
-        
       }); 
     }
     var that = this;

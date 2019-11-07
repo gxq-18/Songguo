@@ -48,6 +48,10 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 2,
 			"list": [
@@ -66,8 +70,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
+					"name": "pages/binding/binding",
+					"pathName": "pages/binding/binding",
 					"query": "",
 					"scene": null
 				}
