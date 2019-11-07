@@ -159,26 +159,30 @@ Page({
       //七牛上传图片
       for (var i = 0; i < that.data.imageList.length;i++){
         // 交给七牛上传
+        imgPathStr += that.data.imageList[i] + ",";
         qiniuUploader.upload(that.data.imageList[i], (qiniu) => {
-          if (null != qiniu.imageURL && "" != qiniu.imageURL) {
-            if (imgPathStr == "") {
-              imgPathStr = qiniu.imageURL;
-            } else {
-              imgPathStr += "," + qiniu.imageURL;
-            }
-          }
+          // if (null != qiniu.imageURL && "" != qiniu.imageURL) {
+          //   if (imgPathStr == "") {
+          //     imgPathStr = qiniu.imageURL;
+          //   } else {
+          //     imgPathStr += "," + qiniu.imageURL;
+          //   }
+          // }
+          
           
         }, (error) => {
           console.error('error: ' + JSON.stringify(error));
         });
       }
+      imgPathStr = imgPathStr.substring(0, imgPathStr.length-1);
     }else{//上传视频
       
       // 交给七牛上传
+      imgPathStr += that.data.vioUrl;
       qiniuUploader.upload(that.data.vioUrl, (qiniu) => {
-        if (null != qiniu.imageURL && "" != qiniu.imageURL) {
-          imgPathStr = qiniu.imageURL;
-        }
+        // if (null != qiniu.imageURL && "" != qiniu.imageURL) {
+        //   imgPathStr = qiniu.imageURL;
+        // }
       }, (error) => {
         console.error('error: ' + JSON.stringify(error));
       });

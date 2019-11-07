@@ -6,7 +6,7 @@ const app = getApp()
 
 Page({
   data: {
-    bpImage:'http://p7mq9gjza.bkt.clouddn.com/t_me_head.png',
+    bpImage:'',
     cpc:[],
     circleList:[],
     content:"",

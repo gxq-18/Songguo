@@ -70,8 +70,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/binding/binding",
-					"pathName": "pages/binding/binding",
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
 				}
