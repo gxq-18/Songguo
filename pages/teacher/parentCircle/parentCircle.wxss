@@ -1,5 +1,5 @@
 page {
- background-color: #F0F0F0;
+ background-color: #fff;
 }
 icon {
   vertical-align: middle;
@@ -1135,5 +1135,24 @@ icon {
  width:100%;
  height:50rpx;
 
+
+}
+/* 绝对定位 */
+.but_img{
+  position:relative; 
+  padding-top: 10%;
+}
+.but_img image{
+  padding-left: 11%;
+}
+.but_img_del{
+  position: absolute;
+  left:40%;    /*相对于自己往右偏离150*/
+  top:130rpx; 
+  padding-top: 15%;
+}
+.but_img_del image{
+  width: 120rpx;
+  height: 120rpx;
 
 }

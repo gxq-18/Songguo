@@ -131,7 +131,7 @@ Page({
       camera: 'back',
       success: function (res) {
         wx.navigateTo({
-          url: "../parentCircleFb/parentCircleFb?vioUrl=" + res.tempFilePath+"&tp=1",
+          url: "../parentCircleFb/parentCircle?vioUrl=" + res.tempFilePath+"&tp=1",
         })
         that.actionSheetChange2();
       }
@@ -268,12 +268,22 @@ Page({
     
   },
   bindReply1: function (e) {
-     //console.log("id="+e.currentTarget.dataset.circle_id);
-     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-     wx.navigateTo({
-       url: "../parentCircle/parentCircle?id=" + e.currentTarget.dataset.circle_id,
-    })
-  },
+    var tp = e.currentTarget.dataset.circle_id.split("=");
+    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    var peram = tp[0].split(",");
+    var newarray = peram.splice(2, peram.length);
+    //图片=0  视频=1
+    if (tp[1] == 0){
+      wx.navigateTo({
+        url: "../parentCircle/parentCircle?imgmodel=" + newarray + "&tp=0" + "&content=" + peram[1].toString(),
+      })
+    } else if (tp[1] == 1){
+      wx.navigateTo({
+        url: "../parentCircle/parentCircle?vioUrl=" + newarray + "&tp=1" + "&content=" + peram[1].toString(),
+      })
+  }
+    
+},
 
   //发送回复信息
   addCommentL:function(){

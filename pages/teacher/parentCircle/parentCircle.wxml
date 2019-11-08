@@ -10,7 +10,7 @@
  </view> -->
      
   <view class="section" style='background-color: #fff;'>
-    <textarea bindblur="addContent" auto-height placeholder="孩子回忆生活中的危险,并用简单的线条表达出来。画纸的装帧,锻炼孩子的手眼协调一致。" maxlength='500' value="{{content}}" style="margin-top:20rpx;margin-left:20rpx;width:680rpx;" name="textarea" />
+    <textarea bindblur="addContent" auto-height placeholder="孩子回忆生活中的危险,并用简单的线条表达出来。画纸的装帧,锻炼孩子的手眼协调一致。" maxlength='500' value="{{content}}" style="margin-top:20rpx;margin-left:20rpx;width:680rpx;height:50px;" name="textarea" />
   </view>
   <block wx:if="{{tp==0}}">
     <view  style="padding-top:80rpx;float:left;padding-bottom:0;background-color: #fff;width:100%;">
@@ -45,11 +45,17 @@
     </view>
   </block>
   <block wx:if="{{tp==1}}">
-    <view   style="padding-top:80rpx;background-color: #fff;width:100%;">
+    <!-- <view   style="padding-top:80rpx;background-color: #fff;width:100%;">
         <view class='section'>
           <video id="myVideo" src="{{vioUrl}}" controls="false" ></video> 
         </view>
-    </view>
+    </view> -->
+    <view class="but_img">
+                      <image class="weui-uploader__imgVio" src="{{vioUrl}}?vframe/jpg/offset/1/w/480/h/360" ></image>
+                      <view class="but_img_del" data-src="{{vioUrl}}" bindtap="showModal">
+                        <image src='../../../image/pengyouquan_play@2x.png'  ></image>
+                      </view>
+                    </view>
   </block>
 <!--   
   <view class="page-body" style="float:left;width:100%;border-bottom:1rpx solid #ccc;">

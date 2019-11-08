@@ -35,11 +35,13 @@ Page({
   onLoad: function (options) {
     main.initQiniu();//初始化七牛
     var tp = options.tp;
+    var context = options.content;
     if(tp==0){
-      var imgmodel = JSON.parse(options.imgmodel);
+      var imgmodel = options.imgmodel.split(",");
       this.setData({
         tp: tp,
         imageList: imgmodel,
+        content: context,
       })
     }
     if (tp == 1) {
@@ -47,16 +49,44 @@ Page({
       this.setData({
         tp: tp,
         vioUrl: vioUrl,
+        content: context,
       })
     }
     //编辑页面初始化参数
-    var peram = options.id.split(",");
-    var newarray = peram.splice(2, peram.length);
-    this.setData({
-      content: peram[1].toString(),
-      imageList: newarray,
-    })
+    // var peram = options.id.split(",");
+    // var newarray = peram.splice(2, peram.length);
+    // this.setData({
+    //   content: peram[1].toString(),
+    //   imageList: newarray,
+    // })
     
+  },
+  showModal: function (e) {
+    var videoUrl = e.currentTarget.dataset.src;
+    wx.navigateTo({
+      url: "../parentCircleListVio/parentCircleListVio?videoUrl=" + videoUrl,
+    })
+    // this.setData({
+    //   videoUrl: videoUrl
+    // })
+    // // 显示遮罩层
+    // var animation = wx.createAnimation({
+    //   duration: 200,
+    //   timingFunction: "linear",
+    //   delay: 0
+    // })
+    // this.animation = animation
+    // animation.translateY(300).step()
+    // this.setData({
+    //   animationData: animation.export(),
+    //   showModalStatus: true
+    // })
+    // setTimeout(function () {
+    //   animation.translateY(0).step()
+    //   this.setData({
+    //     animationData: animation.export()
+    //   })
+    // }.bind(this), 200)
   },
   addContent:function (e) {
     this.setData({
@@ -196,6 +226,7 @@ Page({
       imgPathStr = imgPathStr.substring(0, imgPathStr.length-1);
       }else{//上传视频
       // 交给七牛上传
+      imgPathStr += that.data.vioUrl;
       qiniuUploader.upload(that.data.vioUrl, (qiniu) => {
         if (null != qiniu.imageURL && "" != qiniu.imageURL) {
           imgPathStr = qiniu.imageURL;
@@ -204,7 +235,7 @@ Page({
         console.error('error: ' + JSON.stringify(error));
       });
     }
-
+    console.log("图片类型="+that.data.tp);
     setTimeout(function () {
       // 发布家长圈
       wx.request({

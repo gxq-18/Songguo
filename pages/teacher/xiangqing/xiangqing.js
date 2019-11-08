@@ -2,7 +2,7 @@ var main = require('../../../utils/main.js');
 const qiniuUploader = require("../../../utils/qiniuUploader");
 //获取应用实例
 const app = getApp()
-var ids="95";
+var ids="";
 
 Page({
   data: {
@@ -43,7 +43,7 @@ Page({
     this.setData({
       teacher: app.globalData.teacher,
       bpImage: bpImage,
-      //prentid: options.id,
+      prentid: options.id,
       fx: options.fx
     });
     ids = this.data.prentid;
