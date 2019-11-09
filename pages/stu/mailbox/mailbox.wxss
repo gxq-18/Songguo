@@ -19,7 +19,6 @@
 }
 .friend_list{
   width:95%;
-  margin:40rpx 20rpx 0 20rpx;
   margin-right: 20rpx;
  
   display: -webkit-flex;
@@ -59,6 +58,7 @@
 }
 .mbox{
   padding-top: 10rpx;
+  width: 100%
 }
 .mbox:active {
     background: #eee

@@ -268,8 +268,7 @@ Page({
     
   },
   bindReply1: function (e) {
-
-    var tp = e.currentTarget.dataset.circle_id.split("=");
+   var tp = e.currentTarget.dataset.circle_id.split("=");
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
     var peram = tp[0].split(",");
     var newarray = peram.splice(2, peram.length);

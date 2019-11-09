@@ -50,13 +50,14 @@
           <video id="myVideo" src="{{vioUrl}}" controls="false" ></video> 
         </view>
     </view> -->
-<view class="but_img">
+          <view class="but_img">
 
                       <image class="weui-uploader__imgVio" src="{{vioUrl}}?vframe/jpg/offset/1/w/480/h/360" ></image>
                       <view class="but_img_del" data-src="{{vioUrl}}" bindtap="showModal">
                         <image src='../../../image/pengyouquan_play@2x.png'  ></image>
                       </view>
                     </view>
+
 </block>
 
 <!--   

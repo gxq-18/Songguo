@@ -20,7 +20,7 @@
   
     <view class='codeImage' hidden='{{dataList.length>=6}}' bindtap='switchAccountAdd'>
       <image class="avatar" src="../../../image/change_id@2x.png" />
-      <view class="nickname">切换账号</view>
+      <view class="nickname">添加账号</view>
     </view>
 	</view>
    

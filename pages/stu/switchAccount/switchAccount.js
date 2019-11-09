@@ -83,6 +83,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
+        console.log(res.data.dataInfo.dataList);
         that.setData({
           dataList:res.data.dataInfo.dataList
         })
