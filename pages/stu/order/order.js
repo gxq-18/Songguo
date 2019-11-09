@@ -154,6 +154,7 @@ Page({
             searchLoading: true   //把"上拉加载"的变量设为false，显示  
           });
         } else if (that.data.currentTab == "2") {
+          console.log("！！！！！！！！！！！！！！！！！！")
           that.setData({
             dataListPay: searchList, //获取数据数组  
             searchLoading: true   //把"上拉加载"的变量设为false，显示  
@@ -252,7 +253,8 @@ function findList(currentTab,pageindex, callbackcount, dataList) {
     data: {
       currentTab: currentTab,
       cpc_id: app.globalData.cpc.id,
-      openId: app.globalData.openId,
+      openId:123456,
+      //openId: app.globalData.openId,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
     },

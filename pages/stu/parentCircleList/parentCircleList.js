@@ -31,7 +31,9 @@ Page({
     showModalStatus: false,
   },
   onLoad: function () {
+    
     var that = this;
+    
     main.initQiniu();//初始化七牛
     var bpImage = app.globalData.cpc.bp_image;
     if (null == bpImage || "" == bpImage){
@@ -50,6 +52,7 @@ Page({
       }
     });
     this.fetchSearchList();
+    
   },
   // 更换封面
   actionSheetChange: function (e) {
@@ -70,7 +73,6 @@ Page({
     });
   },
   addContent:function (e) {
-    console.log(e.detail.value);
     this.setData({
       content: e.detail.value
     })
@@ -90,7 +92,6 @@ Page({
   previewVio: function (e) {
     //获取当前图片的下标
     var src = e.currentTarget.dataset.src;
-    console.log(src);
     wx.previewVideo({
       current: 1,
       urls: src
@@ -411,14 +412,13 @@ Page({
 
 //查询家长圈集合
 function circleList(pageindex, callbackcount, dataList) {
-  console.log(app.globalData.csc.ccm_id);
   wx.request({
     url: main.localUrl + 'mobileXcx/circleList', //仅为示例，并非真实的接口地址
     data: {
       crm_code: main.crm_code,
       account_type: 0,
-      //account_code: app.globalData.cpc.id,
-      account_code:0,
+      account_code: app.globalData.cpc.id,
+      //account_code:0,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
       ccmid: app.globalData.csc.ccm_id,

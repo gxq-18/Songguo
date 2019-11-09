@@ -83,7 +83,7 @@
     </swiper-item>  
     <swiper-item>  
      <view class='section'>
-        <block wx:if="{{dataListNoPay.length==0}}" wx:key="activity">
+        <block wx:if="{{dataListPay.length==0}}" wx:key="activity">
           <view class='wnr'>
               <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
           </view>

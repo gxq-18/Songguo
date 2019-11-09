@@ -2,7 +2,7 @@
 .bookList{
   display:flex;
   justify-content: center; 
-  height: 130rpx;
+  height: 13%;
   margin-top: 20rpx;
   padding: 10rpx 10rpx 10rpx 10rpx;
   

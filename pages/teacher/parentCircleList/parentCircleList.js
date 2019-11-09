@@ -131,7 +131,7 @@ Page({
       camera: 'back',
       success: function (res) {
         wx.navigateTo({
-          url: "../parentCircleFb/parentCircleFb?vioUrl=" + res.tempFilePath+"&tp=1",
+          url: "../parentCircleFb/parentCircle?vioUrl=" + res.tempFilePath+"&tp=1",
         })
         that.actionSheetChange2();
       }
@@ -268,6 +268,7 @@ Page({
     
   },
   bindReply1: function (e) {
+
     var tp = e.currentTarget.dataset.circle_id.split("=");
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
     var peram = tp[0].split(",");

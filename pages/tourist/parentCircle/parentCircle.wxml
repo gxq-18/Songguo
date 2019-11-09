@@ -38,7 +38,7 @@
   <block wx:if="{{tp==1}}"> 
     <view   style="padding-top:80rpx;background-color: #fff;width:100%;"> 
         <view class='section'> 
-          <video id="myVideo" src="{{vioUrl}}" controls="false" ></video>  
+          <video style="width:100%;" id="myVideo" src="{{vioUrl}}" controls="false" ></video>  
         </view> 
     </view> 
   </block> 

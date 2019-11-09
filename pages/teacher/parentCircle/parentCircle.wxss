@@ -1141,9 +1141,21 @@ icon {
 .but_img{
   position:relative; 
   padding-top: 10%;
+
 }
 .but_img image{
   padding-left: 11%;
+
+  display: flex;
+  align-items: center;
+justify-content: center;
+
+}
+.but_img image{
+   display: flex;
+   align-items: center;
+justify-content: center;
+
 }
 .but_img_del{
   position: absolute;
