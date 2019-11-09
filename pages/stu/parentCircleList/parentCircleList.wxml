@@ -53,7 +53,10 @@
                 <image class="item-allselect" bindtap="selLike" data-circle_id='{{item.id}}' data-index='{{idx}}' data-is_like='{{item.is_like}}' src="{{item.is_like==1?'../../../image/dianzan_blue@2x.png':'../../../image/dianzan@2x.png'}}"/>
             </view>
             <view style='float:left;'><image class="item-allselect" bindtap="bindReply" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view>
+
              <view style='float:left;'><image class="item-allselect" bindtap="bindReply1" data-index='{{idx}}' data-circle_id='{{item.id}},{{item.content}},{{item.img_path}}={{item.isUrl}}' data-parent_id='' data-parent_user='' src="../../../image/ion_09.png"/></view>
+
+
           </view> 
         </view>
         <!-- 评论 -->

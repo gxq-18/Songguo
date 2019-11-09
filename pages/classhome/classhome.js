@@ -264,10 +264,11 @@ Page({
                         if (res.data.dataInfo.tea != null) {
                           app.globalData.teacher = res.data.dataInfo.tea;
                           console.log("laoshiid=" + app.globalData.teacher.id);
+                          wx.navigateTo({
+                            url: '../teacher/home/home'
+                          })
                         }
-                        wx.navigateTo({
-                          url: '../teacher/home/home'
-                        })
+                       
                       }
                     }
                   })

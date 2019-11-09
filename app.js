@@ -53,5 +53,8 @@ App({
     mobile:"86991095",
     typeid:'',
     codeid:'', 
+    //班级圈分享 学生&老师
+    typebj:'',
+    codebj:'',
   }
 })

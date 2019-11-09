@@ -272,6 +272,8 @@ Page({
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
     var peram = tp[0].split(",");
     var newarray = peram.splice(2, peram.length);
+    app.globalData.typebj="1";
+    app.globalData.codebj=app.globalData.teacher.id;
     //图片=0  视频=1
     if (tp[1] == 0){
       wx.navigateTo({

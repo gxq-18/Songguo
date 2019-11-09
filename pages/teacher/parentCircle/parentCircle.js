@@ -242,8 +242,8 @@ Page({
         url: main.localUrl + 'mobileXcx/addCirclepublic', //仅为示例，并非真实的接口地址
         data: {
           crm_code: main.crm_code,
-          account_type: 1,
-          account_code: app.globalData.teacher.id,
+          account_type: app.globalData.typebj,
+          account_code: app.globalData.codebj,
           content: that.data.content,
           imageList: imgPathStr,
           isUrl: that.data.tp,

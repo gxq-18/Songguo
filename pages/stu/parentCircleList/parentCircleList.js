@@ -338,6 +338,26 @@ Page({
     })
   },
   
+  bindReply1: function (e) {
+
+    var tp = e.currentTarget.dataset.circle_id.split("=");
+    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    var peram = tp[0].split(",");
+    var newarray = peram.splice(2, peram.length);
+    app.globalData.typebj = "2"; //0 家长发布的 1 老师发布的 2 学生发布的
+    app.globalData.codebj = app.globalData.cpc.id;
+    //图片=0  视频=1
+    if (tp[1] == 0) {
+      wx.navigateTo({
+        url: "../../teacher/parentCircle/parentCircle?imgmodel=" + newarray + "&tp=0" + "&content=" + peram[1].toString(),
+      })
+    } else if (tp[1] == 1) {
+      wx.navigateTo({
+        url: "../../teacher/parentCircle/parentCircle?vioUrl=" + newarray + "&tp=1" + "&content=" + peram[1].toString(),
+      })
+    }
+
+  },
   showModal: function (e) {
     var videoUrl = e.currentTarget.dataset.src;
     wx.navigateTo({
