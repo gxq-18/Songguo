@@ -18,8 +18,8 @@ Page({
     inputFphone: '',
     select: false,
     disabled: false,
-    xmzj: 0,//0 为验证通过
-    sjzj: 0, // 同上
+    xmzj:1,//0 为验证通过
+    sjzj: 1, // 同上
   },
 
   onLoad: function (options) {
