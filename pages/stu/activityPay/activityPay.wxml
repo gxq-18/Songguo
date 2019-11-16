@@ -35,18 +35,30 @@
           </view>
           <view class="line"></view>
           <view class="sel">
+           <view style="width: 30%;float: left;">活动费用：</view>
+          <view style="width: 19%;float: right;">
           
-          <view style="width: 100%;">份数：
-              
+          <!-- Stepper容器 -->
+<view class="stepper">
+	<!-- 减号 -->
+	  <text class="bbb" bindtap="button2">-</text>
+
+	<!-- 数值 -->
+	<text class="aaa" type="number">{{inputFs}}</text>
+	<!-- 加号 -->
+	  <text class="bbb" bindtap="button1">+</text>
+
+  </view>
+<!--               
               <button class="but1" style="margin:0px;" bindtap="button1">
                 <view>+</view>
               </button>
          
-                <input class="inputText1" bindinput="inputFs" focus="{{focus3}}" type="number" value="{{inputFs}}" /> 
+                <text class="inputText1" focus="{{focus3}}" type="number" >{{inputFs}}</text> 
               
             <button class="but1" style="margin:0px;" bindtap="button2">
-            <text>-</text>
-            </button>
+            <text class="inputText2">-</text>
+            </button> -->
           </view>
          
         </view>

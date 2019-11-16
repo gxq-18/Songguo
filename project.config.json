@@ -70,8 +70,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/stu/home/home",
-					"pathName": "pages/stu/home/home",
+					"name": "pages/stu/activityPay/activityPay",
+					"pathName": "pages/stu/activityPay/activityPay",
 					"query": "",
 					"scene": null
 				}

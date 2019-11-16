@@ -12,25 +12,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:'',
-    cpc:'',
-    inputName:'',
-    email:'',
-    inputFphone:'',
+    id: '',
+    cpc: '',
+    inputName: '',
+    inputFphone: '',
     select: false,
-    disabled:false
+    disabled: false,
+    xmzj: 0,//0 为验证通过
+    sjzj: 0, // 同上
   },
 
   onLoad: function (options) {
     this.setData({
       cpc: app.globalData.cpc,
-      id:options.id
+      id: options.id
     });
-  },
-  email:function(e){
-    this.setData({
-      email:e.detail.value
-    })
   },
 
   //填写姓名
@@ -44,19 +40,56 @@ Page({
         icon: 'none'
       });
       this.setData({
-        disabled: true
+        inputName: "",
+        xmzj: 1,
+        disabled: true,
       })
-    } else{
+    } else {
       this.setData({
         inputName: e.detail.value,
+        xmzj: 0,
         disabled: false
       })
     }
   },
-  
+
   //填写父亲手机号
-  inputFPhone:function(e){
-    if (!(/^((13[0-9])|(14[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\d{8}$/.test(e.detail.value)) || e.detail.value == ''){
+  inputFPhone: function (e) {
+    if (!(/^((13[0-9])|(14[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\d{8}$/.test(e.detail.value)) || e.detail.value == '') {
+      wx.showToast({
+        title: '手机号有误',
+        duration: 1500,
+        icon: 'none'
+      });
+      this.setData({
+        sjzj: 1,
+        disabled: true
+      })
+    } else {
+      this.setData({
+        inputFphone: e.detail.value,
+        sjzj: 0,
+        disabled: false
+      })
+    }
+  },
+
+
+  //按钮
+  editName: function (e) {
+    //验证姓名和手机号
+    if (this.data.xmzj != 0) {
+      wx.showToast({
+        title: '姓名有误',
+        duration: 1500,
+        icon: 'none'
+      });
+      this.setData({
+        disabled: true
+      })
+      return false;
+    }else 
+    if (this.data.sjzj != 0) {
       wx.showToast({
         title: '手机号有误',
         duration: 1500,
@@ -65,41 +98,16 @@ Page({
       this.setData({
         disabled: true
       })
+      return false;
     }else{
-      this.setData({
-        inputFphone:e.detail.value,
-        disabled: false
+      main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+      wx.navigateTo({
+        url: "../activityPay/activityPay?id=" + this.data.id + "&name=" + this.data.inputName + "&phone=" + this.data.inputFphone,
       })
     }
-  },
-  //按钮
-  editName: function (e) {
-    let that  = this;
-    wx.request({
-      url: main.localUrl + 'mobileXcx/selectHdbm', //仅为示例，并非真实的接口地址
-      data: {
-        orderphone: that.data.inputFphone
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        if (res.data.ok == '') {
-          wx.navigateTo({
-            url: "../activityPay/activityPay?id=" + that.data.id + "&name=" + that.data.inputName + "&phone=" + that.data.inputFphone +"&email="+that.data.email,
-          })
-        } else {
-          wx.showToast({
-            title: '手机号重复，请检查',
-            icon: 'none',
-            duration: 2000
-          })
-        }
+   
 
-      }
-    })
   },
-  
 
   /**
   *  点击下拉框
@@ -134,4 +142,4 @@ Page({
     })
   },
 
-  })
+})
