@@ -131,7 +131,7 @@ Page({
       camera: 'back',
       success: function (res) {
         wx.navigateTo({
-          url: "../parentCircleFb/parentCircle?vioUrl=" + res.tempFilePath+"&tp=1",
+          url: "../parentCircleFb/parentCircleFb?vioUrl=" + res.tempFilePath+"&tp=1",
         })
         that.actionSheetChange2();
       }

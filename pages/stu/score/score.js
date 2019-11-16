@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //score:0,
     scrollHeight: 0,
     dataList: [],
     searchPageNum: 1,   // 设置加载的第几次，默认是第一次  

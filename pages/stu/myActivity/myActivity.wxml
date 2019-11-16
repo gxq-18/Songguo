@@ -10,7 +10,7 @@
   <block wx:else>
     <scroll-view scroll-y="true" style="height: {{scrollHeight}}rpx;"  bindscrolltolower="searchScrollLower">
     <block wx:for="{{activityList}}" wx:key="activity">
-      <view class='bookList' bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>
+      <view class='bookList' bindtap='view' data-id='{{item.bid}}' data-model='{{item}}'>
           <view class='bookListImg'>
             <image src='{{item.img_path}}' bindload="imageLoad"  
       style="width:200rpx; height:150rpx;"></image>
@@ -18,6 +18,12 @@
           <view class='bookListContent'>
             <view class='lable'>{{item.title}}</view>            
             <view class='text'>时间：{{item.star_time}}至{{item.end_time}}</view>
+            <block  wx:if="{{item.dy == 1}}">
+                <image src='../../../image/btn_02.png' style="width:30%; height:25px;float:right"></image>
+            </block>
+              <view wx:if="{{item.dy == 2}}">
+                <image src='../../../image/btn_03.png' style="width:30%; height:25px;float:right"></image>
+            </view> 
             <view class='text'  data-id='{{item.id}}' data-model='{{item}}'>查看详情 ></view>
           </view>
       </view>

@@ -71,8 +71,7 @@ Page({
           })
         } else {
           wx.navigateTo({
-            url: "../cjList/cjList?name=" + res.data.ok[0].name + "&leaver_Calligraphy=" + res.data.ok[0].leaver_Calligraphy + 
-              "&leaver_painting=" + res.data.ok[0].leaver_painting + "&leaver_music=" + res.data.ok[0].leaver_music + "&address=" + res.data.ok[0].address + "&time=" + res.data.ok[0].time + "&IdCard=" + res.data.ok[0].IdCard,
+            url: "../cjList/cjList?name=" + res.data.ok[0].name + "&IdCard=" + res.data.ok[0].IDcard,
           })
         }
 

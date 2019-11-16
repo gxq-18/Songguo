@@ -21,9 +21,11 @@ Page({
     userName:'',
     mobile: '',
     sendCode: "",
-    deposit_money:0,
+    pay_money:0,
     inputFs:1,
     money:0,
+    email:'',
+
     weixin:true,
     zhifubao:false,
 
@@ -71,7 +73,7 @@ Page({
       userName: options.name,
       mobile: options.phone,
       id: options.id,
-      
+      email:options.email
     })
     this.fetchSearchList();
   },
@@ -166,17 +168,21 @@ Page({
     })
   },
   button1:function(e){
-    console.log(this.data.inputFs+"www");
-    console.log("aaaaaaaaaaaaaa" + this.data.deposit_money + this.data.money);
-    console.log(this.data.deposit_money * this.data.inputFs);
     // console.log(eval(0.01+0.05));
     this.setData({
       inputFs: this.data.inputFs + 1,
-      money: (this.data.deposit_money * (this.data.inputFs+1))
+      money: (this.data.pay_money * (this.data.inputFs + 1)).toFixed(2)
+    })
+    var n = 2;
+    fomatFloat(this.data.money, n, (s) => {
+      console.log(s+"···························");
+      let that = this;
+      that.setData({
+        money:s
+      })
     })
   },
   button2: function (e) {
-    console.log(this.data.inputFs + "www");
     if(this.data.inputFs == 1){
       wx.showToast({
         title: '最少购买一份',
@@ -186,8 +192,14 @@ Page({
     }else{
       this.setData({
         inputFs: this.data.inputFs - 1,
-        money:(this.data.deposit_money*(this.data.inputFs-1))
-
+        money: (this.data.pay_money * (this.data.inputFs - 1)).toFixed(2)
+      })
+      var n = 2;
+      fomatFloat(this.data.money, n,(s)=>{
+        let that = this;
+        that.setData({
+          money: s
+        })
       })
     }
   },
@@ -273,7 +285,9 @@ Page({
             ca_id: that.data.model.id,
             user_name: that.data.userName,
             user_mobile: that.data.mobile,
-            money:that.data.money
+            money:that.data.money,
+            email:that.data.email,
+            copies:that.data.inputFs,
           },
           header: {
             'content-type': 'application/json' // 默认值
@@ -412,7 +426,6 @@ Page({
     //访问网络  
     
     findList( that.data.id,that.data.searchPageNum, that.data.callbackcount, (data) => {
-      console.log(data.dataInfo.dataList[0].deposit_money);
       //判断是否有数据，有则取数据  
       if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
 
@@ -420,8 +433,8 @@ Page({
         //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
         that.data.isFromSearch ? searchList = data.dataInfo.dataList : searchList = that.data.activityList.concat(data.dataInfo.dataList)
         that.setData({
-          deposit_money: data.dataInfo.dataList[0].deposit_money,
-          money: data.dataInfo.dataList[0].deposit_money,
+          pay_money: data.dataInfo.dataList[0].pay_money,
+          money: data.dataInfo.dataList[0].pay_money,
           activityList: searchList, //获取数据数组  
           searchLoading: true   //把"上拉加载"的变量设为false，显示  
         });
@@ -559,3 +572,24 @@ function findList(id,pageindex, callbackcount, dataList) {
     }
   })
 }
+
+//四舍五入并保留两位小数
+function fomatFloat(money, n) {
+  var f = parseFloat(money);
+  if (isNaN(f)) {
+    return false;
+  }
+  f = Math.round(money * Math.pow(10, n)) / Math.pow(10, n); // n 幂   
+  var s = f.toString();
+  var rs = s.indexOf('.');
+  //判定如果是整数，增加小数点再补0
+  if (rs < 0) {
+    rs = s.length;
+    s += '.';
+  }
+  while (s.length <= rs + n) {
+    s += '0';
+  }
+  console.log(s+"!!!!!!!!!!!!!!");
+  return s;
+}  

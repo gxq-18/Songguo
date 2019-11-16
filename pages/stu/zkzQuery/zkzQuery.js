@@ -70,9 +70,15 @@ Page({
             duration: 2000
           })
         }else{
+          if (res.data.ok[0].admission_ticket == null){
+            wx.navigateTo({
+              // url: "../zkzList/zkzList?leaver=" + res.data.ok[0].leaver + "&name=" + res.data.ok[0].name + "&school=" + res.data.ok[0].school+"&brithday=" + res.data.ok[0].brithday + "&IDCard=" + res.data.ok[0].IDCard,
+              url: "../zkzList/zkzList?admission_ticket=" + 0,
+            })
+          }
           wx.navigateTo({
-            url: "../zkzList/zkzList?leaver=" + res.data.ok[0].leaver + "&name=" + res.data.ok[0].name + "&school=" + res.data.ok[0].school+
-              "&brithday=" + res.data.ok[0].brithday + "&IDCard=" + res.data.ok[0].IDCard,
+            // url: "../zkzList/zkzList?leaver=" + res.data.ok[0].leaver + "&name=" + res.data.ok[0].name + "&school=" + res.data.ok[0].school+"&brithday=" + res.data.ok[0].brithday + "&IDCard=" + res.data.ok[0].IDCard,
+            url: "../zkzList/zkzList?admission_ticket=" + res.data.ok[0].admission_ticket,
           })
         }
 

@@ -51,6 +51,7 @@
     "pages/stu/scanningBook/scanningBook",
     "pages/stu/activity/activity",
     "pages/stu/activityView/activityView",
+    "pages/stu/activityView1/activityView1",
     "pages/stu/activityPay/activityPay",
     "pages/stu/layout/layout",
     "pages/stu/mailbox/mailbox",

@@ -1,3 +1,40 @@
+.bookListState{
+  width: 20%;
+  display:flex;
+  justify-content: center; 
+  font-size: 30rpx;
+  color: red;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+  font-family:microsoft yahei;
+}
+.sel {
+ padding-top: 50rpx;
+ padding-bottom: 20rpx;
+ width: 90%;
+}
+.line { 
+ width: 90%; 
+ height: 1px; 
+ background-color: #F0F0F0; 
+ margin-top: 1px; 
+} 
+.inputText { 
+ flex: block; 
+ float: right; 
+ text-align: right; 
+ margin-top: 1px; 
+ font-size: 14px;
+ width: 60%;
+ color:#7B7B7B;
+} 
 .input{
     padding-left: 20px;
     height: 24px;
@@ -16,7 +53,7 @@
 }
 .text1{
   margin-top: 5%;
-  margin-left: 1%;
+  margin-left: 40%;
   font-size: 20px;
 }
 .text2{

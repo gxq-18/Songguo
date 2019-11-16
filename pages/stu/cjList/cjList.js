@@ -8,26 +8,32 @@ Page({
    * 初始化数据
    */
   data: {
-    inputName: '',
-    IdCard: '',
-    leaver_Calligraphy:'',
-    leaver_painting:'',
-    leaver_music:'',
-    address:'',
-    time:''
+    cjlist:[],
+    // leaver_Calligraphy:'',
+    // leaver_painting:'',
+    // leaver_music:'',
+    // address:'',
+    // time:''
   },
 
   onLoad: function (options) {
     this.setData({
       inputName : options.name,
       IdCard: options.IdCard,
-      leaver_Calligraphy: options.leaver_Calligraphy,
-      leaver_painting: options.leaver_painting,
-      leaver_music: options.leaver_music,
-      address: options.address,
-      time:options.time
+
+      // leaver_Calligraphy: options.leaver_Calligraphy,
+      // leaver_painting: options.leaver_painting,
+      // leaver_music: options.leaver_music,
+      // address: options.address,
+      // time:options.time
     })
 
+    findList(this.data.inputName, this.data.IdCard, (data) => {
+      console.log((data.dataInfo.sex)+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+      this.setData({
+        cjlist: data.dataInfo
+      })
+    })
   },
   onReady: function () {
     // 页面渲染完成
@@ -42,3 +48,18 @@ Page({
     // 页面关闭
   }
 })
+function findList(name, IdCard, dataList){
+  wx.request({
+    url: main.localUrl + 'mobileXcx/cjList', //仅为示例，并非真实的接口地址
+    data: {
+      name: name,
+      IdCard: IdCard,
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      dataList(res.data);
+    }
+  })
+}

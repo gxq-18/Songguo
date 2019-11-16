@@ -1,6 +1,7 @@
+<view class="text">准考证</view>
+<view class="page-body" wx:if='{{admission_ticket == "0" }}'>
 
-<view class="page-body">
-<view class="text1">全国青少年书写能力综合测评考级准考证</view>
+<!-- <view class="text1">全国青少年书写能力综合测评考级准考证</view>
 <view class="text2">Examination certificate of the national youth writing ability comprehensive evaluation examination level</view>
 <view class="text">姓名：</view>
   <view class="inputView">
@@ -22,6 +23,11 @@
   <view class="text">准考证号：</view>
   <view class="inputView">
         <view class="input" type="idcard" placeholder-style="color: #BEBEBE	" >{{inputIdCard}}</view>
-  </view>
-  
+  </view> -->
+  <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
 </view>
+<view class="page-body" wx:if='{{admission_ticket != null}}'>
+ <image class="weui-uploader__img" src="{{admission_ticket}}" />
+
+</view>
+

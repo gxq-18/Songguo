@@ -29,17 +29,17 @@ style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
   <view class="bottom_total" wx:if="{{isPay==0}}">
     <view class="row">
       <block wx:if='{{model.ca_type==1}}'>
-        <text class="total_money" >￥{{model.pay_money}}</text>
+        <text class="total_money" >￥{{model.amoney}}</text>
         <text class="total_money_old">￥{{model.old_money}}</text>
-        <text class="total_money_con">{{model.caoCon}}人已购买</text>
+        <!-- <text class="total_money_con">{{model.caoCon}}人已购买</text> -->
         <form  report-submit bindsubmit='pay'>
           <button class="button-red"  formType="submit" >购 买</button>
         </form>
       </block>
       <block wx:if='{{model.ca_type==2}}'>
-        <text class="total_money" >￥{{model.deposit_money}}</text>
+         <text class="total_money" >￥{{model.amoney}}</text>
         <text class="total_money_old">￥{{model.old_deposit_money}}</text>
-        <text class="total_money_con">{{model.casCon}}人已报名</text>
+        <!-- <text class="total_money_con">{{model.casCon}}人已报名</text>  -->
         <form  report-submit bindsubmit='pay'>
           <button class="button-red"  formType="submit">报 名</button>
         </form>

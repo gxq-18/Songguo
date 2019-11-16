@@ -156,8 +156,6 @@ function findList(pageindex, callbackcount, is_pay,dataList) {
     url: main.localUrl + 'mobileXcx/stuActivityList', //仅为示例，并非真实的接口地址
     data: {
       crm_code: main.crm_code,
-      tourist:"tourist",
-      is_pay: is_pay,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
     },

@@ -18,7 +18,7 @@
 </view>
 
 <view class="sel">
-    <text>邮箱</text><input bindblur="aa" class="inputText" placeholder="请填写"></input>
+    <text>邮箱</text><input bindblur="email" class="inputText" placeholder="请填写"></input>
     <view class="top-selected1">{{result}}</view>
     
 <view class="line"></view>

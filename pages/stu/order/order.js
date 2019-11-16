@@ -13,8 +13,8 @@ Page({
     winWidth: 0,
     winHeight: 0,
     // tab切换  
-    currentTab: 0,  
-    pay_state:"",
+    currentTab: 0,
+    pay_state: "",
     dataList: [],
     dataListNoPay: [],
     dataListPay: [],
@@ -45,82 +45,82 @@ Page({
       }
     });
 
-    this.fetchSearchList();  
+    this.fetchSearchList();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-    /** 
-     * 滑动切换tab 
-     */  
-  bindChange: function( e ) {  
-  
-    var that = this;  
-    that.setData( { currentTab: e.detail.current });  
-    this.backLoad(); 
-  },  
+  /** 
+   * 滑动切换tab 
+   */
+  bindChange: function (e) {
+
+    var that = this;
+    that.setData({ currentTab: e.detail.current });
+    this.backLoad();
+  },
   /** 
    * 点击tab切换 
-   */  
-  swichNav: function( e ) {  
-  
-    var that = this;  
-  
-    if( this.data.currentTab === e.target.dataset.current ) { 
-      return false;  
-    } else {  
-      that.setData( {  
-        currentTab: e.target.dataset.current  
+   */
+  swichNav: function (e) {
+
+    var that = this;
+
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: e.target.dataset.current
       })
 
-    }  
-  } ,
+    }
+  },
   pay: function (e) {
     var model = JSON.stringify(e.currentTarget.dataset.model);
     wx.navigateTo({
@@ -133,9 +133,9 @@ Page({
     // searchPageNum = that.data.searchPageNum,//把第几次加载次数作为参数  
     // callbackcount = that.data.callbackcount; //返回数据的个数  
     //访问网络  
-   
 
-    findList(that.data.currentTab,that.data.searchPageNum, that.data.callbackcount, (data) => {
+
+    findList(that.data.currentTab, that.data.searchPageNum, that.data.callbackcount, (data) => {
       console.log(data.dataInfo.dataList);
       //判断是否有数据，有则取数据  
       if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
@@ -143,7 +143,7 @@ Page({
         let searchList = [];
         //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
         that.data.isFromSearch ? searchList = data.dataInfo.dataList : searchList = that.data.dataList.concat(data.dataInfo.dataList)
-        if (that.data.currentTab=="0"){
+        if (that.data.currentTab == "0") {
           that.setData({
             dataList: searchList, //获取数据数组  
             searchLoading: true   //把"上拉加载"的变量设为false，显示  
@@ -187,21 +187,21 @@ Page({
       });
       that.fetchSearchList();
     }
-  }, 
-  backLoad() {
-      this.setData({
-        dataList: [],
-        dataListNoPay: [],
-        dataListPay: [],
-        searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
-        callbackcount: 15,      //返回数据的个数  
-        totalPage: 0,
-        searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
-        searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏  
-      })
-      this.fetchSearchList();
   },
-  delOrder:function(e){
+  backLoad() {
+    this.setData({
+      dataList: [],
+      dataListNoPay: [],
+      dataListPay: [],
+      searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
+      callbackcount: 15,      //返回数据的个数  
+      totalPage: 0,
+      searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
+      searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏  
+    })
+    this.fetchSearchList();
+  },
+  delOrder: function (e) {
     var that = this;
     var id = e.currentTarget.dataset.id;
     var index = e.currentTarget.dataset.index;
@@ -242,18 +242,18 @@ Page({
       }
     })
   },
-  
+
 })
 
 
 //查询活动
-function findList(currentTab,pageindex, callbackcount, dataList) {
+function findList(currentTab, pageindex, callbackcount, dataList) {
   wx.request({
     url: main.localUrl + 'mobileXcx/myOrderList', //仅为示例，并非真实的接口地址
     data: {
       currentTab: currentTab,
       cpc_id: app.globalData.cpc.id,
-      openId:123456,
+      openId: 123456,
       //openId: app.globalData.openId,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,

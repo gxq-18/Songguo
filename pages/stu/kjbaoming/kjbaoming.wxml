@@ -1,48 +1,11 @@
 <view class="container">
-  <text style="font-size:10%;">请填写并核对报名信息</text>
+  <text style="font-size:10%;">考生在线报名</text>
 </view>
 <view class="line"></view>
 <view class="container">
 <view class="sel">
     <input bindblur="inputName" class="inputText" placeholder="请填写姓名"></input>
     <view class="top-selected1">{{result}}</view>
-    </view>
-<view class="line"></view>
-</view>
-
-<view class = "container">
-  <view class="sel1">
-    <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
-      <view class="top-selected">{{dateValue}}</view>
-      <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right" src="../../../image/ion_18.png"></image></view>
-    </picker>
-    
-  </view>
-  <view class="line"></view>
-</view>
-
-<view class = "container">
-  <view class="sel1">
- <picker bindchange="bindPickerChange" value="{{bjlistindex}}" range="{{bjnamelist}}">
-         <view class="top-selected">{{grade_name}}</view>
-         <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right"src="../../../image/ion_18.png"></image></view>
-</picker>
- </view>
-  <view class="line"></view>
-</view>
-
-<view class="container">
-<view class="sel">
-    <input bindblur="inputIdCard" class="inputText" placeholder="请填写证件号"></input>
-    </view>
-<view class="line"></view>
-</view>
-
-
-
-<view class="container">
-<view class="sel">
-    <input bindblur="inputLevel" class="inputText" placeholder="请填报考级别"></input>
     </view>
 <view class="line"></view>
 </view>
@@ -58,47 +21,66 @@
   <view class="line"></view>
 </view>
 
-  <view class="container">
-<view class="sel">
-    <input bindblur="inputTea" class="inputText" placeholder="请输入指导老师"></input>
-    </view>
-<view class="line"></view>
+<view class = "container">
+  <view class="sel1">
+    <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
+      <view class="top-selected">{{dateValue}}</view>
+      <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right" src="../../../image/ion_18.png"></image></view>
+    </picker>
+    
+  </view>
+  <view class="line"></view>
 </view>
 
 <view class="container">
 <view class="sel">
-    <input bindblur="inputSchool" class="inputText" placeholder="请输入所在学校"></input>
+    <input bindblur="phone" class="inputText" placeholder="请填写手机号"></input>
     </view>
 <view class="line"></view>
 </view>
 
+
+
+<view class="container">
+<view class="sel">
+    <input bindblur="inputIdCard" class="inputText" placeholder="请填写证件号"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+
+<view class="container">
+<view class="sel">
+    <input bindblur="inputNationality" class="inputText" placeholder="民族"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+
+<view class="container">
+<view class="sel">
+    <input bindblur="inputLevel" class="inputText" placeholder="请填报考级别"></input>
+    </view>
+<view class="line"></view>
+</view>
+
+
+
+
+
+<view class="container">
+<view class="sel">
+    <input bindblur="inputProfession" class="inputText" placeholder="请填写专业"></input>
+    </view>
+<view class="line"></view>
+</view>
 <view class="container">
 <view class="sel">
     <input bindblur="inputAdress" class="inputText" placeholder="请填写通讯地址"></input>
     </view>
 <view class="line"></view>
-</view>
+</view> 
 
-<view class="container">
-<view class="sel">
-    <input bindblur="inputFphone" class="inputText" placeholder="请填写父亲手机号"></input>
-    </view>
-<view class="line"></view>
-</view>
-
-<view class="container">
-<view class="sel">
-    <input bindblur="inputMphone" class="inputText" placeholder="请填写母亲手机号"></input>
-    </view>
-<view class="line"></view>
-</view>
-
-<view class="container">
-<view class="sel">
-    <input bindblur="inputTrain" class="inputText" placeholder="请填写目前所在培训学校"></input>
-    </view>
-<view class="line"></view>
-</view>
 
 <view class="container">
   <view class="sel">
@@ -144,8 +126,35 @@
     </view>
   </view> -->
 
+<!-- <view class="container">
+<view class="sel">
+    <input bindblur="inputTea" class="inputText" placeholder="请输入指导老师"></input>
+    </view>
+<view class="line"></view>
+</view>
 
-  
+<view class="container">
+<view class="sel">
+    <input bindblur="inputSchool" class="inputText" placeholder="请输入所在学校"></input>
+    </view>
+<view class="line"></view>
+</view>-->
+
+  <!-- <view class="container">
+<view class="sel">
+    <input bindblur="inputTrain" class="inputText" placeholder="请填写目前所在培训学校"></input>
+    </view>
+<view class="line"></view>
+</view> -->
+<!-- <view class = "container">
+  <view class="sel1">
+ <picker bindchange="bindPickerChange" value="{{bjlistindex}}" range="{{bjnamelist}}">
+         <view class="top-selected">{{grade_name}}</view>
+         <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right"src="../../../image/ion_18.png"></image></view>
+</picker>
+ </view>
+  <view class="line"></view>
+</view> -->
 
   
  

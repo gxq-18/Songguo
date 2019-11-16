@@ -31,7 +31,7 @@
  <view class="line1"></view>
        <view class="container">
            <view class="sel">
-          <view style="width: 100%;">活动费用：<text class="inputText" focus="{{focus3}}">￥{{deposit_money}}元</text></view>
+          <view style="width: 100%;">活动费用：<text class="inputText" focus="{{focus3}}">￥{{pay_money}}元</text></view>
           </view>
           <view class="line"></view>
           <view class="sel">
@@ -90,7 +90,7 @@
     <view class="row">
       <block>
         <text class="total_money" >合计￥{{money}}</text>
-        <form  report-submit bindsubmit='onPayCas'>
+        <form  report-submit bindsubmit='onPayCao'>
           <button class="button-red"  formType="submit">报 名</button>
         </form>
       </block>

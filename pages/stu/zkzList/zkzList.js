@@ -8,20 +8,28 @@ Page({
    * 初始化数据
    */
   data: {
-    inputName: '',
-    inputIdCard: '',
-    leaver:'',
-    school:'',
-    brithday:''
+    admission_ticket : ''
+    // inputName: '',
+    // inputIdCard: '',
+    // leaver:'',
+    // school:'',
+    // brithday:''
   },
 
   onLoad: function (options) {
+    console.log(options.admission_ticket);
+    // if (options.admission_ticket == null){
+    //   this.setData({
+    //   admission_ticket: '0'
+    //   })
+    // }
     this.setData({
-      inputName : options.name,
-      inputIdCard:options.IDCard,
-      leaver :options.leaver,
-      school:options.school,
-      brithday:options.brithday
+      admission_ticket: options.admission_ticket
+      // inputName : options.name,
+      // inputIdCard:options.IDCard,
+      // leaver :options.leaver,
+      // school:options.school,
+      // brithday:options.brithday
     })
 
   },

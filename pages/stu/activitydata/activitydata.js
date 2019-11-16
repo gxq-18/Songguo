@@ -15,6 +15,7 @@ Page({
     id:'',
     cpc:'',
     inputName:'',
+    email:'',
     inputFphone:'',
     select: false,
     disabled:false
@@ -25,6 +26,11 @@ Page({
       cpc: app.globalData.cpc,
       id:options.id
     });
+  },
+  email:function(e){
+    this.setData({
+      email:e.detail.value
+    })
   },
 
   //填写姓名
@@ -66,17 +72,35 @@ Page({
       })
     }
   },
-
-
   //按钮
   editName: function (e) {
-    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-    wx.navigateTo({
-      url: "../activityPay/activityPay?id=" + this.data.id+"&name="+this.data.inputName+"&phone="+this.data.inputFphone,
+    let that  = this;
+    wx.request({
+      url: main.localUrl + 'mobileXcx/selectHdbm', //仅为示例，并非真实的接口地址
+      data: {
+        orderphone: that.data.inputFphone
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        if (res.data.ok == '') {
+          wx.navigateTo({
+            url: "../activityPay/activityPay?id=" + that.data.id + "&name=" + that.data.inputName + "&phone=" + that.data.inputFphone +"&email="+that.data.email,
+          })
+        } else {
+          wx.showToast({
+            title: '手机号重复，请检查',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+
+      }
     })
-     
   },
   
+
   /**
   *  点击下拉框
   */

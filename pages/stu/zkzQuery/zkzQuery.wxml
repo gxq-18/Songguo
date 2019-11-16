@@ -11,7 +11,7 @@
         <input bindblur="inputIdCard" class="input" type="idcard" placeholder="身份证输入键盘" placeholder-style="color: #BEBEBE	" />
   </view>
   <view class="loginBtnView">
-      <button class="loginBtn" bindtap="editName" disabled="{{disabled}}">提交报名</button>
+      <button class="loginBtn" bindtap="editName" disabled="{{disabled}}">查询</button>
  
 </view>
 </view>

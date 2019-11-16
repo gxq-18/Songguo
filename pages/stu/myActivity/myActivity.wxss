@@ -24,7 +24,7 @@
   white-space:nowrap;
 }
 .bookListContent .text{
-  font-size: 30rpx;
+  font-size: 14px;
   color: #9D9D9D;
   padding-top: 15rpx;
 }

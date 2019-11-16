@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    dy:0,
+    time:'',
     screenWidth: 0,
     screenHeight: 0,
     imgwidth: 0,
@@ -30,7 +32,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
-          scrollHeight: res.windowHeight + 700
+          scrollHeight: res.windowHeight + 700,
         });
       }
     });
@@ -55,9 +57,10 @@ Page({
     })
   },
   view: function (e) {
-    var id = e.currentTarget.dataset.id;
+    var bid = e.currentTarget.dataset.id;
+    console.log(bid);
     wx.navigateTo({
-      url: "../activityView/activityView?id=" + id +"&isPay=1",
+      url: "../activityView1/activityView1?bid=" + bid +"&isPay=1"+"&dy="+this.data.dy,
     })
   },
   //分页搜索活动
@@ -67,7 +70,6 @@ Page({
     // callbackcount = that.data.callbackcount; //返回数据的个数  
     //访问网络  
     findList(that.data.searchPageNum, that.data.callbackcount, (data) => {
-      console.log(data.dataInfo.dataList);
       //判断是否有数据，有则取数据  
       if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
 
@@ -76,8 +78,11 @@ Page({
         that.data.isFromSearch ? searchList = data.dataInfo.dataList : searchList = that.data.activityList.concat(data.dataInfo.dataList)
         that.setData({
           activityList: searchList, //获取数据数组  
-          searchLoading: true   //把"上拉加载"的变量设为false，显示  
+          searchLoading: true,   //把"上拉加载"的变量设为false，显示  
+          time : that.data.time
         });
+       
+  
         //判断页码是否是最后一页
         if (data.dataInfo.totalPage <= that.data.searchPageNum) {
           that.setData({
@@ -134,6 +139,7 @@ function findList(pageindex, callbackcount, dataList) {
     data: {
       cpc_id: app.globalData.cpc.id,
       currentPage: pageindex,
+      openId: app.globalData.openId,
       rowCountPerPage: callbackcount,
     },
     header: {

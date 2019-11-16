@@ -59,6 +59,7 @@ Page({
   },
   view: function (e) {
     var id = e.currentTarget.dataset.id;
+    console.log(id);
     wx.navigateTo({
       url: "../activityView/activityView?id=" + id +"&isPay=0",
     })
@@ -123,6 +124,8 @@ Page({
   activityView: function (e) {
     // var model = JSON.stringify(e.currentTarget.dataset.model);
     var id = e.currentTarget.dataset.id;
+    
+
     wx.navigateTo({
       url: "../activityView/activityView?id=" + id,
     })

@@ -1145,7 +1145,7 @@ icon {
 
 }
 .but_img image{
-  padding-left: 11%;
+  padding-left: 8%;
 
 
   display: flex;

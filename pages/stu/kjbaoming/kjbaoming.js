@@ -19,12 +19,15 @@ Page({
     inputIdCard:'',
     inputLevel: '',
     gender: '请选择性别',
+    inputFphone:'',
     inputTea:'',
     inputSchool:'',
     inputAdress:'',
-    inputFphone:'',
+    phone:'',
     inputMphone:'',
     inputTrain:'',
+    inputNationality:'',
+    inputProfession:'',
     select: false,
     bjlistindex: 0,
     bjnamelist: [
@@ -86,6 +89,23 @@ Page({
         disabled: false
       })
      }
+  },
+  phone: function (e) {
+    this.setData({
+      phone: e.detail.value,
+    })
+  },
+  inputProfession: function (e) {
+    this.setData({
+      inputProfession: e.detail.value,
+    })
+  },
+
+  //填写民族
+  inputNationality: function (e) {
+    this.setData({
+      inputNationality: e.detail.value,
+    })
   },
   //填写报考级别
   inputLevel:function(e){
@@ -157,7 +177,7 @@ Page({
 
   //按钮
   editName: function (e) {
-    if (this.data.inputName == '' || this.data.dateValue == '请选择出生日期' || this.data.grade_name == '请选择证件类型' || this.data.inputLevel == '' || this.data.gender == '请选择性别' || this.data.inputTea == '' || this.data.inputSchool == '' || this.data.inputAdress == '' || this.data.inputTrain == ''){
+    if (this.data.inputName == '' || this.data.dateValue == '请选择出生日期' ||  this.data.inputLevel == '' || this.data.gender == '请选择性别' || this.data.inputAdress == ''){
       wx.showToast({
         title: '没有填完整',
         duration: 1500,
@@ -173,11 +193,20 @@ Page({
     wx.request({
       url: main.localUrl + 'mobileXcx/saveKaoji', //仅为示例，并非真实的接口地址
       data: {
+        inputNationality: this.data.inputNationality,
+        gender: this.data.gender,
         name: this.data.inputName,
         leaver: this.data.inputLevel,
         brithday: this.data.dateValue,
-        cardtype: this.data.grade_name,
+        profession: this.data.inputProfession,
+        phone: this.data.phone,
         IDcard: this.data.inputIdCard,
+        address: this.data.inputAdress,
+        admission_ticket:'',
+        upcertificateNum:'',
+        pinyin:'',
+
+        cardtype: this.data.grade_name,
         school: this.data.inputSchool,
         teacher: this.data.inputTea,
         address: this.data.inputAdress,
