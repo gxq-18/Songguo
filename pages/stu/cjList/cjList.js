@@ -39,7 +39,9 @@ Page({
     // 页面渲染完成
   },
   onShow: function () {
-    // 页面显示
+    wx.setNavigationBarTitle({
+      title: '成绩信息'
+    });
   },
   onHide: function () {
     // 页面隐藏

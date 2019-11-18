@@ -25,6 +25,11 @@ Page({
       pwd: pwd
     })
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '密码中心'
+    });
+  },
   inputOld: function (e) {
     this.setData({
       pwdOld: e.detail.value

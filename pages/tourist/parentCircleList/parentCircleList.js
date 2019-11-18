@@ -58,6 +58,8 @@ onLoad: function (options) {
     
     this.fetchSearchList();
   },
+
+  
   // 更换封面
   actionSheetChange: function (e) {
     this.setData({

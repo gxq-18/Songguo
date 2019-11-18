@@ -59,7 +59,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.setNavigationBarTitle({
+      title: '我的订单'
+    });
   },
 
   /**
@@ -253,8 +255,7 @@ function findList(currentTab, pageindex, callbackcount, dataList) {
     data: {
       currentTab: currentTab,
       cpc_id: app.globalData.cpc.id,
-      openId: 123456,
-      //openId: app.globalData.openId,
+      openId: app.globalData.openId,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
     },

@@ -20,6 +20,10 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo
     });
+    wx.setNavigationBarTitle({
+      title: '个人信息'
+    });
+
 	},
   spareTime: function () {
     wx.navigateTo({
@@ -46,6 +50,7 @@ Page({
       url: "../switchAccount/switchAccount",
     })
   },
+
   myIndex: function () {
     wx.navigateTo({
       url: "../myIndex/myIndex",
@@ -61,6 +66,7 @@ Page({
       url: "../mailbox/mailbox",
     })
   },
+
   // 更换封面
   bpImage: function () {
     var _this = this;

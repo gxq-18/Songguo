@@ -44,6 +44,13 @@ const conf = {
 
   },
 
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '十艺考级'
+    });
+
+
+  },
 
 
 

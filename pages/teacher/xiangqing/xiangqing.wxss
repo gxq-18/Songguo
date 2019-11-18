@@ -61,7 +61,8 @@
 }
 .friend_mood{
     margin-bottom: 16rpx; 
-    width:95%
+    width:240px;
+    overflow-wrap: break-word;
 }
 .weui-uploader__file {
   float: left;

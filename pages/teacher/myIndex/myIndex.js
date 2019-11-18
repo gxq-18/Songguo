@@ -23,6 +23,11 @@ Page({
     });
 
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '老师信息'
+    });
+  },
   myMobile: function (e) {
     var id = e.currentTarget.dataset.id;
     var mobile = e.currentTarget.dataset.mobile;

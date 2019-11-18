@@ -1,6 +1,7 @@
 // pages/stu/activityPay/activityPay.js
 var main = require('../../../utils/main.js');
 var util = require('../../../utils/util.js');
+var WxParse = require('../../../wxParse/wxParse.js');
 //获取应用实例
 const app = getApp()
 Page({
@@ -9,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:'',
     hidden: true,
     nocancel: false,
     pay_user:"",
@@ -19,6 +21,25 @@ Page({
     userName:'',
     mobile: '',
     sendCode: "",
+    pay_money:0,
+    inputFs:1,
+    money:0,
+    email:'',
+
+    weixin:true,
+    zhifubao:false,
+
+    screenWidth: 0,
+    screenHeight: 0,
+    imgwidth: 0,
+    imgheight: 0,
+    activityList: [],
+    content: "",
+    searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
+    callbackcount: 15,      //返回数据的个数  
+    totalPage: 0,
+    searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
+    searchLoadingComplete: false,  //“没有数据”的变量，默认false，隐藏 
 
   },
 
@@ -28,7 +49,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var id = options.id;
-
+    console.log(options.id);
     findView(id, (data) => {
       var pay_user = "";
       var caType = data.ca_type;
@@ -36,13 +57,25 @@ Page({
         pay_user = "购买人姓名";
       if (caType = 2)
         pay_user = "报名人姓名";
-
-
-      that.setData({
-        model: data,
-        pay_user: pay_user,
+      findView(id, (data) => {
+        that.setData({
+          model: data,
+        })
+        /**
+       * html解析示例
+       */
+        WxParse.wxParse('article', 'html', data.content, that, 5);
       })
+      
     })
+    
+    that.setData({
+      userName: options.name,
+      mobile: options.phone,
+      id: options.id,
+      email:options.email
+    })
+    this.fetchSearchList();
   },
 
   /**
@@ -56,7 +89,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    wx.setNavigationBarTitle({
+      title: '报名信息'
+    });
   },
 
   /**
@@ -86,6 +121,7 @@ Page({
   onReachBottom: function () {
   
   },
+  
 
   /**
    * 用户点击右上角分享
@@ -93,6 +129,7 @@ Page({
   onShareAppMessage: function () {
   
   },
+  
   cancel: function () {
     this.setData({
       hidden: false
@@ -104,6 +141,7 @@ Page({
     });
     wx.navigateBack();  //返回上个页面
   },
+  
   inputUser: function (e) {
     this.setData({
       userName: e.detail.value
@@ -118,6 +156,54 @@ Page({
     this.setData({
       sendCode: e.detail.value
     })
+  },
+  weixin:function(e){
+    this.setData({
+      weixin:true,
+      zhifubao:false
+    })
+  },
+  zhifubao: function (e) {
+    this.setData({
+      weixin: false,
+      zhifubao: true
+    })
+  },
+  button1:function(e){
+    // console.log(eval(0.01+0.05));
+    this.setData({
+      inputFs: this.data.inputFs + 1,
+      money: (this.data.pay_money * (this.data.inputFs + 1)).toFixed(2)
+    })
+    var n = 2;
+    fomatFloat(this.data.money, n, (s) => {
+      console.log(s+"···························");
+      let that = this;
+      that.setData({
+        money:s
+      })
+    })
+  },
+  button2: function (e) {
+    if(this.data.inputFs == 1){
+      wx.showToast({
+        title: '最少购买一份',
+        duration: 1500,
+        icon: 'none'
+      });
+    }else{
+      this.setData({
+        inputFs: this.data.inputFs - 1,
+        money: (this.data.pay_money * (this.data.inputFs - 1)).toFixed(2)
+      })
+      var n = 2;
+      fomatFloat(this.data.money, n,(s)=>{
+        let that = this;
+        that.setData({
+          money: s
+        })
+      })
+    }
   },
 
   /** 
@@ -161,7 +247,88 @@ Page({
       }
     }
   },
+  //购买
+  onPayCao: function (e) {
+    var that = this;
+
+    if (this.data.userName.length == 0 || this.data.mobile.length == 0 ) {
+      if (this.data.userName.length == 0) {
+        this.setData({
+          focus3: true
+        })
+      } else {
+        if (this.data.mobile.length == 0) {
+          this.setData({
+            focus1: true
+          })
+        }
+      }
+    } else {
+      // //判断验证码
+      // if (that.data.sendCode != that.data.code) {
+      //   wx.showToast({
+      //     title: '验证码不正确',
+      //     icon: 'none',
+      //     duration: 2000,
+      //     mask: true
+      //   })
+      // } else {
+
+        //调取支付,添加订单
+
+        wx.request({
+          url: main.localUrl + 'mobileXcx/onPayCao', //仅为示例，并非真实的接口地址
+          data: {
+            crm_code: main.crm_code,
+            school_code: app.globalData.cpc.school_code,
+            openId: app.globalData.openId,
+            // cpc_id: app.globalData.cpc.id,
+            // csc_id: app.globalData.csc.id,
+             ca_id: that.data.model.id,
+            user_name: that.data.userName,
+            user_mobile: that.data.mobile,
+            money:that.data.money,
+            email:that.data.email,
+            copies:that.data.inputFs,
+          },
+          header: {
+            'content-type': 'application/json' // 默认值
+          },
+          success: function (res) {
+            if (res.data.succeed=="000"){
+              //调起支付
+              wx.request({
+                url: main.localUrl + 'mobileXcx/wxPay',
+                data: {
+                  openid: app.globalData.openId,
+                  title: that.data.model.title,
+                  catId: res.data.dataInfo.catId
+                },
+                method: 'GET',
+                success: function (res) {
+                  console.log(res);
+                  doWxPay(res, (payState) => {
+                    if (payState) {
+                      that.sendMessage(e.detail.formId, app.globalData.openId, that.data.model.title)
+                      that.cancel();
+                    } else {
+                      wx.showToast({
+                        title: '支付失败',
+                        icon: 'loading',
+                        duration: 2000
+                      });
+                    }
+                  })
+                }
+              });  
   
+            }
+          }
+        })
+
+      }
+    // }
+  },
   //报名
   onPayCas: function (e) {
     var that = this;
@@ -177,35 +344,21 @@ Page({
             focus1: true
           })
         } 
-        // else {
-        //   if (this.data.sendCode.length == 0) {
-        //     this.setData({
-        //       focus2: true
-        //     })
-        //   }
-        // }
       }
     } else {
-      // //判断验证码
-      // if (that.data.sendCode != that.data.code) {
-      //   wx.showToast({
-      //     title: '验证码不正确',
-      //     icon: 'none',
-      //     duration: 2000,
-      //     mask: true
-      //   })
-      // } else {
-
-        // 调取支付,添加订单
+     
+        //调取支付,添加订单
         wx.request({
           url: main.localUrl + 'mobileXcx/onPayCas', //仅为示例，并非真实的接口地址
           data: {
             crm_code: main.crm_code,
-            school_code: main.crm_code,
             openId: app.globalData.openId,
+            school_code: app.globalData.cpc.school_code,
+            cpc_id: app.globalData.cpc.id,
             ca_id: that.data.model.id,
             user_name: that.data.userName,
             user_mobile: that.data.mobile,
+            money: that.data.money
           },
           header: {
             'content-type': 'application/json' // 默认值
@@ -216,7 +369,7 @@ Page({
               if (that.data.model.is_pay == 1) {
                 wx.request({
                   url: main.localUrl + 'mobileXcx/wxPay',
-                  data: { 
+                  data: {
                     openid: app.globalData.openId,
                     title: that.data.model.title,
                     catId: res.data.dataInfo.catId
@@ -225,11 +378,9 @@ Page({
                   success: function (res) {
                     console.log(res);
                     doWxPay(res, (payState) => {
-                      if (payState){
-
-                        that.sendMessage(e.detail.formId, app.globalData.openId, that.data.model.title)
+                      if (payState) {
                         that.cancel();
-                      }else{
+                      } else {
                         wx.showToast({
                           title: '支付失败',
                           icon: 'loading',
@@ -242,68 +393,102 @@ Page({
               } else {
                 that.cancel();
               }
+              
+              
             }
           }
-        })
+        }) 
       }
-    // }
   },
-  sendMessage: function (formId, openId, title) {
+  
+  
+  imageLoad: function (e) {
+    var _this = this;
+    var $width = e.detail.width,    //获取图片真实宽度  
+      $height = e.detail.height,
+      ratio = $width / $height;   //图片的真实宽高比例  
+    var viewWidth = 230,           //设置图片显示宽度，  
+      viewHeight = 230 / ratio;    //计算的高度值     
+    this.setData({
+      imgwidth: viewWidth,
+      imgheight: viewHeight
+    })
+  },
+  view: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "../activityView/activityView?id=" + id + "&isPay=0",
+    })
+  },
+  //分页搜索活动
+  fetchSearchList: function () {
+    let that = this;
+    // searchPageNum = that.data.searchPageNum,//把第几次加载次数作为参数  
+    // callbackcount = that.data.callbackcount; //返回数据的个数  
+    //访问网络  
+    
+    findList( that.data.id,that.data.searchPageNum, that.data.callbackcount, (data) => {
+      //判断是否有数据，有则取数据  
+      if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
 
-    //获取accessToken
-    wx.request({
-      url: main.localUrl + 'mobileXcx/accessToken', //仅为示例，并非真实的接口地址
-      data: {},
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        var accessToken = res.data.dataInfo.accessToken;
-        console.log(accessToken);
-        //发送消息
-        var l = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + accessToken;
-        var d = {
-          touser: openId,
-          template_id: 'Fs6nTh5OLSjL_F_iznhmRA5fGcYot3liXH39xeeEWNE',//这个是1、申请的模板消息id，  
-          page: '/pages/tourist/myActivity/myActivity',
-          form_id: formId,
-          data: {
-            "keyword1": {
-              "value": title,
-              "color": "#172177"
-            },
-            "keyword2": {
-              "value": util.formatTime(new Date()),
-              "color": "#9b9b9b"
-            },
-            "keyword3": {
-              "value": "活动购买成功,如有疑问请联系我们。",
-              "color": "#9b9b9b"
-            }
-          }
-          //, emphasis_keyword: 'keyword1.DATA' //模板需要放大的关键词
-
+        let searchList = [];
+        //如果isFromSearch是true从data中取出数据，否则先从原来的数据继续添加  
+        that.data.isFromSearch ? searchList = data.dataInfo.dataList : searchList = that.data.activityList.concat(data.dataInfo.dataList)
+        that.setData({
+          pay_money: data.dataInfo.dataList[0].pay_money,
+          money: data.dataInfo.dataList[0].pay_money,
+          activityList: searchList, //获取数据数组  
+          searchLoading: true   //把"上拉加载"的变量设为false，显示  
+        });
+        //判断页码是否是最后一页
+        if (data.dataInfo.totalPage <= that.data.searchPageNum) {
+          that.setData({
+            searchLoadingComplete: true, //把“没有数据”设为true，显示  
+            searchLoading: false  //把"上拉加载"的变量设为false，隐藏  
+          });
         }
-        wx.request({
-          url: l,
-          data: d,
-          method: 'POST',
-          success: function (res) {
-            console.log("push msg");
-            console.log(res);
-          },
-          fail: function (err) {
-            // fail  
-            console.log("push err")
-            console.log(err);
-          }
+        //没有数据了，把“没有数据”显示，把“上拉加载”隐藏  
+      } else {
+        that.setData({
+          searchLoadingComplete: true, //把“没有数据”设为true，显示  
+          searchLoading: false  //把"上拉加载"的变量设为false，隐藏  
         });
       }
     })
   },
+  //滚动到底部触发事件  
+  searchScrollLower: function () {
 
-  // 以下是微信支付
- 
+    let that = this;
+    if (that.data.searchLoading && !that.data.searchLoadingComplete) {
+      that.setData({
+        searchPageNum: that.data.searchPageNum + 1,  //每次触发上拉事件，把searchPageNum+1  
+        isFromSearch: false  //触发到上拉事件，把isFromSearch设为为false  
+      });
+      that.fetchSearchList();
+    }
+  },
+  backLoad() {
+    this.setData({
+      activityList: [],
+      searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
+      callbackcount: 15,      //返回数据的个数  
+      totalPage: 0,
+      searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
+      searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏  
+    })
+    this.fetchSearchList();
+  },
+  activityView: function (e) {
+    // var model = JSON.stringify(e.currentTarget.dataset.model);
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "../activityView/activityView?id=" + id,
+    })
+  },
+
+
+
 
 })
 
@@ -336,33 +521,77 @@ function getSmsCode(mobile, data) {
       data(res.data)
     }
   })
+
 }
 
-  //发起支付
-  function doWxPay(param,payState) {
-    
-    //小程序发起微信支付  
-    wx.requestPayment({
-      timeStamp: param.data.timeStamp,//记住，这边的timeStamp一定要是字符串类型的，不然会报错，我这边在java后端包装成了字符串类型了  
-      nonceStr: param.data.nonceStr,
-      package: param.data.package,
-      signType: 'MD5',
-      paySign: param.data.paySign,
-      success: function (event) {
-        // success     
-        console.log(event);
-        console.log("支付成功")
-        payState(true);
-      },
-      fail: function (error) {
-        // fail     
-        console.log("支付失败")
-        console.log(error)
-        payState(false);
-      },
-      complete: function () {
-        // complete     
-        console.log("pay complete")
-      }
-    });
+//发起支付
+function doWxPay(param, payState) {
+  //小程序发起微信支付  
+  wx.requestPayment({
+    timeStamp: param.data.timeStamp,//记住，这边的timeStamp一定要是字符串类型的，不然会报错，我这边在java后端包装成了字符串类型了  
+    nonceStr: param.data.nonceStr,
+    package: param.data.package,
+    signType: 'MD5',
+    paySign: param.data.paySign,
+    success: function (event) {
+      // success     
+      console.log(event);
+
+      payState(true);
+    },
+    fail: function (error) {
+      // fail     
+      console.log("支付失败")
+      console.log(error)
+      payState(false);
+    },
+    complete: function () {
+      // complete     
+      console.log("pay complete")
+    }
+  });
+
+}  
+
+
+
+//查询活动
+function findList(id,pageindex, callbackcount, dataList) {
+  wx.request({
+    url: main.localUrl + 'mobileXcx/stuActivityList', //仅为示例，并非真实的接口地址
+    data: {
+      id1:id,
+      crm_code: main.crm_code,
+      account_code: app.globalData.cpc.id,
+      currentPage: pageindex,
+      rowCountPerPage: callbackcount,
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      dataList(res.data)
+    }
+  })
+}
+
+//四舍五入并保留两位小数
+function fomatFloat(money, n) {
+  var f = parseFloat(money);
+  if (isNaN(f)) {
+    return false;
+  }
+  f = Math.round(money * Math.pow(10, n)) / Math.pow(10, n); // n 幂   
+  var s = f.toString();
+  var rs = s.indexOf('.');
+  //判定如果是整数，增加小数点再补0
+  if (rs < 0) {
+    rs = s.length;
+    s += '.';
+  }
+  while (s.length <= rs + n) {
+    s += '0';
+  }
+  console.log(s+"!!!!!!!!!!!!!!");
+  return s;
 }  

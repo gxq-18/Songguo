@@ -17,6 +17,13 @@ Page({
       inputName: e.detail.value
     })
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '信息查询'
+    });
+
+
+  },
 
   //填写证件号
   inputIdCard: function (e) {
@@ -109,9 +116,9 @@ Page({
   onReady: function () {
     // 页面渲染完成
   },
-  onShow: function () {
-    // 页面显示
-  },
+  // onShow: function () {
+  //   // 页面显示
+  // },
   onHide: function () {
     // 页面隐藏
   },

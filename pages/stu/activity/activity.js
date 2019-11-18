@@ -45,6 +45,15 @@ Page({
 
     this.fetchSearchList();
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '活动列表'
+    });
+
+
+  },
+
+
   imageLoad: function (e) {
     var _this = this;
     var $width = e.detail.width,    //获取图片真实宽度  

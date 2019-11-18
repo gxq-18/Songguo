@@ -23,6 +23,11 @@ Page({
     searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
     searchLoadingComplete: false,  //“没有数据”的变量，默认false，隐藏 
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '我的活动'
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -39,6 +44,7 @@ Page({
 
     this.fetchSearchList();
   },
+
   imageLoad: function (e) {
     var _this = this;
     var $width = e.detail.width,    //获取图片真实宽度  

@@ -49,6 +49,13 @@ Page({
       cpc: app.globalData.cpc
     });
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '在线报名'
+    });
+
+
+  },
 
   //填写姓名
   inputName: function (e) {

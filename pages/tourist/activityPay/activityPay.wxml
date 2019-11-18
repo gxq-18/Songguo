@@ -2,33 +2,77 @@
 <view class='margintop5'></view>
 <view class='book'>
   <view class='payView'>
-      <view class='scatitle'>
-          {{model.title}}
+      <view class='margintop5'></view>
+
+  <view class='section' style='padding-bottom: 10%'>
+    <block wx:if="{{activityList.length==0}}" wx:key="activity">
+      <view class='wnr'>
+          <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
       </view>
-      <block wx:if='{{model.ca_type==1}}'>
-        <view class='scatext'>
-            购买课时{{model.pay_class}}节
-        </view>
-        <view class='pay'>
-          <view class='payMoney'>￥{{model.pay_money}}</view>
-          <view class='scatext' style='margin-top: 20rpx;text-decoration:line-through;'>￥{{model.old_money}}</view>
+    </block>
+    <block wx:else>
+      <scroll-view scroll-y="true" style="height: 100%"  bindscrolltolower="searchScrollLower">
+      <block wx:for="{{activityList}}" wx:key="activity">
+        <view class='bookList' bindtap='view' data-id='{{item.id}}' data-model='{{item}}'>
+            <view class='bookListImg'>
+              <image src='{{item.img_path}}' bindload="imageLoad"  
+        style="width:200rpx; height:150rpx;"></image>
+            </view>
+            <view class='bookListContent'>
+              <view class='lable'>{{item.title}}</view>            
+              <view class='text'>时间：{{item.star_time}}至{{item.end_time}}</view>
+              <view class='text' >查看详情 ></view>
+            </view>
         </view>
       </block>
-      <block wx:if='{{model.ca_type==2}}'>
-        <block wx:if='{{model.is_pay==1}}'>
-          <view class='pay'>
-            <view class='payMoney'>￥{{model.deposit_money}}</view>
-            <view class='scatext' style='margin-top: 20rpx;text-decoration:line-through;'>￥{{model.old_deposit_money}}</view>
-          </view>
-        </block>
-      </block>
+      </scroll-view>
+    </block>
+  </view>
+ <view class="line1"></view>
        <view class="container">
+           <view class="sel">
+          <view style="width: 100%;">活动费用：<text class="inputText" focus="{{focus3}}">￥{{pay_money}}元</text></view>
+          </view>
+          <view class="line"></view>
           <view class="sel">
-          <input class="inputText" placeholder="{{pay_user}}" bindinput="inputUser" focus="{{focus3}}" value="{{userName}}"/>
+           <view style="width: 30%;float: left;">活动费用：</view>
+          <view style="width: 19%;float: right;">
+          
+          <!-- Stepper容器 -->
+<view class="stepper">
+	<!-- 减号 -->
+	  <text class="bbb" bindtap="button2">-</text>
+
+	<!-- 数值 -->
+	<text class="aaa" type="number">{{inputFs}}</text>
+	<!-- 加号 -->
+	  <text class="bbb" bindtap="button1">+</text>
+
+  </view>
+<!--               
+              <button class="but1" style="margin:0px;" bindtap="button1">
+                <view>+</view>
+              </button>
+         
+                <text class="inputText1" focus="{{focus3}}" type="number" >{{inputFs}}</text> 
+              
+            <button class="but1" style="margin:0px;" bindtap="button2">
+            <text class="inputText2">-</text>
+            </button> -->
+          </view>
+         
+        </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">姓名：<input class="inputText" placeholder="{{pay_user}}" bindinput="inputUser" focus="{{focus3}}" value="{{userName}}"/></view>
           </view>
           <view class="line"></view>
          <view class="sel">
-          <input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/>
+          <view style="width: 100%;">手机号：<input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/></view>
+          </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">应支付：<text class="inputText" focus="{{focus1}}" >{{money}}</text></view>
           </view>
           <view class="line"></view>
           <!-- <view class="sel">
@@ -38,32 +82,61 @@
           <view class="line"></view> -->
         </view>
 
-  </view>
- 
-<!--按钮-->
-    <view class="loginBtnView">
-    <block wx:if='{{model.ca_type==1}}'>
-     <form name='pushMsgFm' report-submit bindsubmit='onPayCao'>  
-        <button class="payBtn" type="primary"  form-type="submit" >
-        <image src='../../../image/pay_weixin.png' style='width:50rpx;height:50rpx;padding-right:20rpx;'></image> 微信支付
-        </button>
-     </form>
-    </block>
-    <block wx:if='{{model.ca_type==2}}'>
-      <block wx:if='{{model.is_pay==1}}'>
-        <form name='pushMsgFm' report-submit bindsubmit='onPayCas'>  
-          <button class="payBtn" type="primary"  form-type="submit">
-          <image src='../../../image/pay_weixin.png' style='width:50rpx;height:50rpx;padding-right:20rpx;'></image> 报名支付
-          </button>
+        
+        <view class="payTitle">
+        <text>请选择支付方式</text>
+    </view>
+    <view class="payType">
+        <view class="payList">
+            <view class="payImg"><image src="../../../image/ion_11.png"></image></view>
+            <view>微信支付</view>
+            <radio style="float:right;" class="radio" bindtap="weixin" checked="{{weixin}}"></radio>
+        </view>
+        <view class="payList">
+            <view class="payImg"><image src="../../../image/ion_12.png"></image></view>
+            <view>支付宝支付</view>
+            <radio style="float:right;" class="radio" bindtap="zhifubao" checked="{{zhifubao}}"></radio>
+        </view>
+    </view>
+ <view class="bottom_total">
+    <view class="row">
+      <block>
+        <text class="total_money" >合计￥{{money}}</text>
+        <form  report-submit bindsubmit='onPayCao'>
+          <button class="button-red"  formType="submit">报 名</button>
         </form>
       </block>
-      <block wx:if='{{model.is_pay==0}}'>
-        <button class="payBtn" type="primary"  bindtap="onPayCas">
-         报 名
-        </button>
-      </block>
-    </block>
     </view>
+  </view>
+
+<!--按钮-->
+    <!-- <view class="loginBtnView">
+      <form name='pushMsgFm' report-submit bindsubmit='onPayCao'>  
+        <block wx:if='{{model.ca_type==2}}'>
+          <button class="payBtn" type="primary" form-type="submit" >
+          <image src='../../../image/pay_weixin.png' style='width:50rpx;height:50rpx;padding-right:20rpx;'></image> 微信支付
+          </button>
+        </block>
+      </form>  
+        <block wx:if='{{model.ca_type==2}}'>
+          <form name='pushMsgFm' report-submit bindsubmit='onPayCas'>  
+            <block wx:if='{{model.is_pay==1}}'>
+              <button class="payBtn" type="primary"  form-type="submit" >
+              <image src='../../../image/pay_weixin.png' style='width:50rpx;height:50rpx;padding-right:20rpx;'></image> 报名支付
+              </button>
+            </block>
+          </form>
+
+          <block wx:if='{{model.is_pay==0}}'>
+           <form name='pushMsgFm' report-submit bindsubmit='onPayCas'>  
+              <button class="payBtn" type="primary"  form-type="submit">
+              报 名
+              </button>
+            </form>
+          </block>
+        </block>
+     
+    </view> -->
 </view>
 
 <modal hidden="{{hidden}}"  confirm-text="我知道了" bindconfirm="confirm" no-cancel="true" >
@@ -80,3 +153,4 @@
     </view>
     <view class='payTitle'>可在【我的-我参与的活动】查看详情</view>
 </modal>
+</view>

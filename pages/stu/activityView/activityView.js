@@ -16,6 +16,13 @@ Page({
     isPay:true,
   },
 
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '活动详情'
+    });
+
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -48,9 +55,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  // onShow: function () {
   
-  },
+  // },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -102,6 +109,7 @@ Page({
   },
   pay: function (e) {
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    console.log(this.data.model.id);
     wx.navigateTo({
       url: "../activitydata/activitydata?id="+this.data.model.id,
     })

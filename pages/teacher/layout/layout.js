@@ -40,6 +40,11 @@ const conf = {
     });
 
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '课程表'
+    });
+  },
   getThisMonthDays(year, month) {
     return new Date(year, month, 0).getDate();
   },

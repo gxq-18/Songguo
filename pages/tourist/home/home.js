@@ -1,8 +1,8 @@
-// pages/stu/home/home.js
+// pages/stu/activity/activity.js
 var main = require('../../../utils/main.js');
-var util = require('../../../utils/util.js');
 //获取应用实例
 const app = getApp()
+
 Page({
 
   /**
@@ -13,36 +13,43 @@ Page({
     screenHeight: 0,
     imgwidth: 0,
     imgheight: 0,
-    scrollHeight: 0,
     activityList: [],
+    content: "",
     searchPageNum: 1,   // 设置加载的第几次，默认是第一次  
     callbackcount: 15,      //返回数据的个数  
     totalPage: 0,
     searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
     searchLoadingComplete: false,  //“没有数据”的变量，默认false，隐藏 
   },
-  
+  /**
+     * 用户点击右上角分享
+     */
+  onShareAppMessage: function () {
+    return {
+      title: '阿特的梦',
+      path: '../../tourist/activity/activity'
+    }
+  },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '十艺活动'
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
-          scrollHeight: res.windowHeight+500
+          scrollHeight: res.windowHeight + 700
         });
       }
     });
 
-   var is_pay = options.is_pay;
-   this.setData({
-     userInfo: app.globalData.userInfo,
-     is_pay: is_pay
-   })
-   this.fetchSearchList();
-   
+    this.fetchSearchList();
   },
   imageLoad: function (e) {
     var _this = this;
@@ -56,22 +63,11 @@ Page({
       imgheight: viewHeight
     })
   },
-  myMine: function (e) {
-    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-    wx.navigateTo({
-      url: "../mine/mine",
-    })
-  },
   view: function (e) {
     var id = e.currentTarget.dataset.id;
+    console.log(id);
     wx.navigateTo({
       url: "../activityView/activityView?id=" + id + "&isPay=0",
-    })
-  },
-  shiting: function (e) {
-    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-    wx.navigateTo({
-      url: "../shiting/shiting",
     })
   },
   //分页搜索活动
@@ -79,9 +75,8 @@ Page({
     let that = this;
     // searchPageNum = that.data.searchPageNum,//把第几次加载次数作为参数  
     // callbackcount = that.data.callbackcount; //返回数据的个数  
-    var is_pay = that.data.is_pay;
     //访问网络  
-    findList(that.data.searchPageNum, that.data.callbackcount, is_pay, (data) => {
+    findList(that.data.searchPageNum, that.data.callbackcount, (data) => {
       console.log(data.dataInfo.dataList);
       //判断是否有数据，有则取数据  
       if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
@@ -109,7 +104,6 @@ Page({
       }
     })
   },
-  
   //滚动到底部触发事件  
   searchScrollLower: function () {
 
@@ -136,26 +130,22 @@ Page({
   activityView: function (e) {
     // var model = JSON.stringify(e.currentTarget.dataset.model);
     var id = e.currentTarget.dataset.id;
+
+
     wx.navigateTo({
       url: "../activityView/activityView?id=" + id,
     })
-  }, 
-  onShow: function () {
-    wx.setNavigationBarTitle({
-      title: '十艺活动'
-    })
-
   },
-  
-  
 })
 
+
 //查询活动
-function findList(pageindex, callbackcount, is_pay,dataList) {
+function findList(pageindex, callbackcount, dataList) {
   wx.request({
     url: main.localUrl + 'mobileXcx/stuActivityList', //仅为示例，并非真实的接口地址
     data: {
       crm_code: main.crm_code,
+      account_code: app.globalData.cpc.id,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
     },

@@ -49,6 +49,11 @@ Page({
       imgheight: viewHeight
     })
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '我的活动'
+    });
+  },
   scanning: function () {
     wx.navigateTo({
       url: "../scanningBook/scanningBook",

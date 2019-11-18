@@ -8,6 +8,11 @@ Page({
       userInfo: app.globalData.userInfo
     });
 	},
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '游客中心'
+    });
+  },
 
   order: function () {
     wx.navigateTo({

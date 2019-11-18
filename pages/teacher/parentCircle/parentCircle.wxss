@@ -1140,14 +1140,14 @@ icon {
 /* 绝对定位 */
 .but_img{
   position:relative; 
-  padding-top: 10%;
+  padding: 10% 2%;
+  width: 100%;
+
 
 
 }
 .but_img image{
-  padding-left: 8%;
-
-
+  width: 96%;
   display: flex;
   align-items: center;
 justify-content: center;
@@ -1163,8 +1163,8 @@ justify-content: center;
 .but_img_del{
   position: absolute;
   left:40%;    /*相对于自己往右偏离150*/
-  top:130rpx; 
-  padding-top: 15%;
+  top:40%; 
+  /* padding-top: 15%; */
 }
 .but_img_del image{
   width: 120rpx;

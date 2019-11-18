@@ -1,5 +1,14 @@
 /* pages/stu/activityPay/activityPay.wxss */
+.but1{
+  width:1%;
+  height: 30px;
+  margin: 0px;
+float: right;
+margin-left: 10px;
+margin-top: -3px;
 
+
+}
 page{
  background-color: #F0F0F0;
  /* height:100%;  */
@@ -93,17 +102,42 @@ padding-bottom: 30rpx;
 }
 .inputText { 
  flex: block; 
- float: left; 
- text-align: left; 
- margin-top: 11px; 
+ float: right; 
+ text-align: right; 
+ margin-top: 1px; 
  font-size: 14px;
- width: 680rpx;
+ width: 60%;
 } 
+.inputText1 { 
+ flex: block; 
+ float: right; 
+ text-align: right; 
+ margin-top: 1px; 
+ width: 8%;
+height: 30px;
+
+}  
+.inputText2 { 
+ flex: block; 
+ float: right; 
+ text-align: right; 
+ margin-top: 1px; 
+ width: 8%;
+height: 30px;
+
+}  
+.line1 { 
+ width: 100%; 
+ height: 1px; 
+ background-color: #cecece; 
+ margin-top: 1px; 
+} 
+
   
 .line { 
  width: 90%; 
  height: 1px; 
- background-color: #cccccc; 
+ background-color: #cecece; 
  margin-top: 1px; 
 } 
 
@@ -132,4 +166,177 @@ padding-bottom: 30rpx;
     border: 1px solid #cccccc;
     margin-top: 10px;
     width: 200rpx;
+}
+.bookList{
+  display:flex;
+  justify-content: center; 
+  height: 150rpx;
+  margin-top: 20rpx;
+  padding: 10rpx 10rpx 10rpx 10rpx;
+  
+}
+.bookListImg{
+  width: 25%;
+}
+
+.bookListContent{
+  width: 75%;
+  padding-left: 40rpx;
+  
+}
+.bookListContent .lable{
+  font-size: 35rpx;
+  color: #3C3C3C;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.bookListContent .text{
+  font-size: 30rpx;
+  color: #9D9D9D;
+  padding-top: 15rpx;
+}
+.bookListState{
+  width: 20%;
+  display:flex;
+  justify-content: center; 
+  font-size: 30rpx;
+  color: red;
+}
+
+/*商品支付*/
+.pay{
+	background: #fff;
+	width: 100%;
+	height:90rpx;
+	line-height: 90rpx;
+	padding-left: 30rpx;
+	padding-right: 30rpx;
+	box-sizing: border-box;
+}
+.pay .product{
+	float: left;
+	color: #666;
+}
+.pay .price{
+	float: right;
+	color: #F00;
+}
+/*订单详情*/
+.order{
+	margin-top: 20rpx;
+	background: #fff;
+	width: 100%;
+	padding: 20rpx 0;
+	padding-left: 30rpx;
+	box-sizing: border-box;
+	font-size: 34rpx;
+	color: #666;
+}
+.order>view{
+	line-height: 60rpx;
+}
+.payTitle text{
+	line-height: 90rpx;
+	padding-left: 30rpx;
+}
+/*支付方式*/
+.payType{
+	width: 100%;
+	background: #fff;
+}
+.payType>view{
+	height: 140rpx;
+	line-height: 140rpx;
+	padding: 0rpx 30rpx;
+	border-bottom: 1rpx solid #f3f3f3;
+	background-size: 40rpx 40rpx;
+}
+.payType .payList>view{
+	float: left;
+}
+.payType .payList .payImg{
+	width: 60rpx;
+	height: 60rpx;
+	margin-right: 30rpx;
+	padding-top: 20rpx;
+}
+.payType .payList .payImg image{
+	width: 100%;
+	height: 100%;
+}
+
+/* 底部 */
+.bottom_total {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 120rpx;
+  background: white;
+}
+
+.button-red {
+  background-color: #5af0f5; /* 红色 */
+  position: fixed;
+  right: 0;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 40rpx;
+  border-radius: 0rpx;
+  width: 40%;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+.total_money{
+  padding-left: 20rpx;
+  color: red;
+  font-size: 40rpx;
+}
+.total_money_old{
+  padding-left: 20rpx;
+  color: #9D9D9D;
+  text-decoration:line-through;
+  font-size: 30rpx;
+}
+.total_money_con{
+  padding-left: 140rpx;
+  color: red;
+  font-size: 30rpx;
+}
+
+
+/*stepper容器*/
+.stepper {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	width: 70px;
+	height: 21px;
+	margin:0 auto;
+}
+
+
+/*加号与减号*/
+.bbb {
+	width: 19px;
+	height: 28px;
+	line-height: 21px;
+	text-align: center;
+	float: left;
+}
+
+
+/*数值*/
+.aaa {
+	float: left;
+	margin: 0 auto;
+	width: 30px;
+	text-align: center;
+	font-size: 12px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
 }

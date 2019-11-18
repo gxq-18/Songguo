@@ -1,0 +1,37 @@
+<view class="container">
+  <text style="font-size:10%;">请填写并核对报名信息</text>
+</view>
+<view class="line"></view>
+
+
+<view class="container">
+<view class="sel">
+    <text style="color:red;">*</text><text>姓名</text><input bindblur="inputName" class="inputText" placeholder="请填写"></input>
+<view class="line"></view>
+</view>
+
+<view class="sel">
+    <text style="color:red;">*</text><text>手机</text><input bindblur="inputFPhone" class="inputText" placeholder="请填写"></input>
+    <view class="top-selected1">{{result}}</view>
+    
+<view class="line"></view>
+</view>
+
+<view class="sel">
+    <text>邮箱</text><input bindblur="email" class="inputText" placeholder="请填写"></input>
+    <view class="top-selected1">{{result}}</view>
+    
+<view class="line"></view>
+</view>
+
+<view class="loginBtnView">
+      <button class="loginBtn" bindtap="editName" disabled="{{disabled}}">下一步</button>
+ 
+</view>
+ 
+
+</view>
+  
+
+  
+ 

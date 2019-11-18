@@ -29,6 +29,13 @@ Page({
       cpc: app.globalData.cpc
     });
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '学生中心'
+    });
+
+
+  },
   /**
        * 用户点击右上角分享
        */

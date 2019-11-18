@@ -65,6 +65,7 @@
     "pages/tourist/home/home",
     "pages/tourist/activityView/activityView",
     "pages/tourist/activityPay/activityPay",
+    "pages/tourist/activitydata/activitydata",
     "pages/tourist/mine/mine",
     "pages/tourist/order/order",
     "pages/tourist/orderPay/orderPay",

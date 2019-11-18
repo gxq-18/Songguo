@@ -66,6 +66,11 @@ Page({
 
     
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '详情'
+    });
+  },
    // 更换封面
   actionSheetChange: function (e) {
 

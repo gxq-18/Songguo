@@ -77,6 +77,13 @@ Page({
     })
     this.fetchSearchList();
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '核对信息'
+    });
+
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -88,9 +95,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  // onShow: function () {
   
-  },
+  // },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -282,7 +289,7 @@ Page({
             openId: app.globalData.openId,
             cpc_id: app.globalData.cpc.id,
             csc_id: app.globalData.csc.id,
-            ca_id: that.data.model.id,
+            ca_id: that.data.id,
             user_name: that.data.userName,
             user_mobile: that.data.mobile,
             money:that.data.money,

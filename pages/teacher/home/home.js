@@ -89,6 +89,11 @@ Page({
     this.todayClass();//当日课程
     this.fetchSearchList();//通知
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '老师中心'
+    });
+  },
   layout: function (e) {
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
     wx.navigateTo({

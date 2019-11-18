@@ -28,13 +28,10 @@ Page({
       id: options.id
     });
   },
-
   onShow: function () {
     wx.setNavigationBarTitle({
       title: '活动报名'
     });
-
-
   },
   //填写姓名
   inputName: function (e) {

@@ -28,6 +28,13 @@ Page({
     isCheckF3: true,//所有人可见
 
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '发布班级圈'
+    });
+
+
+  },
   /**
   * 生命周期函数--监听页面加载
   */

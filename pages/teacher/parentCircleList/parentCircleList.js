@@ -81,6 +81,11 @@ Page({
       content: e.detail.value
     })
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '班级圈'
+    });
+  },
   previewImage: function (e) {
     //获取当前图片的下标
     var index = e.currentTarget.dataset.index;

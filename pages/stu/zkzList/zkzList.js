@@ -50,7 +50,9 @@ Page({
     // 页面渲染完成
   },
   onShow: function () {
-    // 页面显示
+    wx.setNavigationBarTitle({
+      title: '准考证'
+    });
   },
   onHide: function () {
     // 页面隐藏

@@ -59,6 +59,11 @@ Page({
     
     
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '详情列表'
+    });
+  },
   // 更换封面
   actionSheetChange: function (e) {
 
@@ -388,7 +393,7 @@ Page({
   },
   xqym:function(e){
     wx.navigateTo({
-      url: "../xiangqing/xiangqing?id=" + e.currentTarget.dataset.circle_id,
+      url: "../xiangqing/xiangqing?id=" + e.currentTarget.dataset.circle_id + "&fx='H'",
     }) 
 
   },

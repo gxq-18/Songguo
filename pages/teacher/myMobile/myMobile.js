@@ -29,6 +29,11 @@ Page({
     })
 
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '手机号'
+    });
+  },
   inputMobile: function (e) {
     this.setData({
       mobile: e.detail.value

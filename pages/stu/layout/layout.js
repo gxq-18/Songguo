@@ -13,6 +13,13 @@ const conf = {
     showPicker: false,
     todayClass: []
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '课程表'
+    });
+
+
+  },
   onLoad() {
 
     const date = new Date();
