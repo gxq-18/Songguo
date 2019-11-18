@@ -80,8 +80,10 @@ Page({
   previewImage: function (e) {
     //获取当前图片的下标
     var index = e.currentTarget.dataset.index;
+    console.log(index);
     //所有图片
     var imgs = e.currentTarget.dataset.src;
+    console.log(imgs);
     wx.previewImage({
       //当前显示图片
       current: imgs[index],

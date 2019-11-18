@@ -33,6 +33,19 @@ Page({
     })
 
   },
+  previewImage: function (e) {
+    //获取当前图片的下标
+    //所有图片
+    var str = [];
+    str.push(this.data.admission_ticket);
+    console.log(str);
+    wx.previewImage({
+      //当前显示图片
+      current: str[0],
+      //所有图片
+      urls: str
+    })
+  },
   onReady: function () {
     // 页面渲染完成
   },

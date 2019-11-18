@@ -27,7 +27,7 @@
   <image src='http://image.arter.net.cn/non.png' style="width:276px; height:319px;"></image>
 </view>
 <view class="page-body" wx:if='{{admission_ticket != null}}'>
- <image class="weui-uploader__img" src="{{admission_ticket}}" />
+ <image class="weui-uploader__img" bindtap="previewImage" index="0" src="{{admission_ticket}}" />
 
 </view>
 
