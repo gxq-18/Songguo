@@ -215,7 +215,7 @@ Page({
       //七牛上传图片
       for (var i = 0; i < that.data.imageList.length;i++){
         //交给七牛上传
-        if (that.data.imageList[i].indexOf("pzuu7skza.bkt.clouddn.com") == -1){
+        if (that.data.imageList[i].indexOf("img.shiyiart.cn") == -1){
             qiniuUploader.upload(that.data.imageList[i], (qiniu) => {
            }, (error) => {
             console.error('error: ' + JSON.stringify(error));

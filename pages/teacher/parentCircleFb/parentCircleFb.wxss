@@ -1147,7 +1147,7 @@ padding-left: 30px;
 .section .line {
 	margin-left: 30rpx;
 	padding-right: 30rpx;
-	line-height: 3;
+	line-height: 2;
 	border-bottom: 1px solid #fcfbfb;
 }
 .section .line:before {

@@ -1,5 +1,6 @@
-//var localUrl = "https://www.arter.net.cn/";
-var localUrl = "http://121.40.104.182:8088/shiyi_xcx/";
+var localUrl = "https://app.shiyiart.cn/";
+
+//var localUrl = "http://121.40.104.182:8088/shiyi_xcx/";
 //var localUrl = "http://localhost:8080/aters_xcx_interface/";
 var crm_code = "crm0000";
 const qiniuUploader = require("qiniuUploader");
@@ -206,7 +207,7 @@ function initQiniu() {
         region: 'SCN', // 华东区
         uptokenURL: 'https://up.qbox.me/api/uptoken',
         uptoken: res.data.dataInfo.token,
-        domain: 'http://pzuu7skza.bkt.clouddn.com',
+        domain: 'http://img.shiyiart.cn',
         shouldUseQiniuFileName: false
       };
       qiniuUploader.init(options);
