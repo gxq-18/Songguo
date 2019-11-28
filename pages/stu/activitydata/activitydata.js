@@ -107,9 +107,29 @@ Page({
       })
       return false;
     }else{
-      main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-      wx.navigateTo({
-        url: "../activityPay/activityPay?id=" + this.data.id + "&name=" + this.data.inputName + "&phone=" + this.data.inputFphone,
+      let that = this;
+      wx.request({
+        url: main.localUrl + 'mobileXcx/selectHdbm', //仅为示例，并非真实的接口地址 
+        data: {
+          orderphone: that.data.inputFphone,
+          inputName: that.data.inputName
+        },
+        header: {
+          'content-type': 'application/json' // 默认值 
+        },
+        success: function (res) {
+          if (res.data.ok == '') {
+            wx.navigateTo({
+              url: "../activityPay/activityPay?id=" + that.data.id + "&name=" + that.data.inputName + "&phone=" + that.data.inputFphone + "&email=" + that.data.email,
+            })
+          } else {
+            wx.showToast({
+              title: '此人已报名，请检查',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }
       })
     }
    

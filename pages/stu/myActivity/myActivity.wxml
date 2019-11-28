@@ -18,6 +18,7 @@
           <view class='bookListContent'>
             <view class='lable'>{{item.title}}</view>            
             <view class='text'>时间：{{item.star_time}}至{{item.end_time}}</view>
+             <view class='text'>姓名：{{item.user_name}}</view>
             <block  wx:if="{{item.dy == 1}}">
                 <image src='../../../image/btn_02.png' style="width:30%; height:25px;float:right"></image>
             </block>

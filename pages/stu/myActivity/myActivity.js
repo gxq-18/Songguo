@@ -147,6 +147,7 @@ function findList(pageindex, callbackcount, dataList) {
       currentPage: pageindex,
       openId: app.globalData.openId,
       rowCountPerPage: callbackcount,
+      Identification:1
     },
     header: {
       'content-type': 'application/json' // 默认值

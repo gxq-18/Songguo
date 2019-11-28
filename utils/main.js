@@ -205,9 +205,9 @@ function initQiniu() {
       console.log(res.data.dataInfo.token);
       var options = {
         region: 'SCN', // 华东区
-        uptokenURL: 'https://up.qbox.me/api/uptoken',
+        uptokenURL: 'https://up.qbox.me',
         uptoken: res.data.dataInfo.token,
-        domain: 'http://img.shiyiart.cn',
+        domain: 'https://img.shiyiart.cn',
         shouldUseQiniuFileName: false
       };
       qiniuUploader.init(options);
