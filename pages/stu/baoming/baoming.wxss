@@ -5,16 +5,21 @@
 }
 .img1{
   width:23%;
-  height:56%;
+  height:75%;
   margin-top: 5%;
 }
 /* 今日课程 */
 .myCurr-view{
   display:flex;
-  width: 700rpx;
-  padding-top:20rpx;
-  margin-left: 30rpx;
-  min-height: 150rpx;
+  width: 95%;
+  padding-top:2%;
+  margin-left: 3%;
+  min-height: 10%;
+}
+.te1{
+  margin-left: 25%;
+margin-top: -12%;
+
 }
 .curr{
   width: 100%;
@@ -22,6 +27,8 @@
   border-radius:10rpx; 
   padding-bottom: 20rpx;
   background-color: #FFFFFF;
+  padding-left: 8%;
+
   
 }
 .currTitle{

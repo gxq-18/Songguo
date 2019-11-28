@@ -32,7 +32,7 @@
     <view class="line judgement" bindtap='mailbox'>
      <view class='block'>
       <image src='../../../image/me_dingdan@2x.png'></image> 
-      给阿特的一封信
+      给十艺的一封信
      </view>
     </view>
     <view class="line judgement" bindtap='myIndex'>

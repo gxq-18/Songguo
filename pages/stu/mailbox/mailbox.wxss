@@ -75,7 +75,6 @@
   padding-top: 10rpx;
 }
 .mcontent:before {
-	content: '>';
 	float: right;
 	color: #aaa;
 }

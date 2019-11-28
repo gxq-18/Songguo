@@ -186,6 +186,14 @@ Page({
   },
   primary: function () {//点名保存
     var that = this;
+    if (that.data.theclass == "") {
+      wx.showToast({
+        title: '班级为空，请选择班级',
+        icon: 'none',
+        duration: 2000//持续的时间
+      })
+      return;
+    }
     if (that.data.content == "") {
       wx.showToast({
         title: '内容为空，请填写发布内容',

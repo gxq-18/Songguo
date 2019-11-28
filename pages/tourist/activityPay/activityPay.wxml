@@ -71,10 +71,10 @@
           <view style="width: 100%;">手机号：<input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}" value="{{mobile}}"/></view>
           </view>
           <view class="line"></view>
-          <view class="sel">
+          <!-- <view class="sel">
           <view style="width: 100%;">应支付：<text class="inputText" focus="{{focus1}}" >{{money}}</text></view>
           </view>
-          <view class="line"></view>
+          <view class="line"></view> -->
           <!-- <view class="sel">
           <input class="inputText" style='width:60%' bindinput='inputSendCode' placeholder="验证码" focus="{{focus2}}"/>
           <button class="{{sendmsg}}" hover-class='classCurr_view_but_hover' bindtap='sendmessg'>{{getmsg}}</button>
@@ -92,11 +92,11 @@
             <view>微信支付</view>
             <radio style="float:right;" class="radio" bindtap="weixin" checked="{{weixin}}"></radio>
         </view>
-        <view class="payList">
+        <!-- <view class="payList">
             <view class="payImg"><image src="../../../image/ion_12.png"></image></view>
             <view>支付宝支付</view>
             <radio style="float:right;" class="radio" bindtap="zhifubao" checked="{{zhifubao}}"></radio>
-        </view>
+        </view> -->
     </view>
  <view class="bottom_total">
     <view class="row">

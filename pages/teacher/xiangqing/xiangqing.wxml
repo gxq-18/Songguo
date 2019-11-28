@@ -36,7 +36,7 @@
           </view> -->
           <!-- <view style='float:left;'><image class="item-allselect" bindtap="bindReply" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view> -->
           <view wx:if="{{fx=='h'}}" style='float:left;margin-left:35%;'>
-          <button open-type="share" type="primary" style="width:36px;height:20px;background-color:transparent;plain:true;" bindtap="bindReply1"              data-circle_id=' {{item.id}},{{item.content}},{{item.img_path}}'>
+          <button open-type="share" type="primary" style="width:37px;height:30px;background-color:transparent;plain:true;padding-top: 5px;padding-right: 9px;box-sizing: border-box;" bindtap="bindReply1" data-circle_id=' {{item.id}},{{item.content}},{{item.img_path}}'>
           <image class="item-allselect" style="float: right;" bindtap="bindReply1" data-index='{{idx}}' data-circle_id='{{item.id}}           ,{    {item.content}},{{item.img_path}}' data-parent_id='' data-parent_user='' src="../../../image/ion_09.png"/>
            </button>
           </view>

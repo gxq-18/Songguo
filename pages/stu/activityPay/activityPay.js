@@ -144,7 +144,10 @@ Page({
     this.setData({
       hidden: true
     });
-    wx.navigateBack();  //返回上个页面
+  
+      wx.navigateTo({
+        url: "../activity/activity",
+      })
   },
   
   inputUser: function (e) {
@@ -316,6 +319,7 @@ Page({
                   doWxPay(res, (payState) => {
                     if (payState) {
                       that.sendMessage(e.detail.formId, app.globalData.openId, that.data.model.title)
+                      
                       that.cancel();
                     } else {
                       wx.showToast({
