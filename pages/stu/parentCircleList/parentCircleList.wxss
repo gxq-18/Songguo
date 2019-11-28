@@ -90,7 +90,7 @@
 .item-allselect {
   width: 40rpx;
   height: 40rpx;
-  margin-left: 12rpx;
+  margin-left: 35rpx;
 }
 /* 评论 */
 .list_right_comment{

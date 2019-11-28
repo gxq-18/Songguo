@@ -17,16 +17,15 @@
   
 }
 .bookListContent .lable{
-  font-size: 35rpx;
   color: #3C3C3C;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 }
 .bookListContent .text{
-  font-size: 14px;
+  font-size: 70%;
   color: #9D9D9D;
-  padding-top: 15rpx;
+  padding-top: 2%;
 }
 .bookListState{
   width: 20%;
