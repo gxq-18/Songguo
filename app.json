@@ -75,6 +75,7 @@
     "pages/tourist/album/album",
     "pages/auction/auction/auctionHome",
     "pages/auction/auctionView/auctionView",
+    "pages/auction/auctionView1/auctionView1",
     "pages/auction/auctionBid/auctionBid",
     "pages/auction/express/express",
     "pages/classhome/classhome",
@@ -86,7 +87,10 @@
     "pages/tourist/parentCircle/parentCircle",
     "pages/tourist/parentCircleList/parentCircleList",
     "pages/tourist/parentCircleListBp/parentCircleListBp",
-    "pages/tourist/parentCircleListVio/parentCircleListVio"
+    "pages/tourist/parentCircleListVio/parentCircleListVio",
+    "pages/tourist/zxbm/zxbm",
+    "pages/tourist/stkc/stkc",
+    "pages/tourist/succsece/succsece"
   ],
   "window": {
     "backgroundTextStyle": "dark",

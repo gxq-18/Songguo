@@ -1,13 +1,64 @@
+
 <import src="../../../wxParse/wxParse.wxml" />
 
+    <view class='bookList'>
+          <view class='bookListImg'>
+            <image src='{{model.img_path}}' bindload="imageLoad"  
+      style="width:120px; height:120px;"></image>
+          </view>
+          <view class='bookListContent'>
+            <view class='lable'>{{model.title}}</view>            
+            <!-- <view class='text'>时间：{{item.star_time}}至{{item.end_time}}</view> -->
+            <block  wx:if="{{model.dy == 1}}">
+            <image src='../../../image/btn_02.png' style="width:40%; height:30px;float:right;margin-top: 25%;"></image>
+            </block>
+              <view wx:if="{{model.dy == 2}}">
+                <image src='../../../image/btn_03.png' style="width:40%; height:30px;float:right;margin-top: 25%;"></image>
+            </view> 
+          </view>
+      </view>
+
 <view class='book'>
-   <view class='bookSm'>
-     <image src='{{model.img_path}}' bindload="imageLoad"  
-style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
+<view class="line1"></view>
+   <view class="container">
+           <view class="sel">
+          <view style="width: 100%;">时间：<text class="inputText">{{model.star_time}} - {{model.end_time}}</text></view>
+          </view>
+          <view class="line"></view>
+
+          <view class="sel">
+          <view style="width: 100%;">地址：<text class="inputText">{{model.activity_address}}</text></view>
+          </view>
+          <view class="line"></view>
+
+          <view class="sel">
+          <view style="width: 100%;">姓名：<text class="inputText">{{model.user_name}}</text></view>
+          </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">电话：<text class="inputText">{{model.user_mobile}}</text></view>
+          </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">状态：<text class="inputText">已付款</text></view>
+          </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">费用：<text class="inputText">{{model.amoney}}</text></view>
+          </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">份数：<text class="inputText">{{model.copies}}</text></view>
+          </view>
+          <view class="line"></view>
+          <view class="sel">
+          <view style="width: 100%;">实付：<text class="inputText">{{model.pay_money}}</text></view>
+          </view>
+          <view class="line"></view>
+          
    </view>
-   <view class='section'>
-      <view class='scatitle'>{{model.title}}</view>
-      <view class='scatext'>
+</view>
+      <!-- <view class='scatext'>
        <view>
         <image src="../../../image/huodong_time@2x.png"></image>
        </view>
@@ -21,29 +72,27 @@ style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
       </view>
       <view class='scacontent'>
          <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-      </view>  
-   </view>
+      </view>   -->
     <!-- <view class='address-add'>
     <button class='Btn' size="default" bindtap='pay'> 报名、购买 </button> 
   </view>   -->
-  <view class="bottom_total" wx:if="{{isPay==0}}">
+  <!-- <view class="bottom_total" wx:if="{{isPay==0}}">
     <view class="row">
       <block wx:if='{{model.ca_type==1}}'>
-        <text class="total_money" >￥{{model.amoney}}</text>
+        <text class="total_money" >￥{{model.pay_money}}</text>
         <text class="total_money_old">￥{{model.old_money}}</text>
-        <!-- <text class="total_money_con">{{model.caoCon}}人已购买</text> -->
+        <text class="total_money_con">{{model.caoCon}}人已购买</text>
         <form  report-submit bindsubmit='pay'>
           <button class="button-red"  formType="submit" >购 买</button>
         </form>
       </block>
       <block wx:if='{{model.ca_type==2}}'>
-         <text class="total_money" >￥{{model.amoney}}</text>
+        <text class="total_money" >￥{{model.deposit_money}}</text>
         <text class="total_money_old">￥{{model.old_deposit_money}}</text>
-        <!-- <text class="total_money_con">{{model.casCon}}人已报名</text>  -->
+        <text class="total_money_con">{{model.casCon}}人已报名</text>
         <form  report-submit bindsubmit='pay'>
           <button class="button-red"  formType="submit">报 名</button>
         </form>
       </block>
     </view>
-  </view>
-</view>
+  </view> -->

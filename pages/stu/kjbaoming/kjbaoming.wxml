@@ -1,7 +1,8 @@
 <view class="container">
   <text style="font-size:10%;">考生在线报名</text>
+  <view class="line"></view>
 </view>
-<view class="line"></view>
+
 <view class="container">
 <view class="sel">
     <input bindblur="inputName" class="inputText" placeholder="请填写姓名"></input>

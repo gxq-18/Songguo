@@ -67,7 +67,7 @@ Page({
     var id = e.currentTarget.dataset.id;
     console.log(id);
     wx.navigateTo({
-      url: "../activityView/activityView?id=" + id + "&isPay=0",
+      url: "../activityView1/activityView1?id=" + id + "&isPay=0",
     })
   },
   //分页搜索活动

@@ -1,7 +1,7 @@
-var localUrl = "https://app.shiyiart.cn/";
+//var localUrl = "https://app.shiyiart.cn/";
 
 //var localUrl = "http://121.40.104.182:8088/shiyi_xcx/";
-//var localUrl = "http://localhost:8080/aters_xcx_interface/";
+var localUrl = "http://localhost:8080/aters_xcx_interface/";
 var crm_code = "crm0000";
 const qiniuUploader = require("qiniuUploader");
 //第一次推送 2019年10月22日15:28:20

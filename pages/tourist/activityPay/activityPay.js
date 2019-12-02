@@ -77,6 +77,13 @@ Page({
     })
     this.fetchSearchList();
   },
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '核对信息'
+    });
+
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -88,11 +95,9 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    wx.setNavigationBarTitle({
-      title: '报名信息'
-    });
-  },
+  // onShow: function () {
+  
+  // },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -105,7 +110,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    
   },
 
   /**
@@ -139,7 +144,9 @@ Page({
     this.setData({
       hidden: true
     });
-    wx.navigateBack();  //返回上个页面
+    wx.navigateBack({
+      delta: 3,
+    })
   },
   
   inputUser: function (e) {
@@ -280,11 +287,11 @@ Page({
           url: main.localUrl + 'mobileXcx/onPayCao', //仅为示例，并非真实的接口地址
           data: {
             crm_code: main.crm_code,
-            school_code: app.globalData.cpc.school_code,
+            //school_code: app.globalData.cpc.school_code,
             openId: app.globalData.openId,
-            // cpc_id: app.globalData.cpc.id,
-            // csc_id: app.globalData.csc.id,
-             ca_id: that.data.model.id,
+            //cpc_id: app.globalData.cpc.id,
+            //csc_id: app.globalData.csc.id,
+            ca_id: that.data.id,
             user_name: that.data.userName,
             user_mobile: that.data.mobile,
             money:that.data.money,
@@ -295,6 +302,7 @@ Page({
             'content-type': 'application/json' // 默认值
           },
           success: function (res) {
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
             if (res.data.succeed=="000"){
               //调起支付
               wx.request({
@@ -310,6 +318,7 @@ Page({
                   doWxPay(res, (payState) => {
                     if (payState) {
                       that.sendMessage(e.detail.formId, app.globalData.openId, that.data.model.title)
+                      
                       that.cancel();
                     } else {
                       wx.showToast({
@@ -328,6 +337,59 @@ Page({
 
       }
     // }
+  },
+  sendMessage: function (formId, openId, title) {
+
+    //获取accessToken
+    wx.request({
+      url: main.localUrl + 'mobileXcx/accessToken', //仅为示例，并非真实的接口地址
+      data: {},
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        var accessToken = res.data.dataInfo.accessToken;
+        console.log(accessToken);
+        //发送消息
+        var l = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + accessToken;
+        var d = {
+          touser: openId,
+          template_id: 'Fs6nTh5OLSjL_F_iznhmRA5fGcYot3liXH39xeeEWNE',//这个是1、申请的模板消息id，  
+          page: '/pages/stu/myActivity/myActivity',
+          form_id: formId,
+          data: {
+            "keyword1": {
+              "value": title,
+              "color": "#172177"
+            },
+            "keyword2": {
+              "value": util.formatTime(new Date()),
+              "color": "#9b9b9b"
+            },
+            "keyword3": {
+              "value": "活动购买成功,如有疑问请联系我们。",
+              "color": "#9b9b9b"
+            }
+          }
+          //, emphasis_keyword: 'keyword1.DATA' //模板需要放大的关键词
+
+        }
+        wx.request({
+          url: l,
+          data: d,
+          method: 'POST',
+          success: function (res) {
+            console.log("push msg");
+            console.log(res);
+          },
+          fail: function (err) {
+            // fail  
+            console.log("push err")
+            console.log(err);
+          }
+        });
+      }
+    })
   },
   //报名
   onPayCas: function (e) {

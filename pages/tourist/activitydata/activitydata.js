@@ -14,6 +14,7 @@ Page({
   data: {
     id: '',
     cpc: '',
+    email:'',
     inputName: '',
     inputFphone: '',
     select: false,
@@ -28,10 +29,13 @@ Page({
       id: options.id
     });
   },
+
   onShow: function () {
     wx.setNavigationBarTitle({
       title: '活动报名'
     });
+
+
   },
   //填写姓名
   inputName: function (e) {
@@ -77,8 +81,22 @@ Page({
       })
     }
   },
-
-
+  //填写邮箱
+  email: function (e) {
+    if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(e.detail.value))) {
+      wx.showToast({
+        title: '邮箱有误',
+        duration: 1500,
+        icon: 'none'
+      });
+    } else {
+      this.setData({
+        email: e.detail.value,
+        disabled: false
+      })
+    }
+  },
+  
   //按钮
   editName: function (e) {
     //验证姓名和手机号
@@ -104,9 +122,29 @@ Page({
       })
       return false;
     }else{
-      main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-      wx.navigateTo({
-        url: "../activityPay/activityPay?id=" + this.data.id + "&name=" + this.data.inputName + "&phone=" + this.data.inputFphone,
+      let that = this;
+      wx.request({
+        url: main.localUrl + 'mobileXcx/selectHdbm', //仅为示例，并非真实的接口地址 
+        data: {
+          orderphone: that.data.inputFphone,
+          inputName: that.data.inputName
+        },
+        header: {
+          'content-type': 'application/json' // 默认值 
+        },
+        success: function (res) {
+          if (res.data.ok == '') {
+            wx.navigateTo({
+              url: "../activityPay/activityPay?id=" + that.data.id + "&name=" + that.data.inputName + "&phone=" + that.data.inputFphone + "&email=" + that.data.email,
+            })
+          } else {
+            wx.showToast({
+              title: '此人已报名，请检查',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }
       })
     }
    

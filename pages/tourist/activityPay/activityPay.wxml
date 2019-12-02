@@ -35,7 +35,7 @@
           </view>
           <view class="line"></view>
           <view class="sel">
-           <view style="width: 30%;float: left;">活动费用：</view>
+           <view style="width: 30%;float: left;">份数：</view>
           <view style="width: 19%;float: right;">
           
           <!-- Stepper容器 -->

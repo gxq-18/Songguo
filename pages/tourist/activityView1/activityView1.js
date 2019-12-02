@@ -12,21 +12,28 @@ Page({
     screenWidth: 0,
     screenHeight: 0,
     imgwidth: 0,
-    imgheight: 0,
-    isPay: true,
+    imgheight: 0, 
+    isPay:true,
   },
 
+  onShow: function () {
+    wx.setNavigationBarTitle({
+      title: '活动详情'
+    });
+
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    var bid = options.bid;
+    var id = options.id;
     var isPay = options.isPay;
     this.setData({
       isPay: isPay
     })
-    findView(bid, (data) => {
+    findView(id, (data) => {
       that.setData({
         model: data,
       })
@@ -35,58 +42,58 @@ Page({
      */
       WxParse.wxParse('article', 'html', data.content, that, 5);
     })
-
+   
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  // onShow: function () {
+  
+  // },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+  
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+  
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: this.data.model.title,
-    }
+      return {
+        title: this.data.model.title,
+      }
   },
   imageLoad: function (e) {
     var _this = this;
@@ -102,19 +109,20 @@ Page({
   },
   pay: function (e) {
     main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
+    console.log(this.data.model.id);
     wx.navigateTo({
-      url: "../activitydata/activitydata?id=" + this.data.model.id,
+      url: "../activitydata/activitydata?id="+this.data.model.id,
     })
-  }
+  }  
 })
 
 
-function findView(bid, data) {
+function findView(id, data) {
   wx.request({
     url: main.localUrl + 'mobileXcx/stuActivityById', //仅为示例，并非真实的接口地址
     data: {
-      id: bid,
-      typeid: "2"
+      id:id,
+      typeid : "1",
     },
     header: {
       'content-type': 'application/json' // 默认值

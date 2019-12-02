@@ -110,7 +110,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    
   },
 
   /**
@@ -144,10 +144,9 @@ Page({
     this.setData({
       hidden: true
     });
-  
-      wx.navigateTo({
-        url: "../activity/activity",
-      })
+    wx.navigateBack({
+      delta: 3,
+    })
   },
   
   inputUser: function (e) {

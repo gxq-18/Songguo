@@ -1,0 +1,91 @@
+<!-- <view class="container">
+  <text style="font-size:10%;">试听课程</text>
+</view> -->
+<!-- <view class="line"></view> -->
+<view class="container">
+<view class="sel">
+    <input bindblur="inputName" class="inputText" placeholder="学员姓名"></input>
+    <view class="top-selected1">{{result}}</view>
+    </view>
+<view class="line"></view>
+</view>
+
+
+<view class = "container">
+  <view class="sel1">
+ <picker  bindchange="bindGenderChange" value="{{kjlistindex}}" range="{{kjnamelist}}">
+         <view class="top-selected">{{gender}}</view>
+         <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right"src="../../../image/ion_18.png"></image></view>
+</picker>
+ </view>
+  <view class="line"></view>
+</view>
+
+<!-- <view class = "container">
+  <view class="sel1">
+    <picker mode="date" value="{{dateValue}}" start="1999-01-01" end="2999-12-12" bindchange="datePickerBindchange">
+      <view class="top-selected">{{dateValue}}</view>
+      <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right" src="../../../image/ion_18.png"></image></view>
+    </picker>
+   </view>
+  <view class="line"></view>
+</view> -->
+
+<!-- <view class="container">
+<view class="sel">
+    <input bindblur="phone" class="inputText" placeholder="就读学校"></input>
+    </view>
+<view class="line"></view>
+</view> -->
+
+
+<!--年级 -->
+
+<!-- <view class = "container">
+  <view class="sel1">
+ <picker  bindchange="bindGenderChange" value="{{kjlistindex}}" range="{{kjnamelist}}">
+         <view class="top-selected">{{theclassnumber}}</view>
+         <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right"src="../../../image/ion_18.png"></image></view>
+</picker>
+ </view>
+  <view class="line"></view>
+</view> -->
+<!--课程 -->
+
+<view class = "container">
+  <view class="sel1">
+ <picker  bindchange="bindGenderChangekc" value="{{kcindex}}" range="{{kcname}}">
+         <view class="top-selected">{{ckxz}}</view>
+         <view style="width:30%;float:right;"><image style="width: 12px;height: 15px;float: right"src="../../../image/ion_18.png"></image></view>
+</picker>
+ </view>
+  <view class="line"></view>
+</view>
+
+<view class="container">
+<view class="sel">
+    <input bindblur="phone" class="inputText" placeholder="联系电话"></input>
+    </view>
+<view class="line"></view>
+</view>
+<view class="container">
+  <view class="sel">
+  <view><text class="text3">预约须知:</text></view>
+  
+  <!-- <view><text decode="{{true}}" class="text1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、提交申请后，我校会工作人员会在24小时内，通过联系人电话跟您联系。</text></view> -->
+  <view>
+    <text decode="{{true}}" class="text1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址：经十路世购华联三楼东南 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话：0531-85970001 85970002
+</text>
+  </view>
+  <!-- <view><text decode="{{true}}" class="text1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、提示:考试经国家课程大纲为准，基础不牢的考生不建议越级考，优秀考生自愿越级考。</text></view> -->
+
+  <view><text class="text2">*上面信息填写完整后方可提交申请预约。</text></view>
+  </view>
+</view> 
+<!-- <view class="line"></view> -->
+
+<view class="loginBtnView">
+      <button class="loginBtn" bindtap="editName" disabled="{{disabled}}">提交预约</button>
+ 
+</view>

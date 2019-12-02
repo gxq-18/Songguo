@@ -16,6 +16,7 @@ Page({
     cpc: '',
     inputName: '',
     inputFphone: '',
+    email:'',
     select: false,
     disabled: false,
     xmzj:1,//0 为验证通过
@@ -35,6 +36,21 @@ Page({
     });
 
 
+  },
+  //填写邮箱
+  email: function (e) {
+    if (!(/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(e.detail.value))) {
+      wx.showToast({
+        title: '邮箱有误',
+        duration: 1500,
+        icon: 'none'
+      });
+    } else {
+      this.setData({
+        email: e.detail.value,
+        disabled: false
+      })
+    }
   },
   //填写姓名
   inputName: function (e) {

@@ -52,6 +52,9 @@ Page({
 
 
   },
+  onUnload: function () {
+    
+  },
 
 
   imageLoad: function (e) {

@@ -415,7 +415,6 @@ Page({
       title: '班级圈'
     });
    
-
   },
   //查询位置
   openMap:function(e){
