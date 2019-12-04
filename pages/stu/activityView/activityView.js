@@ -14,6 +14,7 @@ Page({
     imgwidth: 0,
     imgheight: 0, 
     isPay:true,
+    isIphoneX:false,
   },
 
   onShow: function () {
@@ -27,6 +28,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let isIphoneX = app.globalData.isIphoneX;
+    console.log(isIphoneX);
+    this.setData({
+      isIphoneX: isIphoneX
+    })
     var that = this;
     var id = options.id;
     var isPay = options.isPay;

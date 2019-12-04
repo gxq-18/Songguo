@@ -26,7 +26,9 @@ style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
     <!-- <view class='address-add'>
     <button class='Btn' size="default" bindtap='pay'> 报名、购买 </button> 
   </view>   -->
+   
   <view class="bottom_total" wx:if="{{isPay==0}}">
+  <view class="{{isIphoneX?'isIPX':''}}">
     <view class="row">
       <block wx:if='{{model.ca_type==1}}'>
         <text class="total_money" >￥{{model.amoney}}</text>
@@ -45,5 +47,8 @@ style="width:{{imgwidth}}rpx; height:{{imgheight }}rpx;"></image>
         </form>
       </block>
     </view>
+    
   </view>
+ </view>
 </view>
+

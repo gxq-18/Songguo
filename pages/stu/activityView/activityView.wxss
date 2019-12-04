@@ -1,5 +1,9 @@
 @import"../../../wxParse/wxParse.wxss";
+.isIPX {
 
+      padding-bottom: 30rpx !important;
+
+}
 
 .bookSm{
   background-color: #fff;
@@ -47,13 +51,12 @@
   flex-direction: column;
   bottom: 0;
   width: 100%;
-  height: 120rpx;
   line-height: 120rpx;
   background: white;
 }
 
 .button-red {
-  background-color: #5af0f5; /* 红色 */
+  background-color: #63c1c0; 
   position: fixed;
   right: 0;
   color: white;

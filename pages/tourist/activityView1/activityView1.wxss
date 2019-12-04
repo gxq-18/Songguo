@@ -53,9 +53,9 @@
 }
 
 .button-red {
-  background-color: #5af0f5; /* 红色 */
+  background-color: #63c1c0; /* 红色 */
   position: fixed;
-  right: 0;
+  right: 0; 
   color: white;
   text-align: center;
   display: inline-block;

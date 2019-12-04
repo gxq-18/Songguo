@@ -85,6 +85,7 @@
     "pages/contentView/contentView",
     "pages/logs/logs",
     "pages/tourist/parentCircle/parentCircle",
+    "pages/tourist/activityView1/activityView1",
     "pages/tourist/parentCircleList/parentCircleList",
     "pages/tourist/parentCircleListBp/parentCircleListBp",
     "pages/tourist/parentCircleListVio/parentCircleListVio",

@@ -47,7 +47,7 @@
 .loginBtn { 
  width: 80%; 
  border-radius: 25px;  
- background-color:#00E3E3;
+ background-color:#63c1c0;
  color: #fff;
 }
 .loginBtn:active{ 

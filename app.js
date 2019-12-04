@@ -56,5 +56,19 @@ App({
     //班级圈分享 学生&老师
     typebj:'',
     codebj:'',
-  }
+    isIphoneX: false,
+    userInfo: null
+  },
+  onShow: function () {
+    let that = this;
+    wx.getSystemInfo({
+      success: res => {
+        let modelmes = res.model;
+        if (modelmes.search('iPhone 11') != -1 || modelmes.search('iPhone X') != -1) {
+          that.globalData.isIphoneX = true
+        }
+
+      }
+    })
+  },
 })

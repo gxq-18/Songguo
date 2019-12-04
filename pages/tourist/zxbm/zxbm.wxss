@@ -120,7 +120,7 @@ align-items: center;
 justify-content: space-between;
 padding: 0rpx 0;
 box-sizing: border-box;
-font-family: microsoft yahei;
+font -family: microsoft yahei;
 
 }
 .text1{
