@@ -24,12 +24,8 @@
           <block wx:if="{{item.type==1}}">
             <image class="avatar_friend" src="{{item.teacher.icon}}" />   
           </block>
-          <block wx:if="{{item.type==99}}">
-            <image class="avatar_friend" src="{{item.header}}" />   
-          </block>
           <view class="list_right">
             <view class="friend_name" wx:if='{{item.type==0}}'>{{item.cpc.name}}</view>
-            <view class="friend_name" wx:if='{{item.type==99}}'>{{item.adminname}}</view>
             <view class="friend_name" wx:else>{{item.teacher.name}}</view>
             <view class="friend_mood">{{item.content}}</view>
             <view class="friend_img">    
@@ -52,11 +48,11 @@
             <view class="publist_time" wx:if="{{item.roomname!=null && item.roomname!=''}}" style="float:left;margin-bottom:20rpx;font-size:28rpx;color:#426ab3;width:100%;" data-latitude='{{item.latitude}}' data-longitude='{{item.longitude}}' bindtap='openMap' >{{item.roomname}}</view>
             <view class='clear'></view>
             <view class="publist_time" style="float:left;margin-top:8rpx;margin-bottom:20rpx;font-size:24rpx;color:#c2c2c2;width:60%;">{{item.createtime}}</view>
-            <!-- <view style='float:left;color:#4a86e8' wx:if="{{item.teacher.id==teacher.id}}"  data-index='{{idx}}' data-id='{{item.id}}' bindtap='delCpc'> 删除 </view>-->
+            <!-- <view style='float:left;color:#4a86e8' wx:if="{{item.teacher.id==teacher.id}}"  data-index='{{idx}}' data-id='{{item.id}}' bindtap='delCpc'> 删除 </view> -->
             <view style='float:left;'>
                 <image class="item-allselect" bindtap="selLike" data-circle_id='{{item.id}}' data-index='{{idx}}' data-is_like='{{item.is_like}}' src="{{item.is_like==1?'../../../image/dianzan_blue@2x.png':'../../../image/dianzan@2x.png'}}"/>
             </view>
-            <view style='float:left;'><image class="item-allselect" bindtap="bindReply1" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view> 
+            <view style='float:left;'><image class="item-allselect" bindtap="bindReply" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view>
           </view> 
         </view>
         <!-- 评论 -->
@@ -67,7 +63,7 @@
                 {{item.likeNameStr}}
               </view>
               <block wx:for="{{item.cpccList}}" wx:for-index="cpccidx" wx:key="cpcc" wx:for-item="cpcc">
-                  <view class="list_right_comment_fabulous"  bindtap="bindReply1" data-index='{{idx}}' data-cpccIndex='{{cpccidx}}' data-circle_id='{{item.id}}' data-parent_id='{{cpcc.id}}' data-parent_name='{{cpcc.userName}}' data-parent_cid='{{cpcc.cpc_id}}' data-cid='{{cpcc.id}}'>{{cpcc.userName}}<lable wx:if='{{cpcc.coverUserName!=""}}'>回复</lable>{{cpcc.coverUserName}}:<text>{{cpcc.content}}</text>  </view>
+                  <view class="list_right_comment_fabulous"  bindtap="bindReply" data-index='{{idx}}' data-cpccIndex='{{cpccidx}}' data-circle_id='{{item.id}}' data-parent_id='{{cpcc.id}}' data-parent_name='{{cpcc.userName}}' data-parent_cid='{{cpcc.cpc_id}}' data-cid='{{cpcc.id}}'>{{cpcc.userName}}<lable wx:if='{{cpcc.coverUserName!=""}}'>回复</lable>{{cpcc.coverUserName}}:<text>{{cpcc.content}}</text>  </view>
               </block>
             </view>
           </view>

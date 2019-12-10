@@ -114,7 +114,7 @@ Page({
 
    
   },
-  activity1: function () {
+  activity1: function (e) {
     // wx.navigateTo({
     //   // url: "../activity/activity",
     //   url: "../../tourist/parentCircleList/parentCircleList",
@@ -122,13 +122,13 @@ Page({
     app.globalData.thetype = "ysj";
     app.globalData.typeid = "0";
     app.globalData.codeid = app.globalData.cpc.id;
-    wx.switchTab({
-      url: "/pages/tourist/parentCircleList/parentCircleList",
-      success: function (e) {
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onLoad();
-      }
+    wx.navigateTo({
+      url: "../parentCircleListysj/parentCircleListysj",
+      // success: function (e) {
+      //   var page = getCurrentPages().pop();
+      //   if (page == undefined || page == null) return;
+      //   page.onLoad();
+      // }
     })
   },
 

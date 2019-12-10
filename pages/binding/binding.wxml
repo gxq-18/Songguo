@@ -8,7 +8,7 @@
   </form> 
   <text class="titles">家长/学生账号</text> 
  </view> 
-   <view class="sel">
+   <!-- <view class="sel">
       <input class="inputText" placeholder="手机号" bindinput="inputMobile" focus="{{focus1}}"/>
     </view>
     <view class="line"></view>
@@ -16,7 +16,7 @@
     <input class="inputText" style='width:60%' placeholder="验证码" bindinput="inputSendCode"  focus="{{focus2}}"/>
     <button class="{{sendmsg}}" hover-class='classCurr_view_but_hover' bindtap='sendmessg'>{{getmsg}}</button>
   </view>
-  <view class="line"></view>
+  <view class="line"></view> -->
     
   <view class="sel">
     <!--账号-->

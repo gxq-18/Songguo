@@ -13,7 +13,7 @@
 }
 /* 下拉框 */
 .top-selected{
-    width: 50%;
+    width: 65%;
     display: flex;
     float: left;
     align-items: center;

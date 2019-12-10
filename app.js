@@ -57,7 +57,9 @@ App({
     typebj:'',
     codebj:'',
     isIphoneX: false,
-    userInfo: null
+    userInfo: null,
+    loginType:'',
+   
   },
   onShow: function () {
     let that = this;
@@ -67,7 +69,6 @@ App({
         if (modelmes.search('iPhone 11') != -1 || modelmes.search('iPhone X') != -1) {
           that.globalData.isIphoneX = true
         }
-
       }
     })
   },

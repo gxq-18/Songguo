@@ -25,12 +25,13 @@
             <image class="avatar_friend" src="{{item.teacher.icon}}" />   
           </block>
           <block wx:if="{{item.type==99}}">
-            <image class="avatar_friend" src="{{item.header}}" />   
+          <image class="avatar_friend" src="{{item.header}}" /> 
           </block>
+
           <view class="list_right">
             <view class="friend_name" wx:if='{{item.type==0}}'>{{item.cpc.name}}</view>
-            <view class="friend_name" wx:if='{{item.type==99}}'>{{item.adminname}}</view>
             <view class="friend_name" wx:else>{{item.teacher.name}}</view>
+             <view class="friend_name" wx:if='{{item.type==99}}'>{{item.adminname}}</view>
             <view class="friend_mood">{{item.content}}</view>
             <view class="friend_img">    
                 <view class="weui-uploader__file" >
@@ -56,7 +57,7 @@
             <view style='float:left;'>
                 <image class="item-allselect" bindtap="selLike" data-circle_id='{{item.id}}' data-index='{{idx}}' data-is_like='{{item.is_like}}' src="{{item.is_like==1?'../../../image/dianzan_blue@2x.png':'../../../image/dianzan@2x.png'}}"/>
             </view>
-            <view style='float:left;'><image class="item-allselect" bindtap="bindReply1" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view> 
+            <view style='float:left;'><image class="item-allselect" bindtap="bindReply" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view> 
           </view> 
         </view>
         <!-- 评论 -->
@@ -67,7 +68,7 @@
                 {{item.likeNameStr}}
               </view>
               <block wx:for="{{item.cpccList}}" wx:for-index="cpccidx" wx:key="cpcc" wx:for-item="cpcc">
-                  <view class="list_right_comment_fabulous"  bindtap="bindReply1" data-index='{{idx}}' data-cpccIndex='{{cpccidx}}' data-circle_id='{{item.id}}' data-parent_id='{{cpcc.id}}' data-parent_name='{{cpcc.userName}}' data-parent_cid='{{cpcc.cpc_id}}' data-cid='{{cpcc.id}}'>{{cpcc.userName}}<lable wx:if='{{cpcc.coverUserName!=""}}'>回复</lable>{{cpcc.coverUserName}}:<text>{{cpcc.content}}</text>  </view>
+                  <view class="list_right_comment_fabulous"  bindtap="bindReply" data-index='{{idx}}' data-cpccIndex='{{cpccidx}}' data-circle_id='{{item.id}}' data-parent_id='{{cpcc.id}}' data-parent_name='{{cpcc.userName}}' data-parent_cid='{{cpcc.teacher_id}}' data-cid='{{cpcc.id}}'>{{cpcc.userName}}<lable wx:if='{{cpcc.coverUserName!=""}}'>回复</lable>{{cpcc.coverUserName}}:<text>{{cpcc.content}}</text>  </view>
               </block>
             </view>
           </view>
@@ -89,10 +90,10 @@
       </view> 
       <view style="width:100%;padding-bottom:50rpx"></view> 
 </block>
-<view wx:if="{{thetype=='ysj'}}">
+<!-- <view wx:if="{{thetype=='ysj'}}">
   <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' >
   </image>
-</view>
+</view> -->
   <!-- 底部悬浮按钮 -->
   <!-- <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' ></image>  -->
 

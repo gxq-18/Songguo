@@ -211,7 +211,8 @@ Page({
           latitude: that.data.latitude,
           longitude: that.data.longitude,
           lookType: lookType,
-          theclass: app.globalData.csc.ccm_id
+          theclass: app.globalData.csc.ccm_id,
+          thetype:'ysj'
         },
         header: {
           'content-type': 'application/json' // 默认值

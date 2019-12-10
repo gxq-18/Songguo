@@ -189,7 +189,7 @@ Page({
                         if (res.data.dataInfo.csc != null) {
                           app.globalData.csc = res.data.dataInfo.csc;
                         }
-
+                        app.globalData.loginType = '0';
                         wx.navigateTo({
                           url: '../stu/home/home'
                         })
@@ -264,6 +264,7 @@ Page({
                         if (res.data.dataInfo.tea != null) {
                           app.globalData.teacher = res.data.dataInfo.tea;
                           console.log("laoshiid=" + app.globalData.teacher.id);
+                          app.globalData.loginType = '1';
                           wx.navigateTo({
                             url: '../teacher/home/home'
                           })
@@ -316,11 +317,12 @@ Page({
                   // 有一点需要注意 询问用户 是否授权 那提示 是这API发出的
                   console.info("登录成功返回的openId：" + openIdRes.data.openid);
                   app.globalData.openId = openIdRes.data.openid;
-
-                  wx.navigateTo({
-                    url: "../tourist/mine/mine",
-                  })
-
+                  app.globalData.loginType = '2';
+                  
+                    wx.navigateTo({
+                      url: "../tourist/mine/mine",
+                    })
+                  
                 }
               }
             })

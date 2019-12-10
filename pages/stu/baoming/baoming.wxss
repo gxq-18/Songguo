@@ -4,9 +4,16 @@
   margin-left: 12%;
 }
 .img1{
-  width:23%;
-  height:75%;
+  width:25%;
+  height:90%;
   margin-top: 5%;
+}
+.img2{
+  width:25%;
+  height:100%;
+  margin-top: 5%;
+  margin-left: 3%;
+
 }
 /* 今日课程 */
 .myCurr-view{
@@ -14,7 +21,7 @@
   width: 95%;
   padding-top:2%;
   margin-left: 3%;
-  min-height: 10%;
+  min-height: 11%;
 }
 .te1{
   margin-left: 25%;

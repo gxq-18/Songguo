@@ -61,8 +61,7 @@
 }
 .friend_mood{
     margin-bottom: 16rpx; 
-    width:240px;
-    overflow-wrap: break-word;
+    width:95%
 }
 .weui-uploader__file {
   float: left;
@@ -90,7 +89,7 @@
 .item-allselect {
   width: 40rpx;
   height: 40rpx;
-  margin-left: 30rpx;
+  margin-left: 40rpx;
 }
 /* 评论 */
 .list_right_comment{

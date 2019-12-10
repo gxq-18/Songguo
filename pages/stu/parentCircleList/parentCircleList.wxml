@@ -47,8 +47,8 @@
             <view class='clear' wx:if="{{item.roomname!=null && item.roomname!=''}}"></view>
             <view class="publist_time" wx:if="{{item.roomname!=null && item.roomname!=''}}" style="float:left;margin-bottom:20rpx;font-size:28rpx;color:#426ab3;width:100%;" data-latitude='{{item.latitude}}' data-longitude='{{item.longitude}}' bindtap='openMap' >{{item.roomname}}</view>
             <view class='clear'></view>
-            <view class="publist_time" style="float:left;margin-top:8rpx;margin-bottom:20rpx;font-size:24rpx;color:#c2c2c2;width:45%;">{{item.createtime}}</view>
-            <view style='float:left;color:#4a86e8' wx:if="{{item.teacher.id==teacher.id}}"  data-index='{{idx}}' data-id='{{item.id}}' bindtap='delCpc'> 删除 </view>
+            <view class="publist_time" style="float:left;margin-top:8rpx;margin-bottom:20rpx;font-size:24rpx;color:#c2c2c2;width:50%;">{{item.createtime}}</view>
+            <view style='float:left;color:#4a86e8;font-size:90%;' wx:if="{{item.teacher.id==teacher.id}}"  data-index='{{idx}}' data-id='{{item.id}}' bindtap='delCpc'> 删除 </view>
             <view style='float:left;'>
                 <image class="item-allselect" bindtap="selLike" data-circle_id='{{item.id}}' data-index='{{idx}}' data-is_like='{{item.is_like}}' src="{{item.is_like==1?'../../../image/dianzan_blue@2x.png':'../../../image/dianzan@2x.png'}}"/>
             </view>
@@ -90,7 +90,7 @@
       <view style="width:100%;padding-bottom:50rpx"></view> 
 </block>
   <!-- 底部悬浮按钮 -->
-  <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' ></image> 
+  <!-- <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' ></image>  -->
 
 <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
     <action-sheet-item  bindtap="bpImage">更换封面</action-sheet-item>

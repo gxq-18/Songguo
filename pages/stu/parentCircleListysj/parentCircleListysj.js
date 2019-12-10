@@ -6,7 +6,7 @@ const app = getApp()
 
 Page({
   data: {
-    bpImage:'',
+    bpImage:'http://p7mq9gjza.bkt.clouddn.com/t_me_head.png',
     cpc:[],
     circleList:[],
     content:"",
@@ -29,11 +29,15 @@ Page({
     actionSheetHidden2:true,
     actionSheetHidden3: true,
     showModalStatus: false,
+    thetype: '', 
   },
-  onLoad: function () {
-    
+onLoad: function (options) {
+    if (app.globalData.cpc.id != undefined || app.globalData.teacher.id != undefined) {
+      this.setData({
+        thetype: 'ysj',
+      }); 
+    }
     var that = this;
-    
     main.initQiniu();//初始化七牛
     var bpImage = app.globalData.cpc.bp_image;
     if (null == bpImage || "" == bpImage){
@@ -42,7 +46,7 @@ Page({
 
     this.setData({
       cpc: app.globalData.cpc,
-      bpImage: bpImage
+      bpImage: bpImage,
     });
     wx.getSystemInfo({
       success: function (res) {
@@ -51,9 +55,14 @@ Page({
         });
       }
     });
-    this.fetchSearchList();
     
+    this.fetchSearchList();
   },
+  onPullDownRefresh: function () {
+    this.fetchSearchList();
+  },
+
+  
   // 更换封面
   actionSheetChange: function (e) {
     this.setData({
@@ -73,6 +82,7 @@ Page({
     });
   },
   addContent:function (e) {
+    console.log(e.detail.value);
     this.setData({
       content: e.detail.value
     })
@@ -80,10 +90,8 @@ Page({
   previewImage: function (e) {
     //获取当前图片的下标
     var index = e.currentTarget.dataset.index;
-    console.log(index);
     //所有图片
     var imgs = e.currentTarget.dataset.src;
-    console.log(imgs);
     wx.previewImage({
       //当前显示图片
       current: imgs[index],
@@ -94,6 +102,7 @@ Page({
   previewVio: function (e) {
     //获取当前图片的下标
     var src = e.currentTarget.dataset.src;
+    console.log(src);
     wx.previewVideo({
       current: 1,
       urls: src
@@ -105,6 +114,7 @@ Page({
     })
   },
   circleImg: function() {
+
     var that = this;
     wx.chooseImage({
       count: 9, // 默认9  
@@ -114,7 +124,7 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
         var imgmodel = JSON.stringify(res.tempFilePaths);
         wx.navigateTo({
-          url: "../parentCircle/parentCircle?imgmodel=" + imgmodel+"&tp=0",
+          url: "../parentCircle/parentCircle?imgmodel=" + imgmodel + "&tp=0" +"&thetype=ysj",
         })
         that.actionSheetChange2();
       }
@@ -141,7 +151,7 @@ Page({
     // callbackcount = that.data.callbackcount; //返回数据的个数  
     //访问网络  
     circleList( that.data.searchPageNum, that.data.callbackcount, (data) => {
-     // console.log(data.dataInfo.dataList);
+      console.log(data.dataInfo.dataList);
       //判断是否有数据，有则取数据  
       if (data.dataInfo.dataList != null && data.dataInfo.dataList.length != 0) {
        
@@ -203,6 +213,11 @@ Page({
       searchLoading: false, //"上拉加载"的变量，默认false，隐藏  
       searchLoadingComplete: false  //“没有数据”的变量，默认false，隐藏  
     })
+    if (app.globalData.cpc.id != undefined || app.globalData.teacher.id != undefined) {
+      this.setData({
+        thetype: 'ysj',
+      });
+    }
     this.fetchSearchList();
   },
   // 点赞、取消点赞
@@ -230,6 +245,7 @@ Page({
 */
   bindReply: function (e) {
     var that = this;
+    console.log(e.currentTarget.dataset.cid)
     var index = e.currentTarget.dataset.index;
     var cpccIndex = e.currentTarget.dataset.cpccIndex;
     
@@ -333,33 +349,13 @@ Page({
       sizeType: ['original'],
       success: function (res) {
         wx.navigateTo({
-          url: "../../wx-cropper/index?url=" + res.tempFilePaths[0]+"&tp=0",
+          url: "../../wx-cropper/index?url=" + res.tempFilePaths[0]+"&tp=1",
         })
         _this.actionSheetChange();
       }
     })
   },
   
-  bindReply1: function (e) {
-
-    var tp = e.currentTarget.dataset.circle_id.split("=");
-    main.collectFomrId(e.detail.formId, parseInt(new Date().getTime() / 1000) + 604800, app.globalData.openId);//收集formId
-    var peram = tp[0].split(",");
-    var newarray = peram.splice(2, peram.length);
-    app.globalData.typebj = "2"; //0 家长发布的 1 老师发布的 2 学生发布的
-    app.globalData.codebj = app.globalData.cpc.id;
-    //图片=0  视频=1
-    if (tp[1] == 0) {
-      wx.navigateTo({
-        url: "../../teacher/parentCircle/parentCircle?imgmodel=" + newarray + "&tp=0" + "&content=" + peram[1].toString(),
-      })
-    } else if (tp[1] == 1) {
-      wx.navigateTo({
-        url: "../../teacher/parentCircle/parentCircle?vioUrl=" + newarray + "&tp=1" + "&content=" + peram[1].toString(),
-      })
-    }
-
-  },
   showModal: function (e) {
     var videoUrl = e.currentTarget.dataset.src;
     wx.navigateTo({
@@ -412,9 +408,10 @@ Page({
   },
   onShow: function () {
     wx.setNavigationBarTitle({
-      title: '班级圈'
+      title: '艺瞬间'
     });
    
+
   },
   //查询位置
   openMap:function(e){
@@ -434,15 +431,15 @@ Page({
 //查询家长圈集合
 function circleList(pageindex, callbackcount, dataList) {
   wx.request({
-    url: main.localUrl + 'mobileXcx/circleList', //仅为示例，并非真实的接口地址
+    url: main.localUrl + 'mobileXcx/circleListForysj', //仅为示例，并非真实的接口地址
     data: {
       crm_code: main.crm_code,
       account_type: app.globalData.loginType,
       account_code: app.globalData.cpc.id,
       //account_code:0,
+      openid : app.globalData.openId,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
-      ccmid: app.globalData.csc.ccm_id,
     },
     header: {
       'content-type': 'application/json' // 默认值

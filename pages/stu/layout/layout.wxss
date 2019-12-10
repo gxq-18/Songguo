@@ -132,7 +132,7 @@ page {
 
 .top-handle {
 	height: 80rpx;
-  background-color: #00FFFF;
+  background-color: #62c1bf;
 }
 
 .prev {
@@ -195,7 +195,7 @@ page {
 }
 
 .pink-bg {
-	background-color: #00FFFF;
+	background-color: #62c1bf;
 }
 
  .purple-bg {

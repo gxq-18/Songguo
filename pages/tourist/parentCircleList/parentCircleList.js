@@ -30,6 +30,7 @@ Page({
     actionSheetHidden3: true,
     showModalStatus: false,
     thetype: '', 
+    
   },
 onLoad: function (options) {
     if (app.globalData.cpc.id != undefined || app.globalData.teacher.id != undefined) {
@@ -56,6 +57,9 @@ onLoad: function (options) {
       }
     });
     
+    this.fetchSearchList();
+  },
+  onPullDownRefresh: function () {
     this.fetchSearchList();
   },
 
@@ -219,17 +223,26 @@ onLoad: function (options) {
   },
   // 点赞、取消点赞
   selLike:function(e){
-    var that = this;
-    var circle_id = e.currentTarget.dataset.circle_id;
-    var isLike = e.currentTarget.dataset.is_like;
-    var index = e.currentTarget.dataset.index;
-    circleLike(circle_id, isLike, (data) => {
-       that.data.circleList[index].is_like = data.dataInfo.isLike;
-       that.data.circleList[index].likeNameStr = data.dataInfo.likeNameStr;
-      this.setData({
-        circleList: that.data.circleList
+    if(app.globalData.openId != ""){
+      var that = this;
+      var circle_id = e.currentTarget.dataset.circle_id;
+      var isLike = e.currentTarget.dataset.is_like;
+      var index = e.currentTarget.dataset.index;
+      circleLike(circle_id, isLike, (data) => {
+        that.data.circleList[index].is_like = data.dataInfo.isLike;
+        that.data.circleList[index].likeNameStr = data.dataInfo.likeNameStr;
+        this.setData({
+          circleList: that.data.circleList
+        })
       })
-    })
+    }else{
+      wx.showToast({
+        title: '请登录后再操作',
+        duration: 1500,
+        icon: 'none'
+      });
+    }
+   
   },
   // 隐藏回复
   releaseBlur: function(){
@@ -240,8 +253,10 @@ onLoad: function (options) {
   /**
 * 点击回复
 */
-  bindReply: function (e) {
+  bindReply1: function (e) {
+    if (app.globalData.openId != "") {
     var that = this;
+    console.log(e.currentTarget.dataset.cid);
     var index = e.currentTarget.dataset.index;
     var cpccIndex = e.currentTarget.dataset.cpccIndex;
     
@@ -273,6 +288,13 @@ onLoad: function (options) {
         releaseText: releaseText,
       })
     }
+    }else{
+    wx.showToast({
+      title: '请登录后再操作',
+      duration: 1500,
+      icon: 'none'
+    });
+  }
     
   },
   //发送回复信息
@@ -426,13 +448,20 @@ onLoad: function (options) {
 
 //查询家长圈集合
 function circleList(pageindex, callbackcount, dataList) {
-  wx.request({
+  var logcounts = "0";
+  if (app.globalData.loginType != '' && app.globalData.loginType == 0) {
+    logcounts = app.globalData.cpc.id;
+   }
+  if (app.globalData.loginType != '' && app.globalData.loginType == 1) {
+    logcounts = app.globalData.teacher.id;
+   }
+   wx.request({
     url: main.localUrl + 'mobileXcx/circleListForysj', //仅为示例，并非真实的接口地址
     data: {
       crm_code: main.crm_code,
-      account_type: 0,
-      //account_code: app.globalData.cpc.id,
-      account_code:0,
+      account_type: app.globalData.loginType,
+      account_code: logcounts,
+      openid:app.globalData.openId,
       currentPage: pageindex,
       rowCountPerPage: callbackcount,
     },
@@ -446,12 +475,21 @@ function circleList(pageindex, callbackcount, dataList) {
 }
   //查询点赞、取消点赞
   function circleLike(circle_id, isLike, dataList) {
+    var logcount = "2";
+    if (app.globalData.loginType != '' && app.globalData.loginType == 0) {
+      logcount = app.globalData.cpc.id;
+    }
+    if (app.globalData.loginType != '' && app.globalData.loginType == 1) {
+      logcount = app.globalData.teacher.id;
+    }
     wx.request({
       url: main.localUrl + 'mobileXcx/circleLike', //仅为示例，并非真实的接口地址
       data: {
         crm_code: main.crm_code,
-        account_type: 0,
-        account_code: app.globalData.cpc.id,
+        account_type: app.globalData.loginType,
+        account_code: logcount,
+        openId: app.globalData.openId,
+        loginName:app.globalData.userInfo.nickName,
         circle_id: circle_id,
         isLike: isLike,
       },
@@ -459,6 +497,7 @@ function circleList(pageindex, callbackcount, dataList) {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
+        console.log(res.data);
         dataList(res.data)
       }
     })
@@ -466,12 +505,20 @@ function circleList(pageindex, callbackcount, dataList) {
 
   //回复
   function saveComment(circle_id, content, parent_id, dataList) {
+    var logcount = "2";
+    if (app.globalData.loginType != '' && app.globalData.loginType == 0) {
+      logcount = app.globalData.cpc.id;
+    }
+    if (app.globalData.loginType != '' && app.globalData.loginType == 1) {
+      logcount = app.globalData.teacher.id;
+    }
+    console.log("~~~~~~~~~~~~~");
     wx.request({
       url: main.localUrl + 'mobileXcx/addComment', //仅为示例，并非真实的接口地址
       data: {
         crm_code: main.crm_code,
-        account_type: 0,
-        account_code: app.globalData.cpc.id,
+        account_type: app.globalData.loginType,
+        account_code: logcount,
         circle_id: circle_id,
         content: content,
         parent_id: parent_id,
