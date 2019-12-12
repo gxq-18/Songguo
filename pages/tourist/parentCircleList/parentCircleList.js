@@ -30,11 +30,13 @@ Page({
     actionSheetHidden3: true,
     showModalStatus: false,
     thetype: '', 
+    isshow:'',
     
   },
 onLoad: function (options) {
     if (app.globalData.cpc.id != undefined || app.globalData.teacher.id != undefined) {
       this.setData({
+        isshow: app.globalData.openId,
         thetype: 'ysj',
       }); 
     }

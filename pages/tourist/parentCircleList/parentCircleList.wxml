@@ -53,7 +53,7 @@
             <view class='clear'></view>
             <view class="publist_time" style="float:left;margin-top:8rpx;margin-bottom:20rpx;font-size:24rpx;color:#c2c2c2;width:60%;">{{item.createtime}}</view>
             <!-- <view style='float:left;color:#4a86e8' wx:if="{{item.teacher.id==teacher.id}}"  data-index='{{idx}}' data-id='{{item.id}}' bindtap='delCpc'> 删除 </view>-->
-            <view style='float:left;'>
+            <view style='float:left;' wx:if="{{isshow != ''}}" >
                 <image class="item-allselect" bindtap="selLike" data-circle_id='{{item.id}}' data-index='{{idx}}' data-is_like='{{item.is_like}}' src="{{item.is_like==1?'../../../image/dianzan_blue@2x.png':'../../../image/dianzan@2x.png'}}"/>
             </view>
             <view style='float:left;'><image class="item-allselect" bindtap="bindReply1" data-index='{{idx}}' data-circle_id='{{item.id}}' data-parent_id='' data-parent_user='' src="../../../image/pinglun@2x.png"/></view> 
@@ -89,10 +89,10 @@
       </view> 
       <view style="width:100%;padding-bottom:50rpx"></view> 
 </block>
-<view wx:if="{{thetype=='ysj'}}">
+<!-- <view wx:if="{{thetype=='ysj'}}">
   <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' >
   </image>
-</view>
+</view> -->
   <!-- 底部悬浮按钮 -->
   <!-- <image src="../../../image/pengyouquan_fabu@2x.png" class="img-plus-style" bindtap='actionSheetChange2' ></image>  -->
 
